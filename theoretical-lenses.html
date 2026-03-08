@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theoretical Lenses I Use - KT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --sage-green: #3E513E;
+            --dark-charcoal: #2A2C24;
+            --olive-brown: #575A4B;
+            --taupe: #816C61;
+            --white: #FFFFFF;
+            --off-white: #CFCFEA;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--white);
+            color: var(--dark-charcoal);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dark-charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+
+        .connect-btn {
+            background-color: var(--sage-green);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .connect-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(62, 81, 62, 0.3);
+        }
+
+        .arrow-icon {
+            font-size: 1.2rem;
+            transform: rotate(45deg);
+        }
+
+        /* Page */
+        .project-page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--sage-green);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-link:hover {
+            opacity: 0.7;
+        }
+
+        .project-header {
+            margin-bottom: 3rem;
+        }
+
+        .project-number {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--sage-green);
+            margin-bottom: 1rem;
+        }
+
+        .project-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .project-intro {
+            font-size: 1.3rem;
+            color: var(--olive-brown);
+            line-height: 1.8;
+        }
+
+        .project-content {
+            margin-top: 4rem;
+        }
+
+        .project-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1rem;
+            margin-top: 3.5rem;
+        }
+
+        .project-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .project-content p {
+            font-size: 1.1rem;
+            color: var(--olive-brown);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .sub-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 1.5rem;
+        }
+
+        .bullet-list li {
+            font-size: 1.1rem;
+            color: var(--olive-brown);
+            line-height: 1.9;
+            padding: 0.55rem 0 0.55rem 1.8rem;
+            position: relative;
+            border-bottom: 1px solid #E4E4E0;
+        }
+
+        .bullet-list li:last-child {
+            border-bottom: none;
+        }
+
+        .bullet-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--sage-green);
+            font-weight: 600;
+        }
+
+        .lens-block {
+            background-color: #F5F4EF;
+            border-radius: 15px;
+            padding: 2rem 2.5rem;
+            margin: 2rem 0;
+        }
+
+        .lens-block h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--dark-charcoal);
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+        }
+
+        .lens-block p {
+            font-size: 1.1rem;
+            color: var(--olive-brown);
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+
+        .lens-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box {
+            background-color: var(--off-white);
+            border-radius: 15px;
+            padding: 2rem 2.5rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box p {
+            color: var(--olive-brown);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box .box-label {
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .project-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .project-page {
+                padding: 2rem 1.5rem;
+            }
+
+            .lens-block,
+            .highlight-box {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">KT</a>
+        <ul class="nav-links">
+            <li><a href="index.html">About Me</a></li>
+            <li><a href="index.html#portfolio">Portfolio</a></li>
+            <li><a href="index.html#lab-notes">Lab Notes</a></li>
+        </ul>
+        <a href="https://www.linkedin.com/in/xuanwentan/" target="_blank" rel="noopener noreferrer" class="connect-btn">
+            Connect
+            <span class="arrow-icon">→</span>
+        </a>
+    </nav>
+
+    <main class="project-page">
+        <a href="index.html?section=home" class="back-link">← Back to About Me</a>
+
+        <div class="project-header">
+            <div class="project-number">About Me / Theoretical Lenses I Use</div>
+            <h1>Theoretical Lenses I Use</h1>
+            <p class="project-intro">I draw on multiple traditions in learning science. I rarely apply them in a pure form; instead, I let them inform different parts of the design process.</p>
+        </div>
+
+        <div class="project-content">
+
+            <!-- Behaviorism -->
+            <div class="lens-block">
+                <h2>Behaviorist Influences: Clarity and Contingencies</h2>
+                <p>From behaviorist traditions, I borrow the insistence on clarity: What, precisely, should change as a result of this learning experience?</p>
+                <p class="sub-label">In practice, this shows up as:</p>
+                <ul class="bullet-list">
+                    <li>Well-specified performance outcomes, rooted in observable behaviors</li>
+                    <li>Transparent criteria for success</li>
+                    <li>Immediate, contingent feedback after key actions or decisions</li>
+                    <li>I sometimes use progress indicators, levels, or badges — not as superficial gamification, but as visible traces of effort and improvement that help sustain engagement over time.</li>
+                </ul>
+            </div>
+
+            <!-- Cognitivism -->
+            <div class="lens-block">
+                <h2>Cognitive Perspectives: Representation and Processing</h2>
+                <p>Cognitive approaches direct my attention to how information is represented, processed, and stored.</p>
+                <p class="sub-label">I apply this by:</p>
+                <ul class="bullet-list">
+                    <li>Designing materials that reduce unnecessary cognitive load (for example, aligning visual and verbal information, avoiding competing signals on the screen)</li>
+                    <li>Sequencing tasks so that learners move from guided examples to more open-ended applications</li>
+                    <li>Using comparisons, analogies, and counterexamples to deepen understanding of core ideas</li>
+                    <li>Intentionally revisiting key concepts in varied contexts to strengthen retrieval and transfer</li>
+                    <li>Here, I am less interested in naming specific effects and more interested in whether the design invites the kind of mental work that leads to robust understanding.</li>
+                </ul>
+            </div>
+
+            <!-- Constructivism -->
+            <div class="lens-block">
+                <h2>Constructivist and Experiential Traditions: Learning as Sense-Making</h2>
+                <p>Constructivist and experiential theories remind me that learners actively construct meaning; they do not simply receive it.</p>
+                <p class="sub-label">This shapes my preference for:</p>
+                <ul class="bullet-list">
+                    <li>Scenarios and simulations that approximate real constraints and ambiguity</li>
+                    <li>Activities where learners must articulate their reasoning, not only their answers</li>
+                    <li>Opportunities for dialogue — through discussion prompts, peer feedback, or collaborative tasks — where perspectives can clash, align, and evolve</li>
+                    <li>Post-activity reflection that asks, "What did you notice about how you approached this? What might you try differently next time?"</li>
+                    <li>Earlier in my work with teenagers, I saw how powerful it was to place learners in environments where the stakes felt real: projects tied to authentic problems, with visible consequences and a genuine sense of accomplishment. I carry that orientation into my current projects, even when the format is an online module or a blended program.</li>
+                </ul>
+            </div>
+
+            <!-- What this means -->
+            <div class="highlight-box">
+                <p class="box-label">What This Means for the Experiences I Design</p>
+                <p>Bringing developmental psychology and learning science into design does not mean making courses heavier or more theoretical. It means being more precise and intentional about how people change.</p>
+                <p class="sub-label" style="margin-top:1rem;">If you look at my work, you will see:</p>
+                <ul class="bullet-list">
+                    <li>Learning goals that are framed in terms of meaningful shifts in practice, not simply coverage of topics</li>
+                    <li>Experiences that balance structure with openness, so learners are supported but not scripted</li>
+                    <li>Assessments that function both as measurement and as learning opportunities in their own right</li>
+                    <li>A through-line from initial engagement to long-term application, with deliberate attention to what helps learners remember, adapt, and reuse what they have learned</li>
+                </ul>
+                <p>My aim is to build learning experiences that are intellectually honest, psychologically realistic, and practically useful — grounded in theory, but judged by whether they help real people do their work, and live their lives, differently.</p>
+            </div>
+
+        </div>
+    </main>
+</body>
+</html>

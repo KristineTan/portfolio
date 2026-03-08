@@ -46,6 +46,14 @@
             font-weight: 700;
             color: var(--dark-charcoal);
             letter-spacing: -0.02em;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
         }
 
         .nav-links {
@@ -393,62 +401,119 @@
                 font-size: 2rem;
             }
         }
+
+        /* About Me Content */
+        .about-me-content {
+            padding: 6rem 4rem 2rem;
+        }
+
+        .about-me-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            line-height: 1.6;
+            color: var(--dark-charcoal);
+            max-width: 900px;
+            font-weight: 400;
+        }
+
+        /* About Me Buttons */
+        .about-btns {
+            display: flex;
+            gap: 1.25rem;
+            margin-top: 2rem;
+            padding: 0 4rem 5rem;
+        }
+
+        .about-btn {
+            flex: 1;
+            aspect-ratio: 1 / 1;
+            border: none;
+            border-radius: 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--dark-charcoal);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1.5rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .about-btn:nth-child(1) { background-color: #CFCFEA; }
+        .about-btn:nth-child(2) { background-color: #C5D8C5; }
+        .about-btn:nth-child(3) { background-color: #EAD9CF; }
+
+        .about-btn:hover {
+            transform: scale(1.06);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="logo">KT</div>
-        <ul class="nav-links">
-            <li><a href="#home" onclick="showSection('home')">About Me</a></li>
-            <li><a href="#portfolio" onclick="showSection('portfolio')">Portfolio</a></li>
-            <li><a href="#lab-notes" onclick="showSection('lab-notes')">Lab Notes</a></li>
-        </ul>
-        <a href="https://www.linkedin.com/in/xuanwentan/" target="_blank" rel="noopener noreferrer" class="connect-btn">
-            Connect
-            <span class="arrow-icon">→</span>
-        </a>
+        <a href="#home" onclick="showSection('home')" class="logo">KT</a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="#home" onclick="showSection('home')">About Me</a></li>
+                <li><a href="#portfolio" onclick="showSection('portfolio')">Portfolio</a></li>
+                <li><a href="#lab-notes" onclick="showSection('lab-notes')">Lab Notes</a></li>
+            </ul>
+            <a href="https://www.linkedin.com/in/xuanwentan/" target="_blank" rel="noopener noreferrer" class="connect-btn">
+                Connect
+                <span class="arrow-icon">→</span>
+            </a>
+        </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section hidden">
+    <!-- Tablet asset (hidden, available for future use) -->
+    <div id="tablet-asset" style="display:none;">
         <div class="tablet-container">
             <div class="sage-block"></div>
             <div class="tablet">
                 <div class="tablet-screen">
-                    <div class="tool-icon">
-                        <div class="tool-icon-symbol">{ }</div>
-                        <div class="tool-icon-name">VS Code</div>
-                    </div>
-                    <div class="tool-icon">
-                        <div class="tool-icon-symbol">◆</div>
-                        <div class="tool-icon-name">Claude</div>
-                    </div>
-                    <div class="tool-icon">
-                        <div class="tool-icon-symbol">⚡</div>
-                        <div class="tool-icon-name">Replit</div>
-                    </div>
-                    <div class="tool-icon">
-                        <div class="tool-icon-symbol">360</div>
-                        <div class="tool-icon-name">Articulate 360</div>
-                    </div>
-                    <div class="tool-icon">
-                        <div class="tool-icon-symbol">📖</div>
-                        <div class="tool-icon-name">Storyline 360</div>
-                    </div>
-                    <div class="tool-icon">
-                        <div class="tool-icon-symbol">Cp</div>
-                        <div class="tool-icon-name">Adobe Captivate</div>
-                    </div>
+                    <div class="tool-icon"><div class="tool-icon-symbol">{ }</div><div class="tool-icon-name">VS Code</div></div>
+                    <div class="tool-icon"><div class="tool-icon-symbol">◆</div><div class="tool-icon-name">Claude</div></div>
+                    <div class="tool-icon"><div class="tool-icon-symbol">⚡</div><div class="tool-icon-name">Replit</div></div>
+                    <div class="tool-icon"><div class="tool-icon-symbol">360</div><div class="tool-icon-name">Articulate 360</div></div>
+                    <div class="tool-icon"><div class="tool-icon-symbol">📖</div><div class="tool-icon-name">Storyline 360</div></div>
+                    <div class="tool-icon"><div class="tool-icon-symbol">Cp</div><div class="tool-icon-name">Adobe Captivate</div></div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- About Me Section -->
+    <section id="home" class="hero-section hidden">
+        <div class="about-me-content">
+            <p class="about-me-text">I'm a learning experience designer and my work is grounded in developmental psychology and learning science.</p>
+        </div>
+
+        <div class="about-btns">
+            <button class="about-btn" onclick="window.location.href='view-of-learning.html'">My View of Learning</button>
+            <button class="about-btn" onclick="window.location.href='from-learning-to-design.html'">From Learning Science to Design Practice</button>
+            <button class="about-btn" onclick="window.location.href='theoretical-lenses.html'">Theoretical Lenses I Use</button>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="content-section hidden">
-        <h2>Portfolio</h2>
-        <p>Explore my work in instructional design, showcasing innovative learning experiences and educational solutions.</p>
+    <section id="portfolio" class="lab-notes-section hidden">
+        <div class="lab-notes-header">
+            <h2>Portfolio</h2>
+            <p class="subtitle">Selected Work</p>
+        </div>
+
+        <div class="projects-grid">
+            <a href="harvard-project.html" class="project-card">
+                <div class="project-number">Web Design</div>
+                <h3>Harvard College Student Organization Resources Website</h3>
+                <p>A resource hub designed to help Harvard student organizations navigate university systems, funding, and community tools.</p>
+                <div class="project-link">View Project <span>→</span></div>
+            </a>
+        </div>
     </section>
 
     <!-- Lab Notes Section -->
@@ -506,6 +571,13 @@
             // Show selected section
             document.getElementById(sectionId).classList.remove('hidden');
         }
+
+        // On load, check URL param to show the right section
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const section = params.get('section');
+            if (section) showSection(section);
+        })();
     </script>
 </body>
 </html>

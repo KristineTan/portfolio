@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My View of Learning - KT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --sage-green: #3E513E;
+            --dark-charcoal: #2A2C24;
+            --olive-brown: #575A4B;
+            --taupe: #816C61;
+            --white: #FFFFFF;
+            --off-white: #CFCFEA;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--white);
+            color: var(--dark-charcoal);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dark-charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+
+        .connect-btn {
+            background-color: var(--sage-green);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .connect-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(62, 81, 62, 0.3);
+        }
+
+        .arrow-icon {
+            font-size: 1.2rem;
+            transform: rotate(45deg);
+        }
+
+        /* Page */
+        .project-page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--sage-green);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-link:hover {
+            opacity: 0.7;
+        }
+
+        .project-header {
+            margin-bottom: 3rem;
+        }
+
+        .project-number {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--sage-green);
+            margin-bottom: 1rem;
+        }
+
+        .project-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .project-intro {
+            font-size: 1.3rem;
+            color: var(--olive-brown);
+            line-height: 1.8;
+        }
+
+        .project-content {
+            margin-top: 4rem;
+        }
+
+        .project-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .project-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .project-content p {
+            font-size: 1.1rem;
+            color: var(--olive-brown);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box {
+            background-color: var(--off-white);
+            border-radius: 15px;
+            padding: 2rem 2.5rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box p {
+            color: var(--olive-brown);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 0;
+        }
+
+        .highlight-box .box-label {
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.8rem;
+        }
+
+        .principle-card {
+            background-color: #F5F4EF;
+            border-radius: 15px;
+            padding: 2rem 2.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--sage-green);
+        }
+
+        .principle-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .principle-card p {
+            color: var(--olive-brown);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 0;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .bullet-list li {
+            font-size: 1.1rem;
+            color: var(--olive-brown);
+            line-height: 1.9;
+            padding: 0.6rem 0 0.6rem 1.8rem;
+            position: relative;
+            border-bottom: 1px solid #E4E4E0;
+        }
+
+        .bullet-list li:last-child {
+            border-bottom: none;
+        }
+
+        .bullet-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--sage-green);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .project-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .project-page {
+                padding: 2rem 1.5rem;
+            }
+
+            .highlight-box,
+            .principle-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">KT</a>
+        <ul class="nav-links">
+            <li><a href="index.html">About Me</a></li>
+            <li><a href="index.html#portfolio">Portfolio</a></li>
+            <li><a href="index.html#lab-notes">Lab Notes</a></li>
+        </ul>
+        <a href="https://www.linkedin.com/in/xuanwentan/" target="_blank" rel="noopener noreferrer" class="connect-btn">
+            Connect
+            <span class="arrow-icon">→</span>
+        </a>
+    </nav>
+
+    <main class="project-page">
+        <a href="index.html?section=home" class="back-link">← Back to About Me</a>
+
+        <div class="project-header">
+            <div class="project-number">About Me / My View of Learning</div>
+            <h1>My View of Learning</h1>
+            <p class="project-intro">My work sits at the intersection of developmental psychology and learning science. I don't see learning as simply "consuming content" or "completing a course," but as a gradual reconstruction of how people perceive, interpret, and respond to the world.</p>
+        </div>
+
+        <div class="project-content">
+
+            <p>I define learning as a relatively durable change in understanding, skill, or disposition — one that results from experience, reflection, and meaningful engagement with new information. This means learning is not a passive transfer of knowledge. It requires the learner to actively construct meaning, often by confronting the limits of what they already know.</p>
+
+            <h2>This perspective informs my design in several ways:</h2>
+
+            <ul class="bullet-list">
+                <li>I prioritize depth over breadth — fewer ideas explored more fully tend to produce more lasting understanding than comprehensive content coverage.</li>
+                <li>I design for transfer — helping learners connect new concepts to prior knowledge and real-world contexts, not just recall information on demand.</li>
+                <li>I treat confusion as productive — well-designed challenge and cognitive dissonance signal that real learning is happening.</li>
+                <li>I attend to motivation and affect — because engagement and emotional safety are preconditions for learning, not afterthoughts.</li>
+            </ul>
+
+        </div>
+    </main>
+</body>
+</html>
