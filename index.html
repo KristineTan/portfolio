@@ -311,6 +311,27 @@
             font-weight: 500;
         }
 
+        .agenda-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 1rem;
+            padding: 0.45rem 1.1rem;
+            background-color: #F5F4EF;
+            color: var(--sage-green);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1.5px solid #C5D8C5;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .agenda-btn:hover {
+            background-color: #C5D8C5;
+            transform: translateY(-1px);
+        }
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -489,7 +510,7 @@
     <!-- About Me Section -->
     <section id="home" class="hero-section hidden">
         <div class="about-me-content">
-            <p class="about-me-text">I'm a learning experience designer and my work is grounded in developmental psychology and learning science.</p>
+            <p class="about-me-text">I leverage developmental psychology and learning science to design engaging learning experiences that drive behavioral change and measurable performance growth.</p>
         </div>
 
         <div class="about-btns">
