@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 03 - KT</title>
+    <title>Capstone Product - KT</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
@@ -124,7 +124,7 @@
 
         .project-header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
+            font-size: 3rem;
             color: var(--dark-charcoal);
             margin-bottom: 1.5rem;
             line-height: 1.2;
@@ -159,17 +159,49 @@
             margin-bottom: 1.5rem;
         }
 
-        .project-image {
-            width: 100%;
+        .highlight-box {
             background-color: var(--off-white);
             border-radius: 15px;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 2rem 2.5rem;
             margin: 2rem 0;
-            color: var(--taupe);
-            font-size: 1rem;
+        }
+
+        .highlight-box p {
+            color: var(--olive-brown);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 0;
+        }
+
+        .highlight-box .box-label {
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.8rem;
+        }
+
+        .reflection-card {
+            background-color: #F5F4EF;
+            border-radius: 15px;
+            padding: 2rem 2.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--sage-green);
+        }
+
+        .reflection-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .reflection-card p {
+            color: var(--olive-brown);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 0;
         }
 
         @media (max-width: 768px) {
@@ -186,11 +218,16 @@
             }
 
             .project-header h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
 
             .project-page {
                 padding: 2rem 1.5rem;
+            }
+
+            .highlight-box,
+            .reflection-card {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -210,32 +247,25 @@
         </a>
     </nav>
 
-    <!-- Project Content -->
     <main class="project-page">
         <a href="index.html#lab-notes" class="back-link">← Back to Lab Notes</a>
 
         <div class="project-header">
-            <div class="project-number">T127 / Project 03</div>
-            <h1>Project Title Three</h1>
-            <p class="project-intro">A comprehensive overview of this instructional design project, highlighting the goals, methodologies, and outcomes achieved.</p>
+            <div class="project-number">T127 / Capstone Product</div>
+            <h1>Introducing AI Tools That Create Productive Struggle: Session 3 of the LEAP E-Module</h1>
+            <p class="project-intro">Our capstone is a four-session Canvas course designed to help faculty understand and harness productive struggle in AI-assisted learning. My contribution is Session 3 — the pivot point where conceptual groundwork becomes practical action: introducing the specific AI tools that can generate productive struggle and equipping faculty to experiment with them confidently.</p>
         </div>
 
         <div class="project-content">
-            <h2>Overview</h2>
-            <p>Describe the project context, challenges, and objectives here. What problem were you trying to solve? Who was the target audience?</p>
 
-            <div class="project-image">Project Image / Screenshot</div>
+            <h2>The Arc of the Full Course</h2>
+            <p>The four sessions follow a deliberate sequence. Session 1 establishes shared language by defining productive struggle and why it matters in learning. Session 2 grounds that definition in research, examining what we know about AI's role in creating or undermining it. Session 3 — my session — moves from understanding to action, introducing tools that can actively generate productive struggle in a faculty member's own teaching context. Session 4 closes the loop by encouraging faculty to experiment openly with these tools and develop their own stance toward AI in education.</p>
+            <p>This arc matters because productive struggle is an easy concept to endorse and a difficult one to enact. The course is designed so that by the time faculty reach Session 3, they are not encountering tools in the abstract — they already have a framework for why these tools are worth using and what good use looks like.</p>
 
-            <h2>Approach</h2>
-            <p>Detail the instructional design methodology and approach used. What frameworks or models did you apply? How did you analyze learner needs?</p>
+            <h2>My Role: Session 3</h2>
+            <p>Session 3 is where the course shifts from "what is this?" to "what do I do with it?" My design task was to introduce a curated set of AI tools without overwhelming faculty, while making clear how each tool connects to the productive struggle principles established in the earlier sessions.</p>
+            <p>The analysis accompanying this deliverable documents the decisions behind that curation: why I selected certain tools over others, how I categorized them by the type of cognitive challenge they support, how I explained their underlying mechanisms in ways that are accessible without being reductive, and how I drew on LEAP resources to anchor the content in contexts that feel directly relevant to faculty practice.</p>
 
-            <h2>Solution</h2>
-            <p>Explain the final deliverables and how they addressed the initial challenges. What tools and technologies were used in development?</p>
-
-            <div class="project-image">Solution Screenshot / Demo</div>
-
-            <h2>Results</h2>
-            <p>Share the outcomes and impact of the project. What metrics improved? What feedback did you receive from stakeholders and learners?</p>
         </div>
     </main>
 </body>
