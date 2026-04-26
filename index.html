@@ -457,6 +457,71 @@
             letter-spacing: 0.05em;
         }
 
+        /* ── Lab Notes scattered cards ── */
+        .ln-feed {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.75rem;
+            align-items: flex-start;
+            padding: 0.5rem 0 2rem;
+        }
+
+        .ln-card {
+            width: 230px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.4rem 1.6rem;
+            text-decoration: none;
+            display: block;
+            box-shadow: 0 3px 14px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.04);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border-top: 3px solid var(--sage-green);
+        }
+
+        .ln-card:nth-child(1) { transform: rotate(-2deg);   border-top-color: #A8B5A2; }
+        .ln-card:nth-child(2) { transform: rotate(1.5deg);  border-top-color: #CFCFEA; }
+        .ln-card:nth-child(3) { transform: rotate(-1deg);   border-top-color: #C5D8C5; }
+        .ln-card:nth-child(4) { transform: rotate(2deg);    border-top-color: #EAD9CF; }
+        .ln-card:nth-child(5) { transform: rotate(-1.5deg); border-top-color: #A8B5A2; }
+
+        .ln-card:hover {
+            transform: rotate(0deg) translateY(-5px);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.11);
+        }
+
+        .ln-card-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--taupe);
+            margin-bottom: 0.6rem;
+        }
+
+        .ln-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--dark-charcoal);
+            line-height: 1.35;
+            margin-bottom: 0.6rem;
+        }
+
+        .ln-card-desc {
+            font-size: 0.82rem;
+            color: var(--olive-brown);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .ln-card-link {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--sage-green);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
         /* ── Lab Notes grid (unchanged) ── */
         .projects-grid {
             display: grid;
@@ -728,7 +793,7 @@
                     <div class="dg-card-link">View project <span>→</span></div>
                 </div>
                 <div class="dg-card-image">
-                    <div class="dg-card-image-placeholder">preview coming soon</div>
+                    <img src="screenshots/socoreproject.png" alt="SOCO website redesign preview" style="width:100%;height:100%;object-fit:cover;display:block;">
                 </div>
             </a>
 
@@ -762,44 +827,44 @@
     <!-- Lab Notes Section -->
     <section id="lab-notes" class="lab-notes-section">
         <div class="lab-notes-header">
-            <h2>Lab Notes</h2>
+            <h2 style="font-family:'Inter',sans-serif; font-weight:700; letter-spacing:-0.03em;">lab notes.</h2>
             <p class="subtitle">T127 Projects</p>
         </div>
 
-        <div class="projects-grid">
-            <a href="reflection-1.html" class="project-card">
-                <div class="project-number">Reflection 01</div>
-                <h3>🌱 Personal Learning Goals & Initial Project Considerations</h3>
-                <p>My hopes, learning goals, and early thinking about a project of interest as I begin T127.</p>
-                <div class="project-link">Read Reflection <span>→</span></div>
+        <div class="ln-feed">
+            <a href="reflection-1.html" class="ln-card">
+                <div class="ln-card-tag">Reflection 01</div>
+                <div class="ln-card-title">Personal Learning Goals &amp; Initial Project Considerations</div>
+                <p class="ln-card-desc">My hopes, learning goals, and early thinking about a project of interest as I begin T127.</p>
+                <div class="ln-card-link">Read →</div>
             </a>
 
-            <a href="project-1.html" class="project-card">
-                <div class="project-number">Reflective Portfolio Post #1</div>
-                <h3>🎯 Meet the Learners Where They Are</h3>
-                <p>On learner-centered design, the curse of knowledge, and scaffolding through constructivism.</p>
-                <div class="project-link">Read Reflection <span>→</span></div>
+            <a href="project-1.html" class="ln-card">
+                <div class="ln-card-tag">Portfolio Post 01</div>
+                <div class="ln-card-title">Meet the Learners Where They Are</div>
+                <p class="ln-card-desc">On learner-centered design, the curse of knowledge, and scaffolding through constructivism.</p>
+                <div class="ln-card-link">Read →</div>
             </a>
 
-            <a href="reflection-2.html" class="project-card">
-                <div class="project-number">Reflection 02</div>
-                <h3>🧩 Design Frameworks</h3>
-                <p>On backward design, ADDIE, equity, formative assessment, and the cognitive apprenticeship — and what happens when frameworks come together.</p>
-                <div class="project-link">Read Reflection <span>→</span></div>
+            <a href="reflection-2.html" class="ln-card">
+                <div class="ln-card-tag">Reflection 02</div>
+                <div class="ln-card-title">Design Frameworks</div>
+                <p class="ln-card-desc">On backward design, ADDIE, equity, formative assessment, and the cognitive apprenticeship.</p>
+                <div class="ln-card-link">Read →</div>
             </a>
 
-            <a href="project-3.html" class="project-card">
-                <div class="project-number">Capstone Product</div>
-                <h3>Designing for Transfer: Building Session 3 of the LEAP E-Module</h3>
-                <p>How I designed Session 3 on Canvas — the decisions behind structure, sequencing, and storytelling — and how my team built a cohesive course that moves learners toward real application.</p>
-                <div class="project-link">View Project <span>→</span></div>
+            <a href="project-3.html" class="ln-card">
+                <div class="ln-card-tag">Capstone Product</div>
+                <div class="ln-card-title">Designing for Transfer: Session 3 of the LEAP E-Module</div>
+                <p class="ln-card-desc">How I designed Session 3 on Canvas and how my team built a cohesive course that moves learners toward real application.</p>
+                <div class="ln-card-link">View →</div>
             </a>
 
-            <a href="project-4.html" class="project-card">
-                <div class="project-number">Project 04</div>
-                <h3>Reflective Portfolio Post #4</h3>
-                <p>A brief description of this instructional design project and its key outcomes.</p>
-                <div class="project-link">View Project <span>→</span></div>
+            <a href="project-4.html" class="ln-card">
+                <div class="ln-card-tag">Project 04</div>
+                <div class="ln-card-title">Reflective Portfolio Post #4</div>
+                <p class="ln-card-desc">Coming soon.</p>
+                <div class="ln-card-link">View →</div>
             </a>
         </div>
     </section>
