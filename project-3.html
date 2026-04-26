@@ -30,7 +30,6 @@
             line-height: 1.6;
         }
 
-        /* Navigation */
         nav {
             display: flex;
             justify-content: space-between;
@@ -62,9 +61,7 @@
             transition: opacity 0.3s ease;
         }
 
-        .nav-links a:hover {
-            opacity: 0.6;
-        }
+        .nav-links a:hover { opacity: 0.6; }
 
         .connect-btn {
             background-color: var(--sage-green);
@@ -89,9 +86,9 @@
             transform: rotate(45deg);
         }
 
-        /* Project Page */
+        /* Page layout */
         .project-page {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 4rem 2rem;
         }
@@ -107,12 +104,10 @@
             transition: opacity 0.3s ease;
         }
 
-        .back-link:hover {
-            opacity: 0.7;
-        }
+        .back-link:hover { opacity: 0.7; }
 
         .project-header {
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
         }
 
         .project-number {
@@ -136,104 +131,165 @@
             line-height: 1.8;
         }
 
-        .project-content {
-            margin-top: 4rem;
+        /* Two-column layout: main + sidebar */
+        .project-body {
+            display: grid;
+            grid-template-columns: 1fr 260px;
+            gap: 3.5rem;
+            align-items: start;
         }
 
         .project-content h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
             color: var(--dark-charcoal);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             margin-top: 3rem;
         }
 
-        .project-content h2:first-child {
-            margin-top: 0;
-        }
+        .project-content h2:first-child { margin-top: 0; }
 
         .project-content p {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--olive-brown);
             line-height: 1.9;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 1.5rem;
+        }
+
+        .bullet-list li {
+            font-size: 1.05rem;
+            color: var(--olive-brown);
+            line-height: 1.85;
+            padding: 0.5rem 0 0.5rem 1.6rem;
+            position: relative;
+            border-bottom: 1px solid #E8E6E0;
+        }
+
+        .bullet-list li:last-child { border-bottom: none; }
+
+        .bullet-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--sage-green);
+            font-weight: 600;
         }
 
         .highlight-box {
-            background-color: var(--off-white);
+            background-color: #F5F4EF;
             border-radius: 15px;
             padding: 2rem 2.5rem;
             margin: 2rem 0;
-        }
-
-        .highlight-box p {
-            color: var(--olive-brown);
-            font-size: 1.1rem;
-            line-height: 1.9;
-            margin-bottom: 0;
         }
 
         .highlight-box .box-label {
             font-weight: 700;
             color: var(--dark-charcoal);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 0.8rem;
+            letter-spacing: 0.09em;
+            margin-bottom: 0.75rem;
         }
 
-        .reflection-card {
+        .highlight-box p {
+            color: var(--olive-brown);
+            font-size: 1.05rem;
+            line-height: 1.85;
+            margin-bottom: 0;
+        }
+
+        /* Sidebar */
+        .project-sidebar {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .sidebar-card {
             background-color: #F5F4EF;
             border-radius: 15px;
-            padding: 2rem 2.5rem;
-            margin: 2rem 0;
-            border-left: 4px solid var(--sage-green);
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
         }
 
-        .reflection-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+        .sidebar-card h4 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             color: var(--dark-charcoal);
             margin-bottom: 1rem;
         }
 
-        .reflection-card p {
-            color: var(--olive-brown);
-            font-size: 1.1rem;
-            line-height: 1.9;
-            margin-bottom: 0;
+        .sidebar-card .spec-group {
+            margin-bottom: 1.25rem;
         }
 
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 1.5rem;
-                padding: 1.5rem;
-            }
+        .sidebar-card .spec-group:last-child { margin-bottom: 0; }
 
-            .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
+        .sidebar-card .spec-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--taupe);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            margin-bottom: 0.5rem;
+        }
 
-            .project-header h1 {
-                font-size: 2.2rem;
-            }
+        .sidebar-card .spec-item {
+            font-size: 0.92rem;
+            color: var(--olive-brown);
+            line-height: 1.9;
+        }
 
-            .project-page {
-                padding: 2rem 1.5rem;
-            }
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.25rem;
+        }
 
-            .highlight-box,
-            .reflection-card {
-                padding: 1.5rem;
-            }
+        .tag {
+            background: #fff;
+            border: 1.5px solid #D4CFC9;
+            border-radius: 50px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.8rem;
+            color: var(--olive-brown);
+            font-weight: 500;
+        }
+
+        .components-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .component-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 0.9rem;
+        }
+
+        @media (max-width: 860px) {
+            nav { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
+            .nav-links { flex-direction: column; gap: 1rem; text-align: center; }
+            .project-header h1 { font-size: 2.2rem; }
+            .project-page { padding: 2rem 1.5rem; }
+            .project-body { grid-template-columns: 1fr; }
+            .project-sidebar { position: static; }
+            .components-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <a href="index.html" class="logo">KT</a>
         <ul class="nav-links">
@@ -242,29 +298,118 @@
             <li><a href="index.html#lab-notes">Lab Notes</a></li>
         </ul>
         <a href="https://www.linkedin.com/in/xuanwentan/" target="_blank" rel="noopener noreferrer" class="connect-btn">
-            Connect
-            <span class="arrow-icon">→</span>
+            Connect <span class="arrow-icon">→</span>
         </a>
     </nav>
 
     <main class="project-page">
-        <a href="index.html#lab-notes" class="back-link">← Back to Lab Notes</a>
+        <a href="index.html#portfolio" class="back-link">← Back to Projects</a>
 
         <div class="project-header">
-            <div class="project-number">T127 / Capstone Product</div>
-            <h1>Introducing AI Tools That Create Productive Struggle: Session 3 of the LEAP E-Module</h1>
-            <p class="project-intro">Our capstone is a four-session Canvas course designed to help faculty understand and harness productive struggle in AI-assisted learning. My contribution is Session 3 — the pivot point where conceptual groundwork becomes practical action: introducing the specific AI tools that can generate productive struggle and equipping faculty to experiment with them confidently.</p>
+            <div class="project-number">Capstone Product · LEAP / HGSE</div>
+            <h1>Productive Struggle and AI: Designing a Canvas Module for Faculty</h1>
         </div>
 
-        <div class="project-content">
+        <div class="project-body">
 
-            <h2>The Arc of the Full Course</h2>
-            <p>The four sessions follow a deliberate sequence. Session 1 establishes shared language by defining productive struggle and why it matters in learning. Session 2 grounds that definition in research, examining what we know about AI's role in creating or undermining it. Session 3 — my session — moves from understanding to action, introducing tools that can actively generate productive struggle in a faculty member's own teaching context. Session 4 closes the loop by encouraging faculty to experiment openly with these tools and develop their own stance toward AI in education.</p>
-            <p>This arc matters because productive struggle is an easy concept to endorse and a difficult one to enact. The course is designed so that by the time faculty reach Session 3, they are not encountering tools in the abstract — they already have a framework for why these tools are worth using and what good use looks like.</p>
+            <!-- Main content -->
+            <div class="project-content">
 
-            <h2>My Role: Session 3</h2>
-            <p>Session 3 is where the course shifts from "what is this?" to "what do I do with it?" My design task was to introduce a curated set of AI tools without overwhelming faculty, while making clear how each tool connects to the productive struggle principles established in the earlier sessions.</p>
-            <p>The analysis accompanying this deliverable documents the decisions behind that curation: why I selected certain tools over others, how I categorized them by the type of cognitive challenge they support, how I explained their underlying mechanisms in ways that are accessible without being reductive, and how I drew on LEAP resources to anchor the content in contexts that feel directly relevant to faculty practice.</p>
+                <h2>Project Overview</h2>
+                <p>As part of the LEAP (Learning Exploration and AI Pedagogy) initiative at HGSE, I co-designed a four-session asynchronous Canvas module to help faculty build confidence integrating AI into their teaching — with a focus on preserving the kind of productive struggle that makes learning stick.</p>
+                <p>Low faculty attendance at LEAP's synchronous AI workshops pointed to a structural gap: faculty needed a flexible, self-paced alternative. Working with two other learning designers, I helped create an asynchronous Canvas module as a supplementary pathway for faculty at different stages of AI adoption.</p>
+                <p>The module's theme — "productive struggle and AI" — emerged from listening tours and faculty interviews, where we heard both caution and curiosity about AI's impact on student learning. This topic was intentionally chosen because it meets faculty where they are: whether skeptical or already experimenting, the question of what kinds of struggle are worth preserving is one every educator has an instinct about.</p>
+                <p>Using ADDIE and backward design, we defined clear learning outcomes first, then built content, activities, and formative assessments to serve those outcomes. We applied UDL and accessibility principles throughout: multiple modes of engagement (short readings, video explainers, and interactive scenarios), alternative text for all media, and keyboard-accessible navigation.</p>
+
+                <div class="highlight-box">
+                    <p class="box-label">Status</p>
+                    <p>The pilot module is currently under evaluation. Early analytics and feedback indicate [to be updated after gallery walk]. Insights from this pilot are informing future iterations of LEAP's online offerings.</p>
+                </div>
+
+                <h2>Learning Goals</h2>
+                <p>I developed the learning objectives using the revised Bloom's Taxonomy (Bloom, 2001), anchoring each outcome to a specific cognitive level to ensure the module builds toward genuine transfer rather than surface familiarity.</p>
+
+                <p style="font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--dark-charcoal); margin-bottom:0.5rem;">Course Learning Outcomes</p>
+                <ul class="bullet-list">
+                    <li>Learners will be able to <strong>define</strong> "productive struggle" and explain its relevance in AI-enabled learning environments.</li>
+                    <li>Learners will be able to <strong>differentiate</strong> between types of student struggle that should be preserved or extended with AI and those that can be reduced or removed.</li>
+                    <li>Learners will be able to <strong>analyze</strong> different types of AI tools and determine how they can support productive struggle for their students.</li>
+                    <li>Learners will be able to <strong>develop</strong> a personal AI adoption plan that outlines specific strategies for exploring, piloting, and integrating AI tools into their existing course structures.</li>
+                </ul>
+
+                <h2>Design Decisions</h2>
+
+                <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--dark-charcoal); margin-bottom:1rem; margin-top:2rem;">1. Starting by addressing emotional challenges</h3>
+                <p>In the analysis stage, our listening sessions with faculty revealed strong emotional barriers to using AI, including fear of replacement, concerns about authenticity, and worries about threats to human interaction. To address these valid concerns, we deliberately began the module by creating psychological safety rather than jumping straight into tools.</p>
+                <p>We drew on the SCARF model (Status, Certainty, Autonomy, Relatedness, Fairness) to frame AI in ways that acknowledged faculty fears, emphasized their continued professional value, and highlighted AI as a support rather than a replacement. This helped faculty feel heard and more willing to engage in a more technical exploration of research and tools related to productive struggle.</p>
+                <p>We used a similar approach in the disclaimer preceding the AI tool introduction. In pilot sessions, faculty reported that this messaging resonated with them and reduced defensiveness, making them more open and rational in considering AI's role in their teaching.</p>
+
+                <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--dark-charcoal); margin-bottom:1rem; margin-top:2rem;">2. Creative Design Idea - Gallery Walk</h3>
+                <p>I was primarily responsible for designing the tool introduction and explaining how the tools work and how faculty might apply them in their own teaching contexts.</p>
+                <p>Inspired by the concept of a gallery walk, I created a "touring" experience within the module, supported by a tracking progress bar. This element served to:</p>
+                <ul class="bullet-list">
+                    <li>Engage learners by giving a sense of movement and exploration through different AI tools.</li>
+                    <li>Help faculty navigate the content and know where they were in the journey.</li>
+                    <li>Prompt reflection on their changing attitudes toward AI as they progressed through the module.</li>
+                </ul>
+
+                <figure style="margin: 2rem 0;">
+                    <img src="gallerywalkbar.png" alt="Gallery Walk Progress Bar showing five hexagon stations: No AI in my class, Booth 1 Friction Bot, Booth 2 AI Oral Assessment, Booth 3 Cognitive Partnership Reviewer, and I'll try experimenting with AI." style="width:100%; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+                </figure>
+
+                <h2>Course Components</h2>
+
+                <div class="components-grid">
+
+                    <div class="component-col">
+                        <h3 class="component-heading">Formative Assessment on Miro</h3>
+                        <p>[Add description and/or screenshot of the Miro formative assessment here.]</p>
+                    </div>
+
+                    <div class="component-col">
+                        <h3 class="component-heading">Interactive Elements</h3>
+                        <p>A check-in quiz built as an interactive scenario, giving faculty a low-stakes moment to reflect on their learning before moving to the next booth.</p>
+                        <video
+                            src="Recording check-in quiz.mp4"
+                            autoplay
+                            loop
+                            muted
+                            playsinline
+                            style="width:100%; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08); margin-top:1rem;"
+                            aria-label="Screen recording of the check-in quiz interactive element">
+                        </video>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="project-sidebar">
+                <div class="sidebar-card">
+                    <h4>Specifications</h4>
+
+                    <div class="spec-group">
+                        <div class="spec-label">My Role</div>
+                        <div class="spec-item">Learning Experience Designer</div>
+                        <div class="spec-item">Curriculum Developer</div>
+                        <div class="spec-item">Graphic Designer</div>
+                    </div>
+
+                    <div class="spec-group">
+                        <div class="spec-label">Tools</div>
+                        <div class="tag-list">
+                            <span class="tag">Canvas</span>
+                            <span class="tag">Teams</span>
+                            <span class="tag">Slack</span>
+                            <span class="tag">Miro</span>
+                            <span class="tag">Canva</span>
+                            <span class="tag">Microsoft Suite</span>
+                            <span class="tag">Napkin AI</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
 
         </div>
     </main>

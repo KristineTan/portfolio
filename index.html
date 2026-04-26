@@ -99,13 +99,9 @@
 
         /* Hero Section */
         .hero-section {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 4rem 4rem 0;
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: 55% 45%;
+            min-height: calc(100vh - 88px);
             position: relative;
         }
 
@@ -332,6 +328,136 @@
             transform: translateY(-1px);
         }
 
+        /* ── Keyword filter tags ── */
+        .keyword-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1.25rem;
+        }
+
+        .keyword-tag {
+            background: none;
+            border: 1.5px solid #D4CFC9;
+            border-radius: 50px;
+            padding: 0.4rem 1.1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--olive-brown);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .keyword-tag:hover {
+            border-color: var(--dark-charcoal);
+            color: var(--dark-charcoal);
+        }
+
+        .keyword-tag.active {
+            background-color: var(--dark-charcoal);
+            border-color: var(--dark-charcoal);
+            color: #fff;
+        }
+
+        /* ── Digital Garden: Projects feed ── */
+        .dg-feed {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .dg-card {
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            text-decoration: none;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+            transition: box-shadow 0.25s ease, transform 0.25s ease;
+        }
+
+        .dg-card:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+            transform: translateY(-3px);
+        }
+
+        .dg-card-tag {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--taupe);
+            margin-bottom: 0.75rem;
+        }
+
+        .dg-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.55rem;
+            color: var(--dark-charcoal);
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
+        }
+
+        .dg-card-desc {
+            font-size: 0.97rem;
+            color: var(--olive-brown);
+            line-height: 1.75;
+            margin-bottom: 1.25rem;
+        }
+
+        .dg-card-link {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            letter-spacing: 0.03em;
+        }
+
+        .dg-card-link span {
+            transition: transform 0.2s ease;
+        }
+
+        .dg-card:hover .dg-card-link span {
+            transform: translateX(4px);
+        }
+
+        .dg-card-body {
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .dg-card-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #F0EFEA;
+            overflow: hidden;
+            order: -1;
+        }
+
+        .dg-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .dg-card-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #BDB8B0;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── Lab Notes grid (unchanged) ── */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -409,6 +535,12 @@
             transform: translateX(5px);
         }
 
+        @media (max-width: 900px) {
+            .dg-feed {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             .projects-grid {
                 grid-template-columns: 1fr;
@@ -423,53 +555,90 @@
             }
         }
 
-        /* About Me Content */
-        .about-me-content {
-            padding: 6rem 4rem 2rem;
-        }
-
-        .about-me-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            line-height: 1.6;
-            color: var(--dark-charcoal);
-            max-width: 900px;
-            font-weight: 400;
-        }
-
-        /* About Me Buttons */
-        .about-btns {
+        /* ── About Me layout ── */
+        .hero-left {
             display: flex;
-            gap: 1.25rem;
-            margin-top: 2rem;
-            padding: 0 4rem 5rem;
-        }
-
-        .about-btn {
-            flex: 1;
-            aspect-ratio: 1 / 1;
-            border: none;
-            border-radius: 14px;
-            font-family: 'Inter', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--dark-charcoal);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            text-align: center;
-            padding: 1.5rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            padding: 5rem 4rem 5rem 5rem;
+            background: #fff;
         }
 
-        .about-btn:nth-child(1) { background-color: #CFCFEA; }
-        .about-btn:nth-child(2) { background-color: #C5D8C5; }
-        .about-btn:nth-child(3) { background-color: #EAD9CF; }
+        .hero-right {
+            position: relative;
+            overflow: hidden;
+        }
 
-        .about-btn:hover {
-            transform: scale(1.06);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        .hero-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        .hero-eyebrow {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--sage-green);
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-statement {
+            font-size: 1.1rem;
+            color: var(--olive-brown);
+            line-height: 1.85;
+            max-width: 480px;
+            margin-bottom: 3rem;
+        }
+
+        .hero-links {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid #E4E0DB;
+            max-width: 480px;
+        }
+
+        .hero-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #E4E0DB;
+            text-decoration: none;
+            color: var(--dark-charcoal);
+            font-weight: 600;
+            font-size: 0.92rem;
+            transition: color 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .hero-link:hover {
+            color: var(--sage-green);
+            padding-left: 0.5rem;
+        }
+
+        .hero-link-arrow {
+            color: var(--sage-green);
+            font-size: 1rem;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .hero-link:hover .hero-link-arrow {
+            transform: translateX(4px);
         }
     </style>
 </head>
@@ -480,7 +649,7 @@
         <div class="nav-right">
             <ul class="nav-links">
                 <li><a href="#home" onclick="showSection('home')">About Me</a></li>
-                <li><a href="#portfolio" onclick="showSection('portfolio')">Portfolio</a></li>
+                <li><a href="#portfolio" onclick="showSection('portfolio')">Projects</a></li>
                 <li><a href="#lab-notes" onclick="showSection('lab-notes')">Lab Notes</a></li>
             </ul>
             <a href="https://www.linkedin.com/in/xuanwentan/" target="_blank" rel="noopener noreferrer" class="connect-btn">
@@ -509,31 +678,84 @@
 
     <!-- About Me Section -->
     <section id="home" class="hero-section hidden">
-        <div class="about-me-content">
-            <p class="about-me-text">I leverage developmental psychology and learning science to design engaging learning experiences that drive behavioral change and measurable performance growth.</p>
+
+        <div class="hero-left">
+            <span class="hero-eyebrow">Learning Experience Designer</span>
+            <h1 class="hero-name">Kristine Tan</h1>
+            <p class="hero-statement">I leverage developmental psychology and learning science to design engaging learning experiences that drive behavioral change and measurable performance growth.</p>
+            <nav class="hero-links">
+                <a href="view-of-learning.html" class="hero-link">
+                    My View of Learning
+                    <span class="hero-link-arrow">→</span>
+                </a>
+                <a href="from-learning-to-design.html" class="hero-link">
+                    From Learning Science to Design Practice
+                    <span class="hero-link-arrow">→</span>
+                </a>
+                <a href="theoretical-lenses.html" class="hero-link">
+                    Theoretical Lenses I Use
+                    <span class="hero-link-arrow">→</span>
+                </a>
+            </nav>
         </div>
 
-        <div class="about-btns">
-            <button class="about-btn" onclick="window.location.href='view-of-learning.html'">My View of Learning</button>
-            <button class="about-btn" onclick="window.location.href='from-learning-to-design.html'">From Learning Science to Design Practice</button>
-            <button class="about-btn" onclick="window.location.href='theoretical-lenses.html'">Theoretical Lenses I Use</button>
+        <div class="hero-right">
+            <img src="picture of me.png" alt="Kristine Tan">
         </div>
+
     </section>
 
-    <!-- Portfolio Section -->
+    <!-- Projects Section -->
     <section id="portfolio" class="lab-notes-section hidden">
         <div class="lab-notes-header">
-            <h2>Portfolio</h2>
-            <p class="subtitle">Selected Work</p>
+            <h2 style="font-family:'Inter',sans-serif; font-weight:700; letter-spacing:-0.03em;">projects.</h2>
+            <p class="subtitle">Selected work in instructional design &amp; learning experience</p>
+            <div class="keyword-tags">
+                <button class="keyword-tag active" onclick="filterProjects('all', this)">All</button>
+                <button class="keyword-tag" onclick="filterProjects('learning-design', this)">Learning Design</button>
+                <button class="keyword-tag" onclick="filterProjects('data-analysis', this)">Data Analysis &amp; Storytelling</button>
+                <button class="keyword-tag" onclick="filterProjects('workflow', this)">Workflow Integration</button>
+            </div>
         </div>
 
-        <div class="projects-grid">
-            <a href="harvard-project.html" class="project-card">
-                <div class="project-number">Web Design</div>
-                <h3>Harvard College Student Organization Resources Website</h3>
-                <p>A resource hub designed to help Harvard student organizations navigate university systems, funding, and community tools.</p>
-                <div class="project-link">View Project <span>→</span></div>
+        <div class="dg-feed">
+
+            <a href="harvard-project.html" class="dg-card" data-category="learning-design">
+                <div class="dg-card-body">
+                    <div class="dg-card-tag">UX / Instructional Design</div>
+                    <div class="dg-card-title">Harvard College Student Organization Resources Website</div>
+                    <p class="dg-card-desc">A resource hub redesigned to help student organizations navigate university systems, funding, and community tools — from needs assessment to UX overhaul.</p>
+                    <div class="dg-card-link">View project <span>→</span></div>
+                </div>
+                <div class="dg-card-image">
+                    <div class="dg-card-image-placeholder">preview coming soon</div>
+                </div>
             </a>
+
+            <a href="project-3.html" class="dg-card" data-category="learning-design">
+                <div class="dg-card-body">
+                    <div class="dg-card-tag">E-Learning / Canvas</div>
+                    <div class="dg-card-title">LEAP: Productive Struggle with AI</div>
+                    <p class="dg-card-desc">Designing the tool-introduction session of a four-part faculty e-module on Canvas, with a focus on knowledge transfer and practical application.</p>
+                    <div class="dg-card-link">View project <span>→</span></div>
+                </div>
+                <div class="dg-card-image">
+                    <img src="LeapPreview.png" alt="LEAP e-module preview" style="width:100%;height:100%;object-fit:cover;display:block;">
+                </div>
+            </a>
+
+            <a href="#" class="dg-card" data-category="workflow">
+                <div class="dg-card-body">
+                    <div class="dg-card-tag">Curriculum Design</div>
+                    <div class="dg-card-title">Project Title Placeholder</div>
+                    <p class="dg-card-desc">A short description of the project — what problem it solved, who it was for, and what design decisions shaped the outcome.</p>
+                    <div class="dg-card-link">Coming soon <span>→</span></div>
+                </div>
+                <div class="dg-card-image">
+                    <div class="dg-card-image-placeholder">preview coming soon</div>
+                </div>
+            </a>
+
         </div>
     </section>
 
@@ -591,6 +813,14 @@
 
             // Show selected section
             document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        function filterProjects(category, btn) {
+            document.querySelectorAll('.keyword-tag').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.dg-card').forEach(card => {
+                card.style.display = (category === 'all' || card.dataset.category === category) ? '' : 'none';
+            });
         }
 
         // On load, check URL param to show the right section
