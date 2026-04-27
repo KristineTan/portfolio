@@ -535,6 +535,21 @@
             transform: scale(1.04);
         }
 
+        .dg-card-image--pdf {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dg-card-image--pdf iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
+        }
+
         .dg-card-image-placeholder {
             width: 100%;
             height: 100%;
@@ -936,8 +951,8 @@
 
             <!-- Pharma e-learning -->
             <a href="pharma-meeting.html" class="dg-card" data-category="learning-design">
-                <div class="dg-card-image">
-                    <div class="dg-card-image-placeholder">preview coming soon</div>
+                <div class="dg-card-image dg-card-image--pdf">
+                    <iframe src="screenshots/MEETING WISE/meeting wise preview.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" tabindex="-1"></iframe>
                 </div>
                 <div class="dg-card-body">
                     <div class="dg-card-tag">E-Learning / Leadership Development</div>
