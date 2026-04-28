@@ -246,47 +246,9 @@
         }
 
         @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 1.5rem;
-                padding: 1.5rem;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-
             .hero-headline {
                 font-size: 48px;
                 line-height: 72px;
-            }
-
-            .tablet-screen {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-                padding: 1rem;
-            }
-
-            .tool-icon {
-                width: 100px;
-                height: 100px;
-                padding: 1rem;
-            }
-
-            .tool-icon-symbol {
-                font-size: 1.8rem;
-            }
-
-            .tool-icon-name {
-                font-size: 0.7rem;
-            }
-
-            .sage-block {
-                width: 300px;
-                height: 200px;
-                left: -2rem;
             }
         }
 
@@ -722,17 +684,139 @@
             }
         }
 
+        /* ── Responsive: tablet + mobile ── */
+
+        /* Disable emoji cursor on touch devices */
+        @media (hover: none) {
+            .cursor-emoji { display: none; }
+            body, a, button, .dg-card, .keyword-tag, .ln-card, .connect-btn, .logo {
+                cursor: auto;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .lab-notes-section {
+                padding: 3rem 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
+            /* Nav */
+            nav {
+                padding: 1rem 1.5rem;
+                flex-wrap: nowrap;
             }
 
+            .nav-links {
+                display: none;
+            }
+
+            .nav-right {
+                gap: 0;
+            }
+
+            .connect-btn {
+                padding: 0.6rem 1.25rem;
+                font-size: 0.85rem;
+            }
+
+            /* Hero: stack vertically */
+            .hero-section {
+                grid-template-columns: 1fr;
+                min-height: unset;
+            }
+
+            .hero-right {
+                order: -1;
+                padding: 2.5rem 1.5rem 0;
+                justify-content: flex-start;
+            }
+
+            .photo-frame {
+                width: 180px;
+                transform: rotate(-2.5deg) translateY(8px);
+            }
+
+            .photo-frame img {
+                height: 200px;
+            }
+
+            .hero-left {
+                padding: 2rem 1.5rem 3rem;
+            }
+
+            .hero-name {
+                font-size: 2.6rem;
+            }
+
+            .hero-statement {
+                font-size: 1rem;
+                max-width: 100%;
+                margin-bottom: 2rem;
+            }
+
+            .hero-links {
+                max-width: 100%;
+            }
+
+            /* Projects section */
             .lab-notes-section {
-                padding: 2rem;
+                padding: 3rem 1.5rem;
             }
 
             .lab-notes-header h2 {
                 font-size: 2rem;
+            }
+
+            .lab-notes-header .subtitle {
+                font-size: 1rem;
+            }
+
+            /* Lab notes cards: 2-per-row on tablet */
+            .ln-feed {
+                gap: 1.25rem;
+            }
+
+            .ln-card {
+                width: calc(50% - 0.75rem);
+            }
+
+            /* Projects grid */
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-name {
+                font-size: 2.1rem;
+            }
+
+            .photo-frame {
+                width: 150px;
+            }
+
+            .photo-frame img {
+                height: 165px;
+            }
+
+            /* Lab notes: full width on phone */
+            .ln-card {
+                width: 100%;
+                transform: none !important;
+            }
+
+            .keyword-tags {
+                gap: 0.4rem;
+            }
+
+            .keyword-tag {
+                font-size: 0.78rem;
+                padding: 0.35rem 0.85rem;
+            }
+
+            .dg-card-title {
+                font-size: 1.25rem;
             }
         }
 
