@@ -278,6 +278,206 @@
             margin-bottom: 0.9rem;
         }
 
+        /* ── Problem-Solving Interactive Block ── */
+        .ps-trigger-wrap {
+            margin: 3rem 0 0;
+        }
+
+        .ps-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--dark-charcoal);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 0.85rem 1.75rem;
+            font-size: 0.92rem;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .ps-trigger:hover {
+            background: var(--sage-green);
+            transform: translateY(-2px);
+        }
+
+        .ps-trigger .ps-arrow {
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .ps-trigger.open .ps-arrow {
+            transform: rotate(180deg);
+        }
+
+        .ps-panel {
+            display: none;
+            margin-top: 1.5rem;
+            background: var(--dark-charcoal);
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .ps-panel.open {
+            display: block;
+        }
+
+        .ps-panel-header {
+            padding: 1.75rem 2rem 1.25rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .ps-panel-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 0.4rem;
+        }
+
+        .ps-panel-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #fff;
+        }
+
+        /* Step tabs */
+        .ps-tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .ps-tab {
+            flex: 1;
+            padding: 1rem 1.25rem;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            color: rgba(255,255,255,0.4);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease;
+            text-align: left;
+        }
+
+        .ps-tab .ps-tab-num {
+            display: block;
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.25);
+            margin-bottom: 0.2rem;
+        }
+
+        .ps-tab:hover {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .ps-tab.active {
+            color: #fff;
+            border-bottom-color: #A8C5A8;
+        }
+
+        .ps-tab.active .ps-tab-num {
+            color: #A8C5A8;
+        }
+
+        /* Step content */
+        .ps-steps {
+            padding: 2rem;
+        }
+
+        .ps-step {
+            display: none;
+            animation: ps-fadein 0.3s ease;
+        }
+
+        .ps-step.active {
+            display: block;
+        }
+
+        @keyframes ps-fadein {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .ps-step-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .ps-step h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 0.75rem;
+        }
+
+        .ps-step p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.85;
+            margin-bottom: 1rem;
+        }
+
+        .ps-step p:last-child {
+            margin-bottom: 0;
+        }
+
+        .ps-step-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50px;
+            padding: 0.25rem 0.8rem;
+            font-size: 0.78rem;
+            color: #A8C5A8;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Nav buttons */
+        .ps-nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            padding: 1rem 2rem 1.75rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .ps-nav-btn {
+            background: rgba(255,255,255,0.08);
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1.25rem;
+            color: rgba(255,255,255,0.6);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .ps-nav-btn:hover {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+        }
+
+        .ps-nav-btn.primary {
+            background: #A8C5A8;
+            color: var(--dark-charcoal);
+        }
+
+        .ps-nav-btn.primary:hover {
+            background: #C5D8C5;
+        }
+
         @media (max-width: 860px) {
             nav { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
             .nav-links { flex-direction: column; gap: 1rem; text-align: center; }
@@ -286,6 +486,9 @@
             .project-body { grid-template-columns: 1fr; }
             .project-sidebar { position: static; }
             .components-grid { grid-template-columns: 1fr; }
+
+            .ps-tab .ps-tab-num { display: none; }
+            .ps-tab { font-size: 0.75rem; padding: 0.85rem 0.75rem; }
         }
     </style>
 </head>
@@ -357,6 +560,67 @@
                     <img src="gallerywalkbar.png" alt="Gallery Walk Progress Bar showing five hexagon stations: No AI in my class, Booth 1 Friction Bot, Booth 2 AI Oral Assessment, Booth 3 Cognitive Partnership Reviewer, and I'll try experimenting with AI." style="width:100%; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
                 </figure>
 
+                <!-- Problem-Solving Interactive Block -->
+                <div class="ps-trigger-wrap">
+                    <button class="ps-trigger" id="psTrigger" onclick="togglePS()">
+                        ⚡ How I Elevated My Game
+                        <span class="ps-arrow">↓</span>
+                    </button>
+
+                    <div class="ps-panel" id="psPanel">
+                        <div class="ps-panel-header">
+                            <div class="ps-panel-label">Behind the scenes</div>
+                            <div class="ps-panel-title">A Problem-Solving Story in Three Acts</div>
+                        </div>
+
+                        <div class="ps-tabs">
+                            <button class="ps-tab active" onclick="goPS(0)">
+                                <span class="ps-tab-num">01</span>
+                                Debugged Code
+                            </button>
+                            <button class="ps-tab" onclick="goPS(1)">
+                                <span class="ps-tab-num">02</span>
+                                Sought Help
+                            </button>
+                            <button class="ps-tab" onclick="goPS(2)">
+                                <span class="ps-tab-num">03</span>
+                                Advanced Tools
+                            </button>
+                        </div>
+
+                        <div class="ps-steps">
+                            <div class="ps-step active" id="ps-step-0">
+                                <div class="ps-step-icon">🐛</div>
+                                <span class="ps-step-tag">The Blocker</span>
+                                <h4>When the code broke — and I had to fix it</h4>
+                                <p>[Describe the technical problem you ran into — what broke, what error appeared, what you tried first. Be specific: was it the check-in quiz interactions, the Canvas module embed, the progress bar? What did the broken state look like?]</p>
+                                <p>[What was your first instinct? What debugging steps did you take — console logs, reading documentation, stepping through the logic?]</p>
+                            </div>
+
+                            <div class="ps-step" id="ps-step-1">
+                                <div class="ps-step-icon">🤝</div>
+                                <span class="ps-step-tag">The Process</span>
+                                <h4>Knowing when to ask — and who to ask</h4>
+                                <p>[Describe who you reached out to — teammates, instructors, online communities? What made you decide you needed outside help at that point?]</p>
+                                <p>[What did that conversation or resource give you? Did it reframe the problem, point you to a new approach, or confirm that your instinct was right?]</p>
+                            </div>
+
+                            <div class="ps-step" id="ps-step-2">
+                                <div class="ps-step-icon">🛠️</div>
+                                <span class="ps-step-tag">The Upgrade</span>
+                                <h4>Getting the right tool for the job</h4>
+                                <p>[What advanced tool did you bring in — Napkin AI, a new Canvas feature, a different authoring approach? What made you realize the old approach wasn't enough?]</p>
+                                <p>[What did this unlock? How did it change the quality of the output, and what would you have missed if you'd stayed with the original approach?]</p>
+                            </div>
+                        </div>
+
+                        <div class="ps-nav">
+                            <button class="ps-nav-btn" id="ps-prev" onclick="stepPS(-1)">← Prev</button>
+                            <button class="ps-nav-btn primary" id="ps-next" onclick="stepPS(1)">Next →</button>
+                        </div>
+                    </div>
+                </div>
+
                 <h2>Course Components</h2>
 
                 <div class="components-grid">
@@ -413,5 +677,35 @@
 
         </div>
     </main>
+
+    <script>
+        let psCurrentStep = 0;
+        const PS_TOTAL = 3;
+
+        function togglePS() {
+            const panel = document.getElementById('psPanel');
+            const trigger = document.getElementById('psTrigger');
+            const isOpen = panel.classList.toggle('open');
+            trigger.classList.toggle('open', isOpen);
+            if (isOpen) panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function goPS(index) {
+            psCurrentStep = index;
+            document.querySelectorAll('.ps-step').forEach((s, i) => s.classList.toggle('active', i === index));
+            document.querySelectorAll('.ps-tab').forEach((t, i) => t.classList.toggle('active', i === index));
+            document.getElementById('ps-prev').style.opacity = index === 0 ? '0.3' : '1';
+            document.getElementById('ps-prev').disabled = index === 0;
+            document.getElementById('ps-next').textContent = index === PS_TOTAL - 1 ? 'Done ✓' : 'Next →';
+        }
+
+        function stepPS(dir) {
+            const next = psCurrentStep + dir;
+            if (next < 0 || next >= PS_TOTAL) return;
+            goPS(next);
+        }
+
+        goPS(0);
+    </script>
 </body>
 </html>
