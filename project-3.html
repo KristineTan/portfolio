@@ -133,10 +133,7 @@
 
         /* Two-column layout: main + sidebar */
         .project-body {
-            display: grid;
-            grid-template-columns: 1fr 260px;
-            gap: 3.5rem;
-            align-items: start;
+            overflow: hidden;
         }
 
         .project-content h2 {
@@ -206,8 +203,10 @@
 
         /* Sidebar */
         .project-sidebar {
-            position: sticky;
-            top: 2rem;
+            float: right;
+            width: 260px;
+            margin-left: 3rem;
+            margin-bottom: 2rem;
         }
 
         .sidebar-card {
@@ -483,8 +482,7 @@
             .nav-links { flex-direction: column; gap: 1rem; text-align: center; }
             .project-header h1 { font-size: 2.2rem; }
             .project-page { padding: 2rem 1.5rem; }
-            .project-body { grid-template-columns: 1fr; }
-            .project-sidebar { position: static; }
+            .project-sidebar { float: none; width: 100%; margin-left: 0; }
             .components-grid { grid-template-columns: 1fr; }
 
             .ps-tab .ps-tab-num { display: none; }
@@ -514,6 +512,33 @@
         </div>
 
         <div class="project-body">
+
+            <!-- Sidebar floated right — ends naturally, content flows full-width below -->
+            <aside class="project-sidebar">
+                <div class="sidebar-card">
+                    <h4>Specifications</h4>
+
+                    <div class="spec-group">
+                        <div class="spec-label">My Role</div>
+                        <div class="spec-item">Learning Experience Designer</div>
+                        <div class="spec-item">Curriculum Developer</div>
+                        <div class="spec-item">Graphic Designer</div>
+                    </div>
+
+                    <div class="spec-group">
+                        <div class="spec-label">Tools</div>
+                        <div class="tag-list">
+                            <span class="tag">Canvas</span>
+                            <span class="tag">Teams</span>
+                            <span class="tag">Slack</span>
+                            <span class="tag">Miro</span>
+                            <span class="tag">Canva</span>
+                            <span class="tag">Microsoft Suite</span>
+                            <span class="tag">Napkin AI</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
 
             <!-- Main content -->
             <div class="project-content">
@@ -647,33 +672,6 @@
                 </div>
 
             </div>
-
-            <!-- Sidebar -->
-            <aside class="project-sidebar">
-                <div class="sidebar-card">
-                    <h4>Specifications</h4>
-
-                    <div class="spec-group">
-                        <div class="spec-label">My Role</div>
-                        <div class="spec-item">Learning Experience Designer</div>
-                        <div class="spec-item">Curriculum Developer</div>
-                        <div class="spec-item">Graphic Designer</div>
-                    </div>
-
-                    <div class="spec-group">
-                        <div class="spec-label">Tools</div>
-                        <div class="tag-list">
-                            <span class="tag">Canvas</span>
-                            <span class="tag">Teams</span>
-                            <span class="tag">Slack</span>
-                            <span class="tag">Miro</span>
-                            <span class="tag">Canva</span>
-                            <span class="tag">Microsoft Suite</span>
-                            <span class="tag">Napkin AI</span>
-                        </div>
-                    </div>
-                </div>
-            </aside>
 
         </div>
     </main>
