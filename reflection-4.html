@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflection 04 - KT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --sage-green: #3E513E;
+            --dark-charcoal: #2A2C24;
+            --olive-brown: #575A4B;
+            --taupe: #816C61;
+            --white: #FFFFFF;
+            --off-white: #CFCFEA;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--white);
+            color: var(--dark-charcoal);
+            line-height: 1.6;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dark-charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover { opacity: 0.6; }
+
+        .connect-btn {
+            background-color: var(--sage-green);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .connect-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(62, 81, 62, 0.3);
+        }
+
+        .arrow-icon {
+            font-size: 1.2rem;
+            transform: rotate(45deg);
+        }
+
+        .project-page {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--sage-green);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-link:hover { opacity: 0.7; }
+
+        .project-header { margin-bottom: 3rem; }
+
+        .project-number {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--sage-green);
+            margin-bottom: 1rem;
+        }
+
+        .project-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .project-content p {
+            font-size: 1.1rem;
+            color: var(--olive-brown);
+            line-height: 1.9;
+            margin-bottom: 1.75rem;
+        }
+
+        .section-divider {
+            border: none;
+            border-top: 1px solid #E4E0DB;
+            margin: 2.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
+            .nav-links { flex-direction: column; gap: 1rem; text-align: center; }
+            .project-header h1 { font-size: 2.2rem; }
+            .project-page { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">KT</a>
+        <ul class="nav-links">
+            <li><a href="index.html">About Me</a></li>
+            <li><a href="index.html#portfolio">Projects</a></li>
+            <li><a href="index.html#lab-notes">Lab Notes</a></li>
+        </ul>
+        <a href="https://www.linkedin.com/in/xuanwentan/" target="_blank" rel="noopener noreferrer" class="connect-btn">
+            Connect <span class="arrow-icon">→</span>
+        </a>
+    </nav>
+
+    <main class="project-page">
+        <a href="index.html#lab-notes" class="back-link">← Back to Lab Notes</a>
+
+        <div class="project-header">
+            <div class="project-number">Reflection 04 · Deliver Module</div>
+            <h1>Reflection for the Deliver Module</h1>
+        </div>
+
+        <div class="project-content">
+
+            <p>After extensive design iteration, development, and debugging of our Canvas course, my primary role centered on building and refining the learning experience. I focused on improving my pages' visual and interactive designs, ensuring the course was fully functional and aligned with Universal Design for Learning (UDL) principles. I also worked closely with the Canvas IT help desk to troubleshoot formatting issues, collaborating with Paula to unlock advanced features in CitiLabs. This process expanded my understanding of what Canvas can do and strengthened my technical confidence as a learning designer. However, while I was deeply invested in building the course, I had not given equal attention to articulating the reasoning behind my design decisions.</p>
+
+            <p>This gap became clear during our initial pitch rehearsals. When my teammates asked why I chose certain interactive elements or tools, I found myself explaining my thought process fluently but informally. Although I understood my learners and had strong intentions behind my design choices, I had not explicitly translated that thinking into a communicable form. Their feedback highlighted a critical aspect of learning design: it is not enough to build effective experiences; designers must also clearly communicate the "why" behind their decisions. This moment marked a turning point for me. I began to intentionally incorporate design rationale into our pitch, grounding my choices in learner needs and learning science. This shift helped me better position myself as a learning designer who not only executes ideas but also justifies them in a professional and collaborative context.</p>
+
+            <hr class="section-divider">
+
+            <p>While this reflection highlights my individual growth, the strength of our final product was deeply rooted in our team's diverse perspectives. Each teammate brought a unique background and emphasis to the project, allowing us to create a more comprehensive and thoughtful learning experience. Marita's coaching background and focus on socio-emotional learning ensured that we addressed learners' emotional barriers and motivation at the outset. Kat's strong commitment to UDL principles pushed us to prioritize accessibility and design multiple pathways for engagement. My contributions focused on fostering a sense of learning community and contextualizing the concepts and tools for our learners based on their expectations to help them transfer and retain the information. With the unwavering support of our project lead, Andres Jaimes, throughout every stage of the process, we created the work beyond what any one of us could have achieved individually.</p>
+
+            <figure style="margin: 1.5rem 0;">
+                <img src="screenshots/canvas Leap/our photo.png" alt="Our team" style="width:100%; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+            </figure>
+
+            <p>Our collaboration extended beyond dividing tasks; we actively engaged in refining each other's work. In preparation for the gallery walk, we met regularly to iterate on our pitch. We often pointed out strengths in each other's work that had gone unrecognized, while also offering suggestions for improvement. This process required both humility and trust, as we adjusted slides, refined messaging, and aligned our narrative as a team. Through this collaborative effort, we developed a more cohesive and compelling presentation of our work.</p>
+
+            <p>The impact of this preparation was evident during the gallery walk. Faculty, staff, and peers engaged deeply with our project, asking thoughtful questions about our design decisions, the tools we selected, and the research that informed our approach. Many visitors explored the Canvas modules in detail and expressed interest in taking the course themselves. These interactions validated not only the functionality of our design but also our ability to communicate its purpose and value effectively.</p>
+
+            <hr class="section-divider">
+
+            <p>Despite these successes, our work is not without limitations. We encountered some inconsistencies in visual aesthetics across modules, as well as ongoing tension around the appropriate depth of content and level of scaffolding. These challenges reflect the complexity of collaborative design, particularly when balancing different perspectives and priorities.</p>
+
+            <p>Another limitation lies in the development of our learning activities. The reflections, discussions, and assignments across modules are still in progress, and some instructions lack clarity and specificity. As Allison noted during her review, certain prompts may not provide enough guidance for learners to fully understand expectations or engage deeply with the material. In addition, these activities have not yet been fully integrated to align with our overarching learning goals. As a result, the course experience may feel somewhat fragmented rather than cohesive.</p>
+
+            <p>With more time, we would streamline these elements to make the visual designs more consistent, strengthen the alignment between activities and learning objectives, as well as refine instructions to create a more coherent and guided learning experience for our learners.</p>
+
+            <hr class="section-divider">
+
+            <p>Overall, this experience reinforced the importance of balancing execution with intentional communication in learning design. Moving forward, I will carry with me a more deliberate focus on articulating the rationale behind my decisions, alongside my strengths in building and iterating on learning experiences. I will also continue to embrace active help-seeking, apply learning science principles, and cultivate a collaborative mindset — recognizing that meaningful design is both an individual and collective process.</p>
+
+        </div>
+    </main>
+</body>
+</html>
