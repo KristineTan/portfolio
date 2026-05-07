@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Reflective Portfolio Post - KT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --sage-green: #3E513E;
+            --dark-charcoal: #2A2C24;
+            --olive-brown: #575A4B;
+            --taupe: #816C61;
+            --white: #FFFFFF;
+            --off-white: #CFCFEA;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--white);
+            color: var(--dark-charcoal);
+            line-height: 1.6;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dark-charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover { opacity: 0.6; }
+
+        .connect-btn {
+            background-color: var(--sage-green);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .connect-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(62, 81, 62, 0.3);
+        }
+
+        .arrow-icon {
+            font-size: 1.2rem;
+            transform: rotate(45deg);
+        }
+
+        .project-page {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--sage-green);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-link:hover { opacity: 0.7; }
+
+        .project-header { margin-bottom: 3rem; }
+
+        .project-number {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--sage-green);
+            margin-bottom: 1rem;
+        }
+
+        .project-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .project-content p {
+            font-size: 1.1rem;
+            color: var(--olive-brown);
+            line-height: 1.9;
+            margin-bottom: 1.75rem;
+        }
+
+
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
+            .nav-links { flex-direction: column; gap: 1rem; text-align: center; }
+            .project-header h1 { font-size: 2.2rem; }
+            .project-page { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">KT</a>
+        <ul class="nav-links">
+            <li><a href="index.html">About Me</a></li>
+            <li><a href="index.html#portfolio">Projects</a></li>
+            <li><a href="index.html#lab-notes">Lab Notes</a></li>
+        </ul>
+        <a href="https://www.linkedin.com/in/xuanwentan/" target="_blank" rel="noopener noreferrer" class="connect-btn">
+            Connect <span class="arrow-icon">→</span>
+        </a>
+    </nav>
+
+    <main class="project-page">
+        <a href="index.html#lab-notes" class="back-link">← Back to Lab Notes</a>
+
+        <div class="project-header">
+            <div class="project-number">Final Reflective Portfolio Post</div>
+            <h1>Looking Back, Looking Forward</h1>
+        </div>
+
+        <div class="project-content">
+
+            <p>My portfolio has become a record of my journey toward becoming the kind of learning designer I aspire to be. It captures my growth and continuously guides me through the process of developing my values, design instincts, and approach to learning.</p>
+
+            <p>At the beginning of the semester, I had two major goals: 1) to build a strong theoretical foundation in learning design so I could better understand and evaluate what constitutes high-quality design, and 2) to design a pilot course that learners could actually interact with, allowing me to gather feedback from different stakeholders and evaluate the effectiveness of my design decisions.</p>
+
+            <p>Looking back at the blogs documenting my reflections on learning theories, I'm grateful that I was thoughtfully connecting learning science to my psychology background. Through these reflections, I identified several values I wanted to prioritize in designing learning experiences: depth over breadth, designing for transfer, treating confusion as productive, and attending to motivation and affect. Although applying these principles in practice was often difficult, I tried to hold onto them throughout the design process.</p>
+
+            <p>As the course shifted from theory to practice, I focused on applying learning design frameworks such as ADDIE and backward design while building the "AI and Productive Struggle" Canvas module. Through referencing the readings, course assets, and materials from the Teaching and Learning Lab, I was able to grow the instinct of telling what good design should look like. I was both asked by the course and actively prompting myself to think more critically about learning design. I kept returning to questions such as: What kinds of experiences can different modalities uniquely support? What standards and principles should guide our decisions so learning can be accessible?</p>
+
+            <p>Engaging with these questions helped me better understand the relationship between pedagogy, accessibility, and technology. I learned how tools such as WAVE and the Canvas Cidi Labs extension can support Universal Design for Learning (UDL). I also learned that online learning environments should not simply replicate in-person classes, but should instead be intentionally designed around the affordances and limitations of the online modality itself. More importantly, I began to understand not only how to make these design decisions, but why they matter: to foster deeper learning, support retention, and create learning experiences that are accessible and inclusive to a wider range of learners.</p>
+
+            <p>Finally, I gained valuable experience designing learning experiences grounded in andragogy. I mainly designed for college students and high schoolers in my previous experience, but expanded my capacity to design for adult learners by considering their self-direction, prior experiences, and desire for immediate applicability. When building the Canvas module, I introduced technical AI tools through HGSE-style class examples that faculty members — my learners — are already familiar with, making transfer and application more achievable. By contextualizing information in this way, I tried to maintain the same student-centered mindset that I value in other educational settings while adapting it to adult learners' needs. At the same time, I am still learning how to balance scaffolding with leaving enough space for personal exploration and productive struggle.</p>
+
+            <p>Overall, this semester helped me connect theory, practice, and reflection in a much more integrated way. Through both the successes and challenges of the design process, I developed a clearer understanding of the values, questions, and responsibilities that I want to carry into my future work in learning design.</p>
+
+        </div>
+    </main>
+</body>
+</html>

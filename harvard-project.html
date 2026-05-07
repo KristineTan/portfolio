@@ -101,84 +101,38 @@
             font-size: 1.1rem; color: var(--olive-brown); line-height: 1.9; margin-bottom: 1.5rem;
         }
 
-        /* ---- TIMELINE ---- */
-        .timeline-outer { padding-bottom: 1rem; }
-
-        .timeline-header-row {
-            max-width: 1000px; margin: 0 auto; padding: 0 2rem 0.5rem;
+        /* ---- PROCESS (vertical) ---- */
+        .process-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
         }
-        .timeline-drag-hint {
-            max-width: 1000px; margin: 0 auto 1.5rem; padding: 0 2rem;
-            display: flex; align-items: center; gap: 0.5rem;
-            color: var(--taupe); font-size: 0.875rem;
+        .process-step {
+            display: flex;
+            gap: 2.5rem;
+            padding: 3rem 0;
+            border-bottom: 1px solid #E4E0DB;
         }
-        .hint-arrow {
-            display: inline-block;
-            animation: bounceX 1.8s ease-in-out infinite;
-        }
-        @keyframes bounceX {
-            0%, 100% { transform: translateX(0); opacity: 1; }
-            50%       { transform: translateX(7px); opacity: 0.4; }
-        }
-
-        /* Scrollable container */
-        .timeline-wrapper {
-            overflow-x: scroll;
-            overflow-y: hidden;
-            cursor: grab;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-        .timeline-wrapper::-webkit-scrollbar { display: none; }
-        .timeline-wrapper.dragging { cursor: grabbing; }
-
-        /* Track = SVG row + panels row, total width 300vw */
-        .timeline-track {
+        .process-step:last-child { border-bottom: none; }
+        .step-left {
             display: flex;
             flex-direction: column;
-            width: 300vw;
-        }
-
-        /* SVG row */
-        .timeline-svg-row { width: 100%; flex-shrink: 0; position: relative; }
-        .timeline-svg { display: block; width: 100%; height: 160px; overflow: visible; }
-
-        /* Numbered circle nodes — HTML so they never distort with SVG scaling */
-        .step-node {
-            position: absolute;
-            width: 96px;
-            height: 96px;
-            border-radius: 50%;
-            background: white;
-            border: 2.5px solid var(--sage-green);
-            display: flex;
             align-items: center;
-            justify-content: center;
-            font-family: 'Inter', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--sage-green);
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-        }
-
-        /* Panels row */
-        .timeline-panels { display: flex; width: 100%; }
-        .timeline-panel {
-            width: 33.333%;
             flex-shrink: 0;
-            padding: 2rem 4rem 5rem;
         }
-
-        /* Step badge */
-        .step-badge {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 2rem; height: 2rem; border-radius: 50%;
-            background-color: var(--sage-green); color: var(--white);
-            font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem;
+        .step-number {
+            width: 48px; height: 48px; border-radius: 50%;
+            background: var(--sage-green); color: var(--white);
+            font-size: 1.1rem; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
         }
+        .step-line {
+            width: 2px; flex: 1; background: #E4E0DB;
+            margin-top: 0.75rem; min-height: 24px;
+        }
+        .process-step:last-child .step-line { display: none; }
+        .step-content { flex: 1; padding-top: 0.5rem; }
         .panel-title {
             font-family: 'Playfair Display', serif; font-size: 1.6rem;
             color: var(--dark-charcoal); margin-bottom: 1.25rem; line-height: 1.3;
@@ -210,20 +164,6 @@
         .ba-label.after  { color: var(--sage-green); }
         .ba-col img { width: 100%; border-radius: 10px; }
 
-        /* Progress dots */
-        .timeline-dots {
-            display: flex; justify-content: center;
-            gap: 0.6rem; padding: 1.5rem 0 2rem;
-        }
-        .timeline-dot {
-            width: 8px; height: 8px; border-radius: 50%;
-            background-color: transparent; border: 2px solid var(--sage-green);
-            cursor: pointer; transition: background-color 0.25s, transform 0.25s;
-        }
-        .timeline-dot.active {
-            background-color: var(--sage-green); transform: scale(1.35);
-        }
-
         /* ---- OUTCOMES ---- */
         .outcomes-section {
             max-width: 1000px; margin: 0 auto; padding: 2rem 2rem 5rem;
@@ -245,7 +185,13 @@
             .page-header h1 { font-size: 2.2rem; }
             .page-header, .context-section, .outcomes-section { padding-left: 1.5rem; padding-right: 1.5rem; }
             .meta-row { flex-wrap: wrap; gap: 1.5rem; }
-            .timeline-panel { padding: 1.5rem 2rem 4rem; }
+            .process-step { flex-direction: column; gap: 1rem; }
+            .step-left { flex-direction: row; align-items: center; }
+            .step-line { display: none; }
+            .img-single img { width: 100%; }
+            .img-row { flex-direction: column; }
+            .img-row img { width: 100%; }
+            .img-before-after { flex-direction: column; }
             .outcome-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -295,110 +241,77 @@
         <p><strong>Project Goal:</strong> Create a student-centered resource platform that is clear, accessible, and actionable.</p>
     </div>
 
-    <!-- Interactive Process Timeline -->
-    <div class="timeline-outer">
-        <div class="timeline-header-row">
-            <h2 class="section-title">Process</h2>
-        </div>
-        <div class="timeline-drag-hint">
-            <span>Drag to explore the journey</span>
-            <span class="hint-arrow">→</span>
-        </div>
+    <!-- Process (vertical) -->
+    <div class="process-section">
+        <h2 class="section-title">Process</h2>
 
-        <div class="timeline-wrapper" id="tlWrapper">
-            <div class="timeline-track">
-
-                <!-- Curved SVG path spanning all 3 panels -->
-                <div class="timeline-svg-row">
-                    <svg class="timeline-svg" viewBox="0 0 300 100"
-                         preserveAspectRatio="none"
-                         xmlns="http://www.w3.org/2000/svg">
-
-                        <!-- Background path — vector-effect keeps stroke width at true pixels -->
-                        <path d="M 0,55 C 20,55 35,35 50,35 C 65,35 80,55 100,55
-                                 C 120,55 135,72 150,72 C 165,72 180,55 200,55
-                                 C 220,55 235,35 250,35 C 265,35 280,55 300,55"
-                              fill="none" stroke="#CFCFEA" stroke-width="2" stroke-linecap="round"
-                              vector-effect="non-scaling-stroke"/>
-
-                        <!-- Foreground path (green, reveals as you scroll) -->
-                        <path id="fgPath"
-                              d="M 0,55 C 20,55 35,35 50,35 C 65,35 80,55 100,55
-                                 C 120,55 135,72 150,72 C 165,72 180,55 200,55
-                                 C 220,55 235,35 250,35 C 265,35 280,55 300,55"
-                              fill="none" stroke="#3E513E" stroke-width="2" stroke-linecap="round"
-                              stroke-dasharray="1" stroke-dashoffset="1"
-                              vector-effect="non-scaling-stroke"/>
-                    </svg>
-
-                    <!-- Numbered circle nodes positioned on the path -->
-                    <span class="step-node" style="left:16.67%; top:56px;">1</span>
-                    <span class="step-node" style="left:50%;    top:115px;">2</span>
-                    <span class="step-node" style="left:83.33%; top:56px;">3</span>
-                </div>
-
-                <!-- Three content panels -->
-                <div class="timeline-panels">
-
-                    <!-- Panel 1: Listening & Needs Assessment -->
-                    <div class="timeline-panel">
-                        <h3 class="panel-title">Listening & Needs Assessment</h3>
-                        <ul class="panel-list">
-                            <li>Gathered feedback from student organization leaders</li>
-                            <li>Identified key pain points and high-need topics</li>
-                            <li>Prioritized content based on student impact</li>
-                        </ul>
-                        <div class="img-single">
-                            <img src="screenshots/need assessment SOCO.png" alt="SOCO Needs Assessment">
-                        </div>
-                    </div>
-
-                    <!-- Panel 2: Content Strategy & Development -->
-                    <div class="timeline-panel">
-                        <h3 class="panel-title">Content Strategy & Development</h3>
-                        <ul class="panel-list">
-                            <li>Audited and updated existing resources for accuracy and relevance</li>
-                            <li>Reorganized content for faster scanning and clearer navigation</li>
-                            <li>Created new materials on financial management and new organization applications</li>
-                            <li>Recorded step-by-step training videos</li>
-                        </ul>
-                        <div class="img-row">
-                            <img src="screenshots/SOCO advisor video.png" alt="SOCO Advisor Video">
-                            <img src="screenshots/SOCO budget page.png" alt="SOCO Budget Page">
-                        </div>
-                    </div>
-
-                    <!-- Panel 3: Platform & UX Redesign -->
-                    <div class="timeline-panel">
-                        <h3 class="panel-title">Platform & UX Redesign</h3>
-                        <ul class="panel-list">
-                            <li>Redesigned layout for intuitive information retrieval</li>
-                            <li>Simplified language to improve usability</li>
-                            <li>Highlighted key policies aligned with student engagement priorities</li>
-                        </ul>
-                        <div class="img-before-after">
-                            <div class="ba-col">
-                                <p class="ba-label before">Before</p>
-                                <img src="screenshots/before 1.png" alt="Before — Version 1">
-                                <img src="screenshots/before 2.png" alt="Before — Version 2">
-                            </div>
-                            <div class="ba-col">
-                                <p class="ba-label after">After</p>
-                                <img src="screenshots/after.png" alt="After">
-                            </div>
-                        </div>
-                    </div>
-
+        <!-- Step 1 -->
+        <div class="process-step">
+            <div class="step-left">
+                <div class="step-number">1</div>
+                <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+                <h3 class="panel-title">Listening & Needs Assessment</h3>
+                <ul class="panel-list">
+                    <li>Gathered feedback from student organization leaders</li>
+                    <li>Identified key pain points and high-need topics</li>
+                    <li>Prioritized content based on student impact</li>
+                </ul>
+                <div class="img-single">
+                    <img src="screenshots/need assessment SOCO.png" alt="SOCO Needs Assessment">
                 </div>
             </div>
         </div>
 
-        <!-- Progress dots -->
-        <div class="timeline-dots">
-            <div class="timeline-dot active" data-panel="0"></div>
-            <div class="timeline-dot" data-panel="1"></div>
-            <div class="timeline-dot" data-panel="2"></div>
+        <!-- Step 2 -->
+        <div class="process-step">
+            <div class="step-left">
+                <div class="step-number">2</div>
+                <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+                <h3 class="panel-title">Content Strategy & Development</h3>
+                <ul class="panel-list">
+                    <li>Audited and updated existing resources for accuracy and relevance</li>
+                    <li>Reorganized content for faster scanning and clearer navigation</li>
+                    <li>Created new materials on financial management and new organization applications</li>
+                    <li>Recorded step-by-step training videos</li>
+                </ul>
+                <div class="img-row">
+                    <img src="screenshots/SOCO advisor video.png" alt="SOCO Advisor Video">
+                    <img src="screenshots/SOCO budget page.png" alt="SOCO Budget Page">
+                </div>
+            </div>
         </div>
+
+        <!-- Step 3 -->
+        <div class="process-step">
+            <div class="step-left">
+                <div class="step-number">3</div>
+                <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+                <h3 class="panel-title">Platform & UX Redesign</h3>
+                <ul class="panel-list">
+                    <li>Redesigned layout for intuitive information retrieval</li>
+                    <li>Simplified language to improve usability</li>
+                    <li>Highlighted key policies aligned with student engagement priorities</li>
+                </ul>
+                <div class="img-before-after">
+                    <div class="ba-col">
+                        <p class="ba-label before">Before</p>
+                        <img src="screenshots/before 1.png" alt="Before — Version 1">
+                        <img src="screenshots/before 2.png" alt="Before — Version 2">
+                    </div>
+                    <div class="ba-col">
+                        <p class="ba-label after">After</p>
+                        <img src="screenshots/after.png" alt="After">
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Outcomes & Impact -->
@@ -422,110 +335,6 @@
 
 </main>
 
-<script>
-    const wrapper  = document.getElementById('tlWrapper');
-    const fgPath   = document.getElementById('fgPath');
-    const dots     = document.querySelectorAll('.timeline-dot');
-
-    // With vector-effect="non-scaling-stroke", dash values must be in screen pixels.
-    // getTotalLength() returns SVG user units, so we sample the path and
-    // convert each segment to screen pixels using the SVG's actual scale factors.
-    function screenPathLength(path) {
-        const svg   = path.closest('svg');
-        const rect  = svg.getBoundingClientRect();
-        const vb    = svg.viewBox.baseVal;
-        const sx    = rect.width  / vb.width;
-        const sy    = rect.height / vb.height;
-        const svgLen = path.getTotalLength();
-        const N = 300;
-        let len = 0;
-        for (let i = 1; i <= N; i++) {
-            const p1 = path.getPointAtLength((i - 1) / N * svgLen);
-            const p2 = path.getPointAtLength(i       / N * svgLen);
-            const dx = (p2.x - p1.x) * sx;
-            const dy = (p2.y - p1.y) * sy;
-            len += Math.sqrt(dx * dx + dy * dy);
-        }
-        return len;
-    }
-
-    const pathLen = screenPathLength(fgPath);
-    fgPath.style.strokeDasharray  = pathLen;
-    fgPath.style.strokeDashoffset = pathLen;  // fully hidden at start
-
-    // ---- Drag to scroll ----
-    let dragging = false, startX = 0, scrollStart = 0;
-
-    wrapper.addEventListener('mousedown', e => {
-        dragging    = true;
-        startX      = e.pageX - wrapper.offsetLeft;
-        scrollStart = wrapper.scrollLeft;
-        wrapper.classList.add('dragging');
-    });
-
-    document.addEventListener('mouseup', () => {
-        if (!dragging) return;
-        dragging = false;
-        wrapper.classList.remove('dragging');
-        snapToPanel();
-    });
-
-    document.addEventListener('mousemove', e => {
-        if (!dragging) return;
-        e.preventDefault();
-        const x = e.pageX - wrapper.offsetLeft;
-        wrapper.scrollLeft = scrollStart - (x - startX) * 1.8;
-        tick();
-    });
-
-    // Touch
-    wrapper.addEventListener('touchstart', e => {
-        startX      = e.touches[0].pageX - wrapper.offsetLeft;
-        scrollStart = wrapper.scrollLeft;
-    }, { passive: true });
-
-    wrapper.addEventListener('touchmove', e => {
-        const x = e.touches[0].pageX - wrapper.offsetLeft;
-        wrapper.scrollLeft = scrollStart - (x - startX) * 1.5;
-        tick();
-    }, { passive: true });
-
-    wrapper.addEventListener('touchend', snapToPanel);
-
-    // Native scroll (trackpad / momentum)
-    let snapTimer = null;
-    wrapper.addEventListener('scroll', () => {
-        tick();
-        clearTimeout(snapTimer);
-        snapTimer = setTimeout(snapToPanel, 180);
-    });
-
-    function snapToPanel() {
-        const pW  = window.innerWidth;
-        const idx = Math.round(wrapper.scrollLeft / pW);
-        wrapper.scrollTo({ left: idx * pW, behavior: 'smooth' });
-    }
-
-    function tick() {
-        const pW       = window.innerWidth;
-        const maxScroll = pW * 2;
-        const progress  = Math.max(0, Math.min(1, wrapper.scrollLeft / maxScroll));
-
-        // Reveal green path progressively
-        fgPath.style.strokeDashoffset = pathLen * (1 - progress);
-
-        // Active dot
-        const active = Math.round(wrapper.scrollLeft / pW);
-        dots.forEach((d, i) => d.classList.toggle('active', i === active));
-    }
-
-    // Dot click navigation
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            wrapper.scrollTo({ left: parseInt(dot.dataset.panel) * window.innerWidth, behavior: 'smooth' });
-        });
-    });
-</script>
 
 </body>
 </html>
