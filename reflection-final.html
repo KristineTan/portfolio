@@ -83,7 +83,7 @@
         }
 
         .project-page {
-            max-width: 780px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 4rem 2rem;
         }
@@ -118,19 +118,63 @@
             line-height: 1.2;
         }
 
+        .project-intro {
+            font-size: 1.3rem;
+            color: var(--olive-brown);
+            line-height: 1.8;
+        }
+
+        .project-content {
+            margin-top: 4rem;
+        }
+
+        .project-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1.2rem;
+            margin-top: 3rem;
+        }
+
+        .project-content h2:first-child { margin-top: 0; }
+
         .project-content p {
             font-size: 1.1rem;
             color: var(--olive-brown);
             line-height: 1.9;
-            margin-bottom: 1.75rem;
+            margin-bottom: 1.5rem;
         }
 
+        .highlight-box {
+            background-color: #F0EDE6;
+            border-radius: 15px;
+            padding: 2rem 2.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--sage-green);
+        }
+
+        .highlight-box p {
+            color: var(--olive-brown);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 0;
+        }
+
+        .highlight-box .box-label {
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.8rem;
+        }
 
         @media (max-width: 768px) {
             nav { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
             .nav-links { flex-direction: column; gap: 1rem; text-align: center; }
             .project-header h1 { font-size: 2.2rem; }
             .project-page { padding: 2rem 1.5rem; }
+            .highlight-box { padding: 1.5rem; }
         }
     </style>
 </head>
@@ -153,13 +197,18 @@
         <div class="project-header">
             <div class="project-number">Final Reflective Portfolio Post</div>
             <h1>Looking Back, Looking Forward</h1>
+            <p class="project-intro">A semester's worth of theory, practice, and reflection — and what I'm carrying into the next chapter of my work as a learning designer.</p>
         </div>
 
         <div class="project-content">
 
+            <h2>Starting Points</h2>
+
             <p>My portfolio has become a record of my journey toward becoming the kind of learning designer I aspire to be. It captures my growth and continuously guides me through the process of developing my values, design instincts, and approach to learning.</p>
 
             <p>At the beginning of the semester, I had two major goals: 1) to build a strong theoretical foundation in learning design so I could better understand and evaluate what constitutes high-quality design, and 2) to design a pilot course that learners could actually interact with, allowing me to gather feedback from different stakeholders and evaluate the effectiveness of my design decisions.</p>
+
+            <h2>Theory in Practice</h2>
 
             <p>Looking back at the blogs documenting my reflections on learning theories, I'm grateful that I was thoughtfully connecting learning science to my psychology background. Through these reflections, I identified several values I wanted to prioritize in designing learning experiences: depth over breadth, designing for transfer, treating confusion as productive, and attending to motivation and affect. Although applying these principles in practice was often difficult, I tried to hold onto them throughout the design process.</p>
 
@@ -167,9 +216,14 @@
 
             <p>Engaging with these questions helped me better understand the relationship between pedagogy, accessibility, and technology. I learned how tools such as WAVE and the Canvas Cidi Labs extension can support Universal Design for Learning (UDL). I also learned that online learning environments should not simply replicate in-person classes, but should instead be intentionally designed around the affordances and limitations of the online modality itself. More importantly, I began to understand not only how to make these design decisions, but why they matter: to foster deeper learning, support retention, and create learning experiences that are accessible and inclusive to a wider range of learners.</p>
 
+            <h2>Designing for Adult Learners</h2>
+
             <p>Finally, I gained valuable experience designing learning experiences grounded in andragogy. I mainly designed for college students and high schoolers in my previous experience, but expanded my capacity to design for adult learners by considering their self-direction, prior experiences, and desire for immediate applicability. When building the Canvas module, I introduced technical AI tools through HGSE-style class examples that faculty members — my learners — are already familiar with, making transfer and application more achievable. By contextualizing information in this way, I tried to maintain the same student-centered mindset that I value in other educational settings while adapting it to adult learners' needs. At the same time, I am still learning how to balance scaffolding with leaving enough space for personal exploration and productive struggle.</p>
 
-            <p>Overall, this semester helped me connect theory, practice, and reflection in a much more integrated way. Through both the successes and challenges of the design process, I developed a clearer understanding of the values, questions, and responsibilities that I want to carry into my future work in learning design.</p>
+            <div class="highlight-box">
+                <p class="box-label">Looking Forward</p>
+                <p>Overall, this semester helped me connect theory, practice, and reflection in a much more integrated way. Through both the successes and challenges of the design process, I developed a clearer understanding of the values, questions, and responsibilities that I want to carry into my future work in learning design.</p>
+            </div>
 
         </div>
     </main>
