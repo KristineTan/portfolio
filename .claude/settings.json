@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nRemove hero headline, show Lab Notes as default\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit -m ' *)",
+      "Bash(pip install *)",
+      "PowerShell(Get-Command python3, py, node, magick 2>$null)",
+      "Bash(powershell -Command ' *)"
+    ]
+  }
+}

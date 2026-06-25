@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: KT Portfolio website\n\n- Landing page with Lab Notes as default view\n- Hero section with instructional design tools tablet mockup\n- Four T127 project subpages\n- Responsive design with custom color palette\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(gh auth:*)",
+      "Bash(git remote:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(git commit -m ' *)",
+      "WebFetch(domain:chester.how)"
+    ]
+  }
+}

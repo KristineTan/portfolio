@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Notes - KT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --sage-green: #3E513E;
+            --dark-charcoal: #2A2C24;
+            --olive-brown: #575A4B;
+            --taupe: #816C61;
+            --white: #FFFFFF;
+            --off-white: #CFCFEA;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--white);
+            color: var(--dark-charcoal);
+            line-height: 1.6;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 4rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dark-charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover { opacity: 0.6; }
+
+        .connect-btn {
+            background-color: var(--sage-green);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .connect-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(62, 81, 62, 0.3);
+        }
+
+        .arrow-icon {
+            font-size: 1.2rem;
+            transform: rotate(45deg);
+        }
+
+        /* Page content */
+        .page-section {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 5rem 4rem 6rem;
+        }
+
+        .page-header {
+            margin-bottom: 3.5rem;
+        }
+
+        .page-header h1 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            letter-spacing: -0.03em;
+            color: var(--dark-charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header .subtitle {
+            font-size: 1.2rem;
+            color: var(--olive-brown);
+            font-weight: 500;
+        }
+
+        /* Lab Notes scattered cards */
+        .ln-feed {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.75rem;
+            align-items: flex-start;
+            padding: 0.5rem 0 2rem;
+        }
+
+        .ln-card {
+            width: 230px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.4rem 1.6rem;
+            text-decoration: none;
+            display: block;
+            box-shadow: 0 3px 14px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.04);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border-top: 3px solid var(--sage-green);
+        }
+
+        .ln-card:nth-child(1) { transform: rotate(-2deg);   border-top-color: #A8B5A2; }
+        .ln-card:nth-child(2) { transform: rotate(1.5deg);  border-top-color: #CFCFEA; }
+        .ln-card:nth-child(3) { transform: rotate(-1deg);   border-top-color: #C5D8C5; }
+        .ln-card:nth-child(4) { transform: rotate(2deg);    border-top-color: #EAD9CF; }
+        .ln-card:nth-child(5) { transform: rotate(-1.5deg); border-top-color: #A8B5A2; }
+        .ln-card:nth-child(6) { transform: rotate(1deg);    border-top-color: #D4C9BB; }
+        .ln-card:nth-child(7) { transform: rotate(-2.5deg); border-top-color: #CFCFEA; }
+
+        .ln-card:hover {
+            transform: rotate(0deg) translateY(-5px);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.11);
+        }
+
+        .ln-card-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--taupe);
+            margin-bottom: 0.6rem;
+        }
+
+        .ln-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--dark-charcoal);
+            line-height: 1.35;
+            margin-bottom: 0.6rem;
+        }
+
+        .ln-card-desc {
+            font-size: 0.82rem;
+            color: var(--olive-brown);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .ln-card-link {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--sage-green);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; flex-wrap: nowrap; }
+            .nav-links { display: none; }
+            .nav-right { gap: 0; }
+            .connect-btn { padding: 0.6rem 1.25rem; font-size: 0.85rem; }
+            .page-section { padding: 3rem 1.5rem 4rem; }
+            .page-header h1 { font-size: 2rem; }
+            .ln-feed { gap: 1.25rem; }
+            .ln-card { width: calc(50% - 0.75rem); }
+        }
+
+        @media (max-width: 480px) {
+            .ln-card { width: 100%; transform: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">KT</a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="index.html">About Me</a></li>
+                <li><a href="index.html#portfolio">Projects</a></li>
+                <li><a href="lab-notes.html">Lab Notes</a></li>
+            </ul>
+            <a href="https://www.linkedin.com/in/xuanwentan/" target="_blank" rel="noopener noreferrer" class="connect-btn">
+                Connect <span class="arrow-icon">→</span>
+            </a>
+        </div>
+    </nav>
+
+    <section class="page-section">
+        <div class="page-header">
+            <h1>lab notes.</h1>
+            <p class="subtitle">T127 Projects</p>
+        </div>
+
+        <div class="ln-feed">
+            <a href="reflection-1.html" class="ln-card">
+                <div class="ln-card-tag">Reflection 01</div>
+                <div class="ln-card-title">Personal Learning Goals &amp; Initial Project Considerations</div>
+                <p class="ln-card-desc">My hopes, learning goals, and early thinking about a project of interest as I begin T127.</p>
+                <div class="ln-card-link">Read →</div>
+            </a>
+
+            <a href="project-1.html" class="ln-card">
+                <div class="ln-card-tag">Portfolio Post 01</div>
+                <div class="ln-card-title">Meet the Learners Where They Are</div>
+                <p class="ln-card-desc">On learner-centered design, the curse of knowledge, and scaffolding through constructivism.</p>
+                <div class="ln-card-link">Read →</div>
+            </a>
+
+            <a href="reflection-2.html" class="ln-card">
+                <div class="ln-card-tag">Reflection 02</div>
+                <div class="ln-card-title">Design Frameworks</div>
+                <p class="ln-card-desc">On backward design, ADDIE, equity, formative assessment, and the cognitive apprenticeship.</p>
+                <div class="ln-card-link">Read →</div>
+            </a>
+
+            <a href="project-3.html" class="ln-card">
+                <div class="ln-card-tag">Capstone Product</div>
+                <div class="ln-card-title">Designing for Transfer: Session 3 of the LEAP E-Module</div>
+                <p class="ln-card-desc">How I designed Session 3 on Canvas and how my team built a cohesive course that moves learners toward real application.</p>
+                <div class="ln-card-link">View →</div>
+            </a>
+
+            <a href="reflection-4.html" class="ln-card">
+                <div class="ln-card-tag">Project 04</div>
+                <div class="ln-card-title">Reflective Portfolio Post #4</div>
+                <p class="ln-card-desc">On bridging execution and intentional communication — what building the LEAP module taught me about design rationale, team collaboration, and delivering with purpose.</p>
+                <div class="ln-card-link">View →</div>
+            </a>
+
+            <a href="reflection-final.html" class="ln-card">
+                <div class="ln-card-tag">Final Reflection</div>
+                <div class="ln-card-title">Looking Back, Looking Forward</div>
+                <p class="ln-card-desc">On connecting theory, practice, and reflection — the values, questions, and responsibilities I want to carry into my future work in learning design.</p>
+                <div class="ln-card-link">Read →</div>
+            </a>
+
+            <a href="capstone-analysis.html" class="ln-card">
+                <div class="ln-card-tag">Capstone Analysis</div>
+                <div class="ln-card-title">Designing for Transfer: An Analysis of the LEAP Capstone</div>
+                <p class="ln-card-desc">How ADDIE, backward design, UDL, and learning theory shaped Module 3 of the "AI and Productive Struggle" Canvas course.</p>
+                <div class="ln-card-link">Read →</div>
+            </a>
+        </div>
+    </section>
+</body>
+</html>
