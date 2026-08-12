@@ -6,7 +6,7 @@
     <title>KT - Instructional Designer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,12 +15,13 @@
         }
 
         :root {
-            --sage-green: #3E513E;
-            --dark-charcoal: #2A2C24;
-            --olive-brown: #575A4B;
-            --taupe: #816C61;
-            --white: #FFFFFF;
-            --off-white: #CFCFEA;
+            --ink: #111111;
+            --paper: #FFFFFF;
+            --paper-alt: #F6F5F2;
+            --sage: #3E513E;
+            --sage-soft: rgba(62, 81, 62, 0.08);
+            --line: rgba(17, 17, 17, 0.12);
+            --gray: #6E6E6E;
         }
 
         html {
@@ -28,41 +29,16 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background-color: var(--white);
-            color: var(--dark-charcoal);
+            font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 300;
+            background-color: var(--paper);
+            color: var(--ink);
             line-height: 1.6;
             overflow-x: hidden;
-            cursor: none;
         }
 
-        /* Custom cursor */
-        .cursor-emoji {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 48px;
-            height: 48px;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: transform 0.15s ease;
-            user-select: none;
-        }
-
-        .cursor-emoji img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-
-        .cursor-emoji.hovering {
-            transform: translate(-50%, -50%) scale(1.4);
-        }
-
-        a, button, .dg-card, .keyword-tag, .ln-card, .connect-btn, .logo {
-            cursor: none;
+        button, .dg-card, .keyword-tag {
+            cursor: pointer;
         }
 
         /* Navigation */
@@ -70,92 +46,442 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.25rem 4rem;
+            padding: 1.5rem 4rem;
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+            background: var(--paper);
+            border-bottom: 1px solid var(--line);
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--dark-charcoal);
-            letter-spacing: -0.02em;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: var(--ink);
+            letter-spacing: 0.03em;
             text-decoration: none;
-            cursor: pointer;
         }
 
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 2.5rem;
+            gap: 3rem;
         }
 
         .nav-links {
             display: flex;
-            gap: 3rem;
+            gap: 2.75rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--dark-charcoal);
+            color: var(--ink);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: opacity 0.3s ease;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            opacity: 0.6;
+            color: var(--sage);
         }
 
         .connect-btn {
-            background-color: var(--sage-green);
-            color: var(--white);
-            padding: 0.75rem 2rem;
-            border-radius: 50px;
+            background-color: var(--ink);
+            color: var(--paper);
+            padding: 0.85rem 2.1rem;
+            border-radius: 2px;
+            border: 1px solid var(--ink);
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            gap: 0.6rem;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
         }
 
         .connect-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(168, 155, 157, 0.3);
+            background-color: var(--sage);
+            border-color: var(--sage);
         }
 
         .arrow-icon {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transform: rotate(45deg);
+        }
+
+        /* About Me nav dropdown */
+        .nav-item.dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            padding-top: 1.25rem;
+            margin: 0;
+            min-width: 320px;
+            list-style: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(4px);
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+            z-index: 200;
+        }
+
+        .nav-item.dropdown:hover .dropdown-menu,
+        .nav-item.dropdown:focus-within .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu-inner {
+            list-style: none;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            box-shadow: 0 20px 48px rgba(17, 17, 17, 0.1);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 1.1rem 1.5rem;
+            color: var(--ink);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            white-space: nowrap;
+            border-bottom: 1px solid var(--line);
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .dropdown-menu li:last-child a {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--paper-alt);
+            color: var(--sage);
         }
 
         /* Hero Section */
         .hero-section {
             display: grid;
-            grid-template-columns: 55% 45%;
-            min-height: calc(100vh - 88px);
+            grid-template-columns: 58% 42%;
+            min-height: calc(100vh - 89px);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5rem 5rem 5rem 5rem;
+            border-right: 1px solid var(--line);
+        }
+
+        .hero-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+        }
+
+        .hero-eyebrow {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 1.75rem;
+        }
+
+        .hero-name {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 4.6rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: var(--ink);
+            line-height: 1.05;
+            letter-spacing: 0.01em;
+            margin-bottom: 2rem;
+        }
+
+        .hero-statement {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: #3F3F3F;
+            line-height: 1.9;
+            max-width: 460px;
+        }
+
+        .photo-frame {
+            width: 440px;
+            -webkit-mask-image: radial-gradient(ellipse 62% 68% at 50% 40%, #000 55%, transparent 100%);
+                    mask-image: radial-gradient(ellipse 62% 68% at 50% 40%, #000 55%, transparent 100%);
+            -webkit-mask-repeat: no-repeat;
+                    mask-repeat: no-repeat;
+            transition: transform 0.7s ease;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.025);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        /* Projects Section */
+        .lab-notes-section {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 6rem 4rem;
+        }
+
+        .lab-notes-header {
+            margin-bottom: 3.5rem;
+        }
+
+        .lab-notes-header h2 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 2.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+        }
+
+        .lab-notes-header .subtitle {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: var(--gray);
+        }
+
+        /* Keyword filter tabs */
+        .keyword-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.25rem;
+            margin-top: 2.5rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .keyword-tag {
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            border-radius: 0;
+            padding: 0 0 1rem 0;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray);
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .keyword-tag:hover {
+            color: var(--ink);
+        }
+
+        .keyword-tag.active {
+            color: var(--ink);
+            border-bottom-color: var(--sage);
+        }
+
+        /* Project cards */
+        .dg-feed {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .dg-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 0;
+            overflow: hidden;
+            text-decoration: none;
+            transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
+        }
+
+        .dg-card:hover {
+            border-color: var(--ink);
+            box-shadow: 0 24px 56px rgba(17, 17, 17, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .dg-card-featured {
+            grid-column: 1 / -1;
+            flex-direction: row;
+            min-height: 300px;
+        }
+
+        .dg-card-featured .dg-card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3.5rem;
+            flex: 1;
+        }
+
+        .dg-card-featured .dg-card-image {
+            width: 42%;
+            flex-shrink: 0;
+            aspect-ratio: unset;
+            order: 1;
+            height: auto;
+        }
+
+        .dg-card-featured .dg-card-title {
+            font-size: 2.1rem;
+        }
+
+        .dg-card-featured .dg-card-desc {
+            font-size: 1rem;
+            max-width: 480px;
+        }
+
+        .dg-featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--sage);
+            background: none;
+            border: 1px solid var(--sage);
+            padding: 0.35rem 0.85rem;
+            border-radius: 0;
+            margin-bottom: 1.25rem;
+            width: fit-content;
+        }
+
+        .dg-card-tag {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 0.9rem;
+        }
+
+        .dg-card-title {
+            font-family: 'Bodoni Moda', serif;
+            font-weight: 500;
+            font-size: 1.5rem;
+            color: var(--ink);
+            line-height: 1.3;
+            margin-bottom: 0.9rem;
+        }
+
+        .dg-card-desc {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: #454545;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .dg-card-link {
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.25s ease;
+        }
+
+        .dg-card-link span {
+            transition: transform 0.25s ease;
+        }
+
+        .dg-card:hover .dg-card-link {
+            color: var(--sage);
+        }
+
+        .dg-card:hover .dg-card-link span {
+            transform: translateX(5px);
+        }
+
+        .dg-card-body {
+            padding: 2.25rem;
+            flex: 1;
+        }
+
+        .dg-card-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: var(--paper-alt);
+            overflow: hidden;
+            order: -1;
+        }
+
+        .dg-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .dg-card:hover .dg-card-image img {
+            transform: scale(1.04);
+        }
+
+        .dg-card-image--pdf {
             position: relative;
+            overflow: hidden;
         }
 
-        .hero-headline {
-            font-family: 'Playfair Display', serif;
-            font-size: 90px;
-            line-height: 160px;
-            font-weight: 400;
-            color: var(--dark-charcoal);
-            max-width: 1200px;
-            margin-bottom: 3rem;
-            letter-spacing: -0.02em;
+        .dg-card-image--pdf iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
         }
 
-        /* Tablet Mockup */
+        .dg-card-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #BDBDBD;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        /* Tablet asset (hidden, kept for future use) */
         .tablet-container {
             position: relative;
             width: 100%;
@@ -170,7 +496,7 @@
             left: -4rem;
             width: 500px;
             height: 300px;
-            background-color: var(--sage-green);
+            background-color: var(--sage);
             border-radius: 20px;
             z-index: 1;
         }
@@ -178,7 +504,7 @@
         .tablet {
             position: relative;
             z-index: 2;
-            background-color: var(--dark-charcoal);
+            background-color: var(--ink);
             border-radius: 20px;
             padding: 1.5rem;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -216,7 +542,6 @@
             justify-content: center;
             gap: 1rem;
             transition: all 0.3s ease;
-            cursor: pointer;
         }
 
         .tool-icon:hover {
@@ -226,453 +551,25 @@
 
         .tool-icon-symbol {
             font-size: 2.5rem;
-            color: var(--white);
+            color: var(--paper);
         }
 
         .tool-icon-name {
             font-size: 0.85rem;
-            color: var(--white);
+            color: var(--paper);
             text-align: center;
             font-weight: 600;
         }
 
-        /* Responsive Design */
+        /* ── Responsive ── */
         @media (max-width: 1200px) {
-            .hero-headline {
-                font-size: 64px;
-                line-height: 100px;
-            }
-
             nav {
-                padding: 2rem;
+                padding: 1.5rem 2rem;
             }
 
-            .hero-section {
-                padding: 2rem;
+            .hero-name {
+                font-size: 3.4rem;
             }
-        }
-
-        @media (max-width: 768px) {
-            .hero-headline {
-                font-size: 48px;
-                line-height: 72px;
-            }
-        }
-
-        /* About Me Section */
-        .content-section {
-            max-width: 1600px;
-            margin: 8rem auto 4rem;
-            padding: 4rem;
-        }
-
-        .content-section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            color: var(--dark-charcoal);
-        }
-
-        .content-section p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--olive-brown);
-            max-width: 800px;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        /* Lab Notes Section */
-        .lab-notes-section {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 4rem;
-        }
-
-        .lab-notes-header {
-            margin-bottom: 3rem;
-        }
-
-        .lab-notes-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: var(--dark-charcoal);
-            margin-bottom: 0.5rem;
-        }
-
-        .lab-notes-header .subtitle {
-            font-size: 1.2rem;
-            color: var(--olive-brown);
-            font-weight: 500;
-        }
-
-        .agenda-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            margin-top: 1rem;
-            padding: 0.45rem 1.1rem;
-            background-color: #F5F4EF;
-            color: var(--sage-green);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
-            border: 1.5px solid #C5D8C5;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-        }
-
-        .agenda-btn:hover {
-            background-color: #C5D8C5;
-            transform: translateY(-1px);
-        }
-
-        /* ── Keyword filter tags ── */
-        .keyword-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 1.25rem;
-        }
-
-        .keyword-tag {
-            background: none;
-            border: 1.5px solid #D4CFC9;
-            border-radius: 50px;
-            padding: 0.4rem 1.1rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--olive-brown);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .keyword-tag:hover {
-            border-color: var(--dark-charcoal);
-            color: var(--dark-charcoal);
-        }
-
-        .keyword-tag.active {
-            background-color: var(--dark-charcoal);
-            border-color: var(--dark-charcoal);
-            color: #fff;
-        }
-
-        /* ── Digital Garden: Projects feed ── */
-        .dg-feed {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .dg-card {
-            display: flex;
-            flex-direction: column;
-            background: #fff;
-            border-radius: 18px;
-            overflow: hidden;
-            text-decoration: none;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
-        }
-
-        .dg-card:hover {
-            box-shadow: 0 8px 28px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.05);
-            transform: translateY(-4px);
-        }
-
-        /* Featured card: full-width horizontal layout */
-        .dg-card-featured {
-            grid-column: 1 / -1;
-            flex-direction: row;
-            min-height: 300px;
-        }
-
-        .dg-card-featured .dg-card-body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 3rem 3rem;
-            flex: 1;
-        }
-
-        .dg-card-featured .dg-card-image {
-            width: 42%;
-            flex-shrink: 0;
-            aspect-ratio: unset;
-            order: 1;
-            height: auto;
-        }
-
-        .dg-card-featured .dg-card-title {
-            font-size: 2rem;
-        }
-
-        .dg-card-featured .dg-card-desc {
-            font-size: 1rem;
-            max-width: 480px;
-        }
-
-        .dg-card-featured:hover {
-            transform: translateY(-8px) scale(1.015);
-            box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07);
-        }
-
-        .dg-featured-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--sage-green);
-            background: rgba(62,81,62,0.08);
-            padding: 0.3rem 0.75rem;
-            border-radius: 50px;
-            margin-bottom: 1rem;
-            width: fit-content;
-        }
-
-        .dg-card-tag {
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--taupe);
-            margin-bottom: 0.75rem;
-        }
-
-        .dg-card-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.45rem;
-            color: var(--dark-charcoal);
-            line-height: 1.3;
-            margin-bottom: 0.75rem;
-        }
-
-        .dg-card-desc {
-            font-size: 0.95rem;
-            color: var(--olive-brown);
-            line-height: 1.75;
-            margin-bottom: 1.25rem;
-        }
-
-        .dg-card-link {
-            font-size: 0.88rem;
-            font-weight: 700;
-            color: var(--dark-charcoal);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            letter-spacing: 0.03em;
-        }
-
-        .dg-card-link span {
-            transition: transform 0.2s ease;
-        }
-
-        .dg-card:hover .dg-card-link span {
-            transform: translateX(5px);
-        }
-
-        .dg-card-body {
-            padding: 2rem;
-            flex: 1;
-        }
-
-        .dg-card-image {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background-color: #F0EFEA;
-            overflow: hidden;
-            order: -1;
-        }
-
-        .dg-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.4s ease;
-        }
-
-        .dg-card:hover .dg-card-image img {
-            transform: scale(1.04);
-        }
-
-        .dg-card-image--pdf {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .dg-card-image--pdf iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            pointer-events: none;
-        }
-
-        .dg-card-image-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #BDB8B0;
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-        }
-
-        /* ── Lab Notes scattered cards ── */
-        .ln-feed {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.75rem;
-            align-items: flex-start;
-            padding: 0.5rem 0 2rem;
-        }
-
-        .ln-card {
-            width: 230px;
-            background: #fff;
-            border-radius: 12px;
-            padding: 1.4rem 1.6rem;
-            text-decoration: none;
-            display: block;
-            box-shadow: 0 3px 14px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.04);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            border-top: 3px solid var(--sage-green);
-        }
-
-        .ln-card:nth-child(1) { transform: rotate(-2deg);   border-top-color: #A8B5A2; }
-        .ln-card:nth-child(2) { transform: rotate(1.5deg);  border-top-color: #CFCFEA; }
-        .ln-card:nth-child(3) { transform: rotate(-1deg);   border-top-color: #C5D8C5; }
-        .ln-card:nth-child(4) { transform: rotate(2deg);    border-top-color: #EAD9CF; }
-        .ln-card:nth-child(5) { transform: rotate(-1.5deg); border-top-color: #A8B5A2; }
-        .ln-card:nth-child(6) { transform: rotate(1deg);   border-top-color: #D4C9BB; }
-
-        .ln-card:hover {
-            transform: rotate(0deg) translateY(-5px);
-            box-shadow: 0 10px 28px rgba(0,0,0,0.11);
-        }
-
-        .ln-card-tag {
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--taupe);
-            margin-bottom: 0.6rem;
-        }
-
-        .ln-card-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.05rem;
-            color: var(--dark-charcoal);
-            line-height: 1.35;
-            margin-bottom: 0.6rem;
-        }
-
-        .ln-card-desc {
-            font-size: 0.82rem;
-            color: var(--olive-brown);
-            line-height: 1.7;
-            margin-bottom: 1rem;
-        }
-
-        .ln-card-link {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--sage-green);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        /* ── Lab Notes grid (unchanged) ── */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        .project-card {
-            background-color: var(--off-white);
-            border-radius: 20px;
-            padding: 2.5rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: block;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background-color: var(--sage-green);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .project-number {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--sage-green);
-            margin-bottom: 1rem;
-        }
-
-        .project-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--dark-charcoal);
-            margin-bottom: 1rem;
-        }
-
-        .project-card p {
-            font-size: 1rem;
-            color: var(--olive-brown);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--sage-green);
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .project-link span {
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .project-link span {
-            transform: translateX(5px);
         }
 
         @media (max-width: 900px) {
@@ -690,26 +587,13 @@
                 aspect-ratio: 16/9;
                 order: -1;
             }
-        }
 
-        /* ── Responsive: tablet + mobile ── */
-
-        /* Disable emoji cursor on touch devices */
-        @media (hover: none) {
-            .cursor-emoji { display: none; }
-            body, a, button, .dg-card, .keyword-tag, .ln-card, .connect-btn, .logo {
-                cursor: auto;
-            }
-        }
-
-        @media (max-width: 900px) {
             .lab-notes-section {
-                padding: 3rem 2rem;
+                padding: 4rem 2rem;
             }
         }
 
         @media (max-width: 768px) {
-            /* Nav */
             nav {
                 padding: 1rem 1.5rem;
                 flex-wrap: nowrap;
@@ -724,33 +608,33 @@
             }
 
             .connect-btn {
-                padding: 0.6rem 1.25rem;
-                font-size: 0.85rem;
+                padding: 0.65rem 1.25rem;
+                font-size: 0.7rem;
             }
 
-            /* Hero: stack vertically */
             .hero-section {
                 grid-template-columns: 1fr;
                 min-height: unset;
             }
 
+            .hero-left {
+                order: 2;
+                padding: 2.5rem 1.5rem 3rem;
+                border-right: none;
+                border-top: 1px solid var(--line);
+            }
+
             .hero-right {
-                order: -1;
+                order: 1;
                 padding: 2.5rem 1.5rem 0;
-                justify-content: flex-start;
             }
 
             .photo-frame {
-                width: 180px;
-                transform: rotate(-2.5deg) translateY(8px);
+                width: 200px;
             }
 
             .photo-frame img {
-                height: 200px;
-            }
-
-            .hero-left {
-                padding: 2rem 1.5rem 3rem;
+                height: 250px;
             }
 
             .hero-name {
@@ -760,14 +644,8 @@
             .hero-statement {
                 font-size: 1rem;
                 max-width: 100%;
-                margin-bottom: 2rem;
             }
 
-            .hero-links {
-                max-width: 100%;
-            }
-
-            /* Projects section */
             .lab-notes-section {
                 padding: 3rem 1.5rem;
             }
@@ -777,21 +655,7 @@
             }
 
             .lab-notes-header .subtitle {
-                font-size: 1rem;
-            }
-
-            /* Lab notes cards: 2-per-row on tablet */
-            .ln-feed {
-                gap: 1.25rem;
-            }
-
-            .ln-card {
-                width: calc(50% - 0.75rem);
-            }
-
-            /* Projects grid */
-            .projects-grid {
-                grid-template-columns: 1fr;
+                font-size: 0.95rem;
             }
         }
 
@@ -801,145 +665,39 @@
             }
 
             .photo-frame {
-                width: 150px;
+                width: 160px;
             }
 
             .photo-frame img {
-                height: 165px;
-            }
-
-            /* Lab notes: full width on phone */
-            .ln-card {
-                width: 100%;
-                transform: none !important;
+                height: 200px;
             }
 
             .keyword-tags {
-                gap: 0.4rem;
-            }
-
-            .keyword-tag {
-                font-size: 0.78rem;
-                padding: 0.35rem 0.85rem;
+                gap: 1.25rem;
             }
 
             .dg-card-title {
                 font-size: 1.25rem;
             }
         }
-
-        /* ── About Me layout ── */
-        .hero-left {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 5rem 4rem 5rem 5rem;
-            background: #fff;
-        }
-
-        .hero-right {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #fff;
-            padding: 2rem;
-        }
-
-        .photo-frame {
-            width: 300px;
-            background: #fff;
-            padding: 12px 12px 44px 12px;
-            box-shadow: 0 10px 36px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.07);
-            transform: rotate(-3.5deg) translateY(16px);
-            transition: transform 0.45s ease, box-shadow 0.45s ease;
-        }
-
-        .photo-frame:hover {
-            transform: rotate(-1deg) translateY(4px);
-            box-shadow: 0 18px 52px rgba(0,0,0,0.17), 0 4px 12px rgba(0,0,0,0.08);
-        }
-
-        .photo-frame img {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            object-position: center top;
-            display: block;
-        }
-
-        .hero-eyebrow {
-            display: block;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--sage-green);
-            margin-bottom: 1.2rem;
-        }
-
-        .hero-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--dark-charcoal);
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-statement {
-            font-size: 1.1rem;
-            color: var(--olive-brown);
-            line-height: 1.85;
-            max-width: 480px;
-            margin-bottom: 3rem;
-        }
-
-        .hero-links {
-            display: flex;
-            flex-direction: column;
-            border-top: 1px solid #E4E0DB;
-            max-width: 480px;
-        }
-
-        .hero-link {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            border-bottom: 1px solid #E4E0DB;
-            text-decoration: none;
-            color: var(--dark-charcoal);
-            font-weight: 600;
-            font-size: 0.92rem;
-            transition: color 0.2s ease, padding-left 0.2s ease;
-        }
-
-        .hero-link:hover {
-            color: var(--sage-green);
-            padding-left: 0.5rem;
-        }
-
-        .hero-link-arrow {
-            color: var(--sage-green);
-            font-size: 1rem;
-            flex-shrink: 0;
-            transition: transform 0.2s ease;
-        }
-
-        .hero-link:hover .hero-link-arrow {
-            transform: translateX(4px);
-        }
     </style>
 </head>
 <body>
-    <div class="cursor-emoji"><img src="screenshots/canvas Leap/MM.webp" alt=""></div>
     <!-- Navigation -->
     <nav>
         <a href="#home" class="logo">KT</a>
         <div class="nav-right">
             <ul class="nav-links">
-                <li><a href="#home">About Me</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#home">About Me</a>
+                    <div class="dropdown-menu">
+                        <ul class="dropdown-menu-inner">
+                            <li><a href="view-of-learning.html">My View of Learning</a></li>
+                            <li><a href="from-learning-to-design.html">From Learning Science to Design Practice</a></li>
+                            <li><a href="theoretical-lenses.html">Theoretical Lenses I Use</a></li>
+                        </ul>
+                    </div>
+                </li>
                 <li><a href="#portfolio">Projects</a></li>
                 <li><a href="lab-notes.html">Lab Notes</a></li>
             </ul>
@@ -974,25 +732,11 @@
             <span class="hero-eyebrow">Learning Experience Designer</span>
             <h1 class="hero-name">Kristine Tan</h1>
             <p class="hero-statement">I leverage learning science and developmental psychology, with a focus on andragogy, to design engaging learning experiences that drive behavioral change and measurable performance growth.</p>
-            <nav class="hero-links">
-                <a href="view-of-learning.html" class="hero-link">
-                    My View of Learning
-                    <span class="hero-link-arrow">→</span>
-                </a>
-                <a href="from-learning-to-design.html" class="hero-link">
-                    From Learning Science to Design Practice
-                    <span class="hero-link-arrow">→</span>
-                </a>
-                <a href="theoretical-lenses.html" class="hero-link">
-                    Theoretical Lenses I Use
-                    <span class="hero-link-arrow">→</span>
-                </a>
-            </nav>
         </div>
 
         <div class="hero-right">
             <div class="photo-frame">
-                <img src="picture of me.png" alt="Kristine Tan">
+                <img src="firstphoto.png" alt="Kristine Tan">
             </div>
         </div>
 
@@ -1001,7 +745,7 @@
     <!-- Projects Section -->
     <section id="portfolio" class="lab-notes-section">
         <div class="lab-notes-header">
-            <h2 style="font-family:'Inter',sans-serif; font-weight:700; letter-spacing:-0.03em;">projects.</h2>
+            <h2>Projects</h2>
             <p class="subtitle">Selected work in instructional design &amp; learning experience</p>
             <div class="keyword-tags">
                 <button class="keyword-tag active" onclick="filterProjects('all', this)">All</button>
@@ -1076,19 +820,6 @@
                 card.style.display = (category === 'all' || card.dataset.category === category) ? '' : 'none';
             });
         }
-
-        // Mountain emoji cursor
-        const cursorEmoji = document.querySelector('.cursor-emoji');
-
-        document.addEventListener('mousemove', (e) => {
-            cursorEmoji.style.left = e.clientX + 'px';
-            cursorEmoji.style.top = e.clientY + 'px';
-        });
-
-        document.querySelectorAll('a, button, .dg-card, .keyword-tag, .ln-card').forEach(el => {
-            el.addEventListener('mouseenter', () => cursorEmoji.classList.add('hovering'));
-            el.addEventListener('mouseleave', () => cursorEmoji.classList.remove('hovering'));
-        });
     </script>
 </body>
 </html>

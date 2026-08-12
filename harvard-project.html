@@ -154,15 +154,73 @@
         .img-single img { width: 65%; border-radius: 12px; display: block; }
         .img-row { display: flex; gap: 1rem; }
         .img-row img { width: 50%; border-radius: 12px; object-fit: cover; }
-        .img-before-after { display: flex; gap: 1rem; align-items: flex-start; }
-        .ba-col { flex: 1; display: flex; flex-direction: column; gap: 0.75rem; }
-        .ba-label {
-            font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 0.08em; margin: 0;
+
+        /* Zoomable images */
+        .zoomable {
+            cursor: zoom-in;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .ba-label.before { color: var(--taupe); }
-        .ba-label.after  { color: var(--sage-green); }
-        .ba-col img { width: 100%; border-radius: 10px; }
+        .zoomable:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 28px rgba(42, 44, 36, 0.18);
+        }
+
+        /* ---- Before / After comparison ---- */
+        .img-before-after {
+            display: flex; gap: 1.25rem; align-items: stretch; position: relative;
+        }
+        .ba-col {
+            flex: 1; display: flex; flex-direction: column; gap: 0.9rem;
+            padding: 1.25rem; border-radius: 16px;
+        }
+        .ba-col.before-frame {
+            border: 2px dashed var(--taupe);
+            background: rgba(129, 108, 97, 0.07);
+        }
+        .ba-col.after-frame {
+            border: 2px solid var(--sage-green);
+            background: rgba(62, 81, 62, 0.07);
+            box-shadow: 0 10px 28px rgba(62, 81, 62, 0.14);
+        }
+        .ba-label {
+            display: inline-flex; align-self: flex-start; align-items: center; gap: 0.4rem;
+            font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; margin: 0; padding: 0.4rem 1rem; border-radius: 50px;
+            color: var(--white);
+        }
+        .ba-label.before { background: var(--taupe); }
+        .ba-label.after  { background: var(--sage-green); }
+        .ba-col img { width: 100%; border-radius: 10px; display: block; }
+        .ba-divider {
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; align-self: center;
+            width: 40px; height: 40px; border-radius: 50%;
+            background: var(--dark-charcoal); color: var(--white);
+            font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.9rem;
+        }
+
+        /* ---- Lightbox ---- */
+        .lightbox {
+            display: none; position: fixed; inset: 0; z-index: 999;
+            align-items: center; justify-content: center; padding: 3rem;
+            background: rgba(20, 20, 15, 0.92); cursor: zoom-out;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox-img {
+            max-width: 90vw; max-height: 85vh; border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            cursor: zoom-in; transition: transform 0.3s ease;
+        }
+        .lightbox-img.zoomed { transform: scale(1.5); cursor: zoom-out; }
+        .lightbox-close {
+            position: absolute; top: 1.5rem; right: 2rem;
+            background: none; border: none; color: var(--white);
+            font-size: 2rem; line-height: 1; cursor: pointer;
+        }
+        .lightbox-hint {
+            position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+            color: var(--off-white); font-size: 0.85rem; opacity: 0.7;
+        }
 
         /* ---- OUTCOMES ---- */
         .outcomes-section {
@@ -192,6 +250,7 @@
             .img-row { flex-direction: column; }
             .img-row img { width: 100%; }
             .img-before-after { flex-direction: column; }
+            .ba-divider { margin: -0.25rem auto; }
             .outcome-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -259,7 +318,7 @@
                     <li>Prioritized content based on student impact</li>
                 </ul>
                 <div class="img-single">
-                    <img src="screenshots/need assessment SOCO.png" alt="SOCO Needs Assessment">
+                    <img class="zoomable" src="screenshots/need assessment SOCO.png" alt="SOCO Needs Assessment">
                 </div>
             </div>
         </div>
@@ -279,8 +338,8 @@
                     <li>Recorded step-by-step training videos</li>
                 </ul>
                 <div class="img-row">
-                    <img src="screenshots/SOCO advisor video.png" alt="SOCO Advisor Video">
-                    <img src="screenshots/SOCO budget page.png" alt="SOCO Budget Page">
+                    <img class="zoomable" src="screenshots/SOCO advisor video.png" alt="SOCO Advisor Video">
+                    <img class="zoomable" src="screenshots/SOCO budget page.png" alt="SOCO Budget Page">
                 </div>
             </div>
         </div>
@@ -299,14 +358,15 @@
                     <li>Highlighted key policies aligned with student engagement priorities</li>
                 </ul>
                 <div class="img-before-after">
-                    <div class="ba-col">
-                        <p class="ba-label before">Before</p>
-                        <img src="screenshots/before 1.png" alt="Before — Version 1">
-                        <img src="screenshots/before 2.png" alt="Before — Version 2">
+                    <div class="ba-col before-frame">
+                        <p class="ba-label before">✕ Before</p>
+                        <img class="zoomable" src="screenshots/before 1.png" alt="Before — Version 1">
+                        <img class="zoomable" src="screenshots/before 2.png" alt="Before — Version 2">
                     </div>
-                    <div class="ba-col">
-                        <p class="ba-label after">After</p>
-                        <img src="screenshots/after.png" alt="After">
+                    <div class="ba-divider">→</div>
+                    <div class="ba-col after-frame">
+                        <p class="ba-label after">✓ After</p>
+                        <img class="zoomable" src="screenshots/after.png" alt="After">
                     </div>
                 </div>
             </div>
@@ -335,6 +395,42 @@
 
 </main>
 
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">✕</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <p class="lightbox-hint">Click image to zoom in/out · Click background or press Esc to close</p>
+</div>
+
+<script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    document.querySelectorAll('.zoomable').forEach(img => {
+        img.addEventListener('click', () => {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightboxImg.classList.remove('zoomed');
+            lightbox.classList.add('active');
+        });
+    });
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightboxImg.classList.remove('zoomed');
+    }
+
+    lightboxImg.addEventListener('click', (e) => {
+        e.stopPropagation();
+        lightboxImg.classList.toggle('zoomed');
+    });
+    lightbox.addEventListener('click', closeLightbox);
+    lightboxClose.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
+</script>
 
 </body>
 </html>
