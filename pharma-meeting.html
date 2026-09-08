@@ -364,6 +364,31 @@
             font-weight: 500;
         }
 
+        /* Work sample launch CTA */
+        .launch-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background-color: var(--sage-green);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 0.9rem 1.9rem;
+            border-radius: 50px;
+            margin-top: 1.75rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .launch-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(62, 81, 62, 0.3);
+        }
+
+        .launch-btn .launch-icon {
+            font-size: 1.05rem;
+        }
+
         @media (max-width: 860px) {
             nav { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
             .nav-links { flex-direction: column; gap: 1rem; text-align: center; }
@@ -394,6 +419,9 @@
             <div class="project-number">E-Learning · Pharmaceutical Leadership</div>
             <h1>Meeting-Design Competencies for New Managers</h1>
             <p class="project-intro">An e-learning program for a Greater Boston pharmaceutical leader, equipping newly promoted managers with frameworks for high-impact meetings and cross-departmental effectiveness.</p>
+            <a href="work-samples/meeting-wise/story.html" target="_blank" rel="noopener noreferrer" class="launch-btn">
+                <span class="launch-icon">▶</span> Launch Work Sample
+            </a>
         </div>
 
         <div class="project-body">
@@ -453,6 +481,10 @@
 
                 <h2>Course Components</h2>
                 <p>[Add course components and screenshots here.]</p>
+
+                <a href="work-samples/meeting-wise/story.html" target="_blank" rel="noopener noreferrer" class="launch-btn">
+                    <span class="launch-icon">▶</span> Launch Work Sample
+                </a>
 
             </div>
 

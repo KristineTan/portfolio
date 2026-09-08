@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Fluency - KT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --sage-green: #3E513E;
+            --dark-charcoal: #2A2C24;
+            --olive-brown: #575A4B;
+            --taupe: #816C61;
+            --white: #FFFFFF;
+            --off-white: #CFCFEA;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--white);
+            color: var(--dark-charcoal);
+            line-height: 1.6;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dark-charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover { opacity: 0.6; }
+
+        .connect-btn {
+            background-color: var(--sage-green);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .connect-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(62, 81, 62, 0.3);
+        }
+
+        .arrow-icon {
+            font-size: 1.2rem;
+            transform: rotate(45deg);
+        }
+
+        .project-page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--sage-green);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-link:hover { opacity: 0.7; }
+
+        .project-header { margin-bottom: 3.5rem; }
+
+        .project-number {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--sage-green);
+            margin-bottom: 1rem;
+        }
+
+        .project-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .project-intro {
+            font-size: 1.3rem;
+            color: var(--olive-brown);
+            line-height: 1.8;
+        }
+
+        /* Two-column layout */
+        .project-body {
+            display: grid;
+            grid-template-columns: 1fr 260px;
+            gap: 3.5rem;
+            align-items: start;
+        }
+
+        .project-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1.25rem;
+            margin-top: 3rem;
+        }
+
+        .project-content h2:first-child { margin-top: 0; }
+
+        .project-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .project-content p {
+            font-size: 1.05rem;
+            color: var(--olive-brown);
+            line-height: 1.9;
+            margin-bottom: 1.4rem;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 1.5rem;
+        }
+
+        .bullet-list li {
+            font-size: 1.05rem;
+            color: var(--olive-brown);
+            line-height: 1.85;
+            padding: 0.5rem 0 0.5rem 1.6rem;
+            position: relative;
+            border-bottom: 1px solid #E8E6E0;
+        }
+
+        .bullet-list li:last-child { border-bottom: none; }
+
+        .bullet-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--sage-green);
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background-color: #F5F4EF;
+            border-radius: 15px;
+            padding: 2rem 2.5rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box .box-label {
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight-box p {
+            color: var(--olive-brown);
+            font-size: 1.05rem;
+            line-height: 1.85;
+            margin-bottom: 0;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--dark-charcoal);
+            margin-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        /* ── Habits of Mind cards ── */
+        .habits-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .habit-card {
+            background: #F5F4EF;
+            border-radius: 14px;
+            padding: 1.5rem 1.1rem;
+            text-align: left;
+        }
+
+        .habit-card .habit-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .habit-card .habit-num {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--taupe);
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        .habit-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .habit-card p {
+            font-size: 0.88rem;
+            color: var(--olive-brown);
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* Placeholder visual blocks (no production screenshots yet) */
+        .project-image {
+            width: 100%;
+            background-color: #F5F4EF;
+            border-radius: 15px;
+            min-height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem 0;
+            color: var(--taupe);
+            font-size: 0.95rem;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .components-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .component-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 0.9rem;
+        }
+
+        /* Sidebar */
+        .project-sidebar {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .sidebar-card {
+            background-color: #F5F4EF;
+            border-radius: 15px;
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-card h4 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--dark-charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-card .spec-group { margin-bottom: 1.25rem; }
+        .sidebar-card .spec-group:last-child { margin-bottom: 0; }
+
+        .sidebar-card .spec-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--taupe);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-card .spec-item {
+            font-size: 0.92rem;
+            color: var(--olive-brown);
+            line-height: 1.9;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.25rem;
+        }
+
+        .tag {
+            background: #fff;
+            border: 1.5px solid #D4CFC9;
+            border-radius: 50px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.8rem;
+            color: var(--olive-brown);
+            font-weight: 500;
+        }
+
+        @media (max-width: 860px) {
+            nav { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
+            .nav-links { flex-direction: column; gap: 1rem; text-align: center; }
+            .project-header h1 { font-size: 2.2rem; }
+            .project-page { padding: 2rem 1.5rem; }
+            .project-body { grid-template-columns: 1fr; }
+            .project-sidebar { position: static; }
+            .habits-grid { grid-template-columns: 1fr 1fr; }
+            .components-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .habits-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">KT</a>
+        <ul class="nav-links">
+            <li><a href="index.html">About Me</a></li>
+            <li><a href="index.html#portfolio">Projects</a></li>
+            <li><a href="lab-notes.html">Lab Notes</a></li>
+        </ul>
+        <a href="https://www.linkedin.com/in/xuanwentan/" target="_blank" rel="noopener noreferrer" class="connect-btn">
+            Connect <span class="arrow-icon">→</span>
+        </a>
+    </nav>
+
+    <main class="project-page">
+        <a href="index.html#portfolio" class="back-link">← Back to Projects</a>
+
+        <div class="project-header">
+            <div class="project-number">E-Learning · Professional Learning / LXP</div>
+            <h1>Data Fluency</h1>
+            <p class="project-intro">A professional learning experience delivered through the organization's LXP, building the habits of mind and workplace practices that help people ask better questions, use evidence responsibly, communicate clearly, evaluate claims critically, and make sound decisions when the available information is incomplete or uncertain.</p>
+        </div>
+
+        <div class="project-body">
+
+            <!-- Main content -->
+            <div class="project-content">
+
+                <h2>Project Overview</h2>
+                <p>Most employees are not analysts, yet nearly all of them are expected to reason with data — reading a dashboard before a meeting, weighing a claim in a vendor pitch, or deciding what to do next when a report only tells part of the story. Data Fluency was designed to close that gap: not a statistics course, but a workplace-reasoning course that treats data as something to think with rather than something to fear.</p>
+                <p>The module lives on the organization's Learning Experience Platform (LXP) as a self-paced offering, so learners across functions and seniority levels can move through it on their own schedule and return to specific habits when a real decision calls for them.</p>
+                <p>Rather than teaching tools or formulas, the course centers on five durable habits of mind — asking, evidencing, communicating, evaluating, and deciding — each grounded in workplace scenarios so the skills transfer directly to the ambiguous, incomplete-information situations learners actually face.</p>
+
+                <div class="highlight-box">
+                    <p class="box-label">Design Premise</p>
+                    <p>Data fluency is a thinking practice, not a technical skill. The course assumes no background in statistics or analytics and instead builds judgment: knowing what question to ask, how much confidence a piece of evidence deserves, and how to act when certainty isn't available.</p>
+                </div>
+
+                <h2>Learner Persona</h2>
+                <p>Cross-functional professionals — in operations, marketing, HR, customer success, and management — who regularly consume data (reports, dashboards, metrics decks) but do not produce or analyze it themselves. Comfort with numbers varies widely; what they share is the need to make a call, communicate a recommendation, or push back on a claim using evidence they didn't generate.</p>
+
+                <p class="section-label">Adult Learning Theory principles applied:</p>
+                <ul class="bullet-list">
+                    <li>Problem-centered, anchored in real workplace decisions rather than abstract statistics</li>
+                    <li>Relevance to immediate role responsibilities</li>
+                    <li>Self-directed pacing appropriate for a working-professional audience</li>
+                    <li>Experience as a resource — learners' own past decisions become case material</li>
+                    <li>Low-stakes practice before any real-world application</li>
+                </ul>
+
+                <h2>The Five Habits of Mind</h2>
+                <p>Learning goals are organized around five habits, each written as a workplace capability rather than a course topic:</p>
+
+                <div class="habits-grid">
+                    <div class="habit-card">
+                        <div class="habit-icon">❓</div>
+                        <div class="habit-num">Habit 01</div>
+                        <h4>Ask Better Questions</h4>
+                        <p>Frame the real question before reaching for data, and notice when a question is unanswerable with what's available.</p>
+                    </div>
+                    <div class="habit-card">
+                        <div class="habit-icon">📊</div>
+                        <div class="habit-num">Habit 02</div>
+                        <h4>Use Evidence Responsibly</h4>
+                        <p>Weigh a source's reliability and limits, and avoid overstating what a number can actually support.</p>
+                    </div>
+                    <div class="habit-card">
+                        <div class="habit-icon">💬</div>
+                        <div class="habit-num">Habit 03</div>
+                        <h4>Communicate Clearly</h4>
+                        <p>Translate findings for a non-technical audience without distorting the underlying uncertainty.</p>
+                    </div>
+                    <div class="habit-card">
+                        <div class="habit-icon">🔍</div>
+                        <div class="habit-num">Habit 04</div>
+                        <h4>Evaluate Claims Critically</h4>
+                        <p>Spot common reasoning traps — cherry-picked baselines, correlation read as causation, small samples treated as proof.</p>
+                    </div>
+                    <div class="habit-card">
+                        <div class="habit-icon">⚖️</div>
+                        <div class="habit-num">Habit 05</div>
+                        <h4>Decide Under Uncertainty</h4>
+                        <p>Act on incomplete information by naming what's unknown and choosing proportionate next steps.</p>
+                    </div>
+                </div>
+
+                <h2>Learning Goals</h2>
+                <p>Objectives are written using the revised Bloom's Taxonomy (Bloom, 2001), moving learners from recognition to application in their own work context.</p>
+                <ul class="bullet-list">
+                    <li>Learners will be able to <strong>formulate</strong> a precise question before seeking or reviewing data.</li>
+                    <li>Learners will be able to <strong>assess</strong> the reliability and scope of a piece of evidence before acting on it.</li>
+                    <li>Learners will be able to <strong>communicate</strong> a data-informed recommendation clearly to a non-technical stakeholder.</li>
+                    <li>Learners will be able to <strong>identify</strong> flawed or misleading claims in reports, dashboards, and pitches.</li>
+                    <li>Learners will be able to <strong>justify</strong> a decision made with incomplete information, including what remains unknown.</li>
+                </ul>
+
+                <h2>Design Decisions</h2>
+
+                <h3>1. Scenario-first, not statistics-first</h3>
+                <p>Early stakeholder interviews surfaced a consistent pattern: past "data literacy" trainings had opened with statistical concepts and lost non-analyst learners within the first ten minutes. Data Fluency inverts that sequence — every module opens with a realistic workplace scenario (a misleading metric in a leadership deck, a vendor claim that doesn't hold up, a decision that has to be made before the "right" data arrives) and introduces the underlying habit only as a way to resolve it.</p>
+                <p>This kept the course from feeling like remedial math and instead positioned it as a judgment upgrade — something learners wanted because it made their existing job easier, not because they were being corrected.</p>
+
+                <h3>2. Metacognitive checkpoints instead of quizzes</h3>
+                <p>Rather than testing recall with multiple-choice questions, each module closes with a short reflective checkpoint: learners apply the habit to a decision from their own recent work and articulate their reasoning. This mirrors how the habits are actually used on the job — as an internal check before acting — and produces evidence of transfer that a knowledge quiz cannot.</p>
+
+                <h3>3. Calibrated uncertainty language</h3>
+                <p>Because the course explicitly teaches decision-making under incomplete information, its own content models that stance: scenarios are written with deliberately ambiguous or conflicting evidence, and worked examples show a range of reasonable responses rather than a single "correct" answer. This reduces the risk of learners walking away believing data fluency means certainty, when the actual goal is disciplined reasoning in its absence.</p>
+
+                <h2>Course Structure</h2>
+                <p>The module is organized as five short, self-paced units on the LXP, one per habit of mind, each running 15–20 minutes and closing with a scenario-based checkpoint.</p>
+
+                <div class="components-grid">
+                    <div class="component-col">
+                        <h3 class="component-heading">Unit Flow</h3>
+                        <p>Each unit follows the same rhythm so learners can move quickly once they know the pattern: a short scenario, a brief framework explainer, guided practice, and a reflective checkpoint tied to the learner's own work.</p>
+                        <div class="project-image">Unit Flow Diagram<br>(Scenario → Framework → Practice → Checkpoint)</div>
+                    </div>
+                    <div class="component-col">
+                        <h3 class="component-heading">Sample Scenario Interaction</h3>
+                        <p>Interactive branching scenarios put learners inside a workplace moment — reviewing a metric before a meeting, or pressure-testing a claim in a vendor pitch — and ask them to choose and justify a next step.</p>
+                        <div class="project-image">Branching Scenario Screenshot<br>(placeholder — pending course build)</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="project-sidebar">
+                <div class="sidebar-card">
+                    <h4>Specifications</h4>
+
+                    <div class="spec-group">
+                        <div class="spec-label">My Role</div>
+                        <div class="spec-item">Learning Experience Designer</div>
+                        <div class="spec-item">Instructional Designer</div>
+                    </div>
+
+                    <div class="spec-group">
+                        <div class="spec-label">Context</div>
+                        <div class="spec-item">Corporate / Cross-Functional Professional Development</div>
+                    </div>
+
+                    <div class="spec-group">
+                        <div class="spec-label">Delivery</div>
+                        <div class="spec-item">Self-paced, hosted on LXP</div>
+                    </div>
+
+                    <div class="spec-group">
+                        <div class="spec-label">Tools</div>
+                        <div class="tag-list">
+                            <span class="tag">LXP Authoring</span>
+                            <span class="tag">Articulate Storyline</span>
+                            <span class="tag">Canva</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+</body>
+</html>
