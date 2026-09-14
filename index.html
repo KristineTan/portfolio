@@ -6,7 +6,7 @@
     <title>KT - Instructional Designer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -24,12 +24,17 @@
             --gray: #6E6E6E;
         }
 
+        a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+            outline: 2px solid var(--sage);
+            outline-offset: 2px;
+        }
+
         html {
             scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             font-weight: 300;
             background-color: var(--paper);
             color: var(--ink);
@@ -55,7 +60,7 @@
         }
 
         .logo {
-            font-family: 'Bodoni Moda', serif;
+            font-family: 'Playfair Display', serif;
             font-size: 1.9rem;
             font-weight: 600;
             color: var(--ink);
@@ -90,25 +95,21 @@
         }
 
         .connect-btn {
-            background-color: var(--ink);
+            background-color: var(--sage);
             color: var(--paper);
-            padding: 0.85rem 2.1rem;
-            border-radius: 2px;
-            border: 1px solid var(--ink);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+            gap: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .connect-btn:hover {
-            background-color: var(--sage);
-            border-color: var(--sage);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(62, 81, 62, 0.3);
         }
 
         .arrow-icon {
@@ -207,7 +208,7 @@
         }
 
         .hero-name {
-            font-family: 'Bodoni Moda', serif;
+            font-family: 'Playfair Display', serif;
             font-size: 4.6rem;
             font-weight: 500;
             text-transform: uppercase;
@@ -258,7 +259,7 @@
         }
 
         .lab-notes-header h2 {
-            font-family: 'Bodoni Moda', serif;
+            font-family: 'Playfair Display', serif;
             font-size: 2.75rem;
             font-weight: 500;
             text-transform: uppercase;
@@ -288,7 +289,7 @@
             border-bottom: 2px solid transparent;
             border-radius: 0;
             padding: 0 0 1rem 0;
-            font-family: 'Work Sans', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
@@ -389,7 +390,7 @@
         }
 
         .dg-card-title {
-            font-family: 'Bodoni Moda', serif;
+            font-family: 'Playfair Display', serif;
             font-weight: 500;
             font-size: 1.5rem;
             color: var(--ink);
@@ -736,7 +737,7 @@
 
         <div class="hero-right">
             <div class="photo-frame">
-                <img src="firstphoto.png" alt="Kristine Tan">
+                <img src="picture of me.png" alt="Kristine Tan">
             </div>
         </div>
 
@@ -757,24 +758,36 @@
 
         <div class="dg-feed">
 
-            <!-- Pharma e-learning: Featured full-width card -->
-            <a href="pharma-meeting.html" class="dg-card dg-card-featured" data-category="learning-design">
+            <!-- Meeting Wise -->
+            <a href="pharma-meeting.html" class="dg-card" data-category="learning-design">
+                <div class="dg-card-image">
+                    <img src="MEETING WISE/meeting wise preview.png" alt="Meeting Wise preview" style="width:100%;height:100%;object-fit:cover;display:block;">
+                </div>
                 <div class="dg-card-body">
-                    <div class="dg-featured-badge">★ Featured Project</div>
                     <div class="dg-card-tag">E-Learning / Leadership Development</div>
                     <div class="dg-card-title">Meeting-Design Competencies for New Managers</div>
                     <p class="dg-card-desc">An e-learning program for a Greater Boston pharmaceutical leader, equipping newly promoted managers with frameworks for high-impact meetings and cross-departmental effectiveness. Includes a live, playable Storyline work sample.</p>
                     <div class="dg-card-link">View project <span>→</span></div>
                 </div>
+            </a>
+
+            <!-- Data Fluency -->
+            <a href="data-fluency.html" class="dg-card" data-category="learning-design">
                 <div class="dg-card-image">
-                    <img src="screenshots/MEETING WISE/meeting wise preview.png" alt="Meeting Wise preview" style="width:100%;height:100%;object-fit:contain;display:block;">
+                    <img src="data fluency/Project Preview Cards_data fluency.png" alt="Data Fluency preview" style="width:100%;height:100%;object-fit:cover;display:block;">
+                </div>
+                <div class="dg-card-body">
+                    <div class="dg-card-tag">E-Learning / LXP</div>
+                    <div class="dg-card-title">Data Fluency</div>
+                    <p class="dg-card-desc">A professional learning experience on the organization's LXP, building the habits of mind that help people ask better questions, use evidence responsibly, and decide well under uncertainty.</p>
+                    <div class="dg-card-link">View project <span>→</span></div>
                 </div>
             </a>
 
             <!-- LEAP -->
             <a href="project-3.html" class="dg-card" data-category="learning-design">
                 <div class="dg-card-image">
-                    <img src="screenshots/canvas Leap/leappreview.png" alt="LEAP e-module preview" style="width:100%;height:100%;object-fit:cover;display:block;">
+                    <img src="LEAP/Leap_preview.png" alt="LEAP e-module preview" style="width:100%;height:100%;object-fit:cover;display:block;">
                 </div>
                 <div class="dg-card-body">
                     <div class="dg-card-tag">E-Learning / Canvas</div>
@@ -787,25 +800,12 @@
             <!-- SOCO -->
             <a href="harvard-project.html" class="dg-card" data-category="learning-design">
                 <div class="dg-card-image">
-                    <img src="screenshots/socoreproject-new.png" alt="SOCO website redesign preview" style="width:100%;height:100%;object-fit:cover;display:block;">
+                    <img src="SOCO/soco preview.png" alt="SOCO website redesign preview" style="width:100%;height:100%;object-fit:cover;display:block;">
                 </div>
                 <div class="dg-card-body">
                     <div class="dg-card-tag">UX / Instructional Design</div>
                     <div class="dg-card-title">Harvard College Student Organization Resources Website</div>
                     <p class="dg-card-desc">A resource hub redesigned to help student organizations navigate university systems, funding, and community tools — from needs assessment to UX overhaul.</p>
-                    <div class="dg-card-link">View project <span>→</span></div>
-                </div>
-            </a>
-
-            <!-- Data Fluency -->
-            <a href="data-fluency.html" class="dg-card" data-category="learning-design">
-                <div class="dg-card-image">
-                    <div class="dg-card-image-placeholder">Data Fluency</div>
-                </div>
-                <div class="dg-card-body">
-                    <div class="dg-card-tag">E-Learning / LXP</div>
-                    <div class="dg-card-title">Data Fluency</div>
-                    <p class="dg-card-desc">A professional learning experience on the organization's LXP, building the habits of mind that help people ask better questions, use evidence responsibly, and decide well under uncertainty.</p>
                     <div class="dg-card-link">View project <span>→</span></div>
                 </div>
             </a>

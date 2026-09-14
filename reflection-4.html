@@ -19,6 +19,11 @@
             --off-white: #CFCFEA;
         }
 
+        a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+            outline: 2px solid var(--sage-green);
+            outline-offset: 2px;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background-color: var(--white);
@@ -54,10 +59,10 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: opacity 0.3s ease;
+            transition: color 0.3s ease;
         }
 
-        .nav-links a:hover { opacity: 0.6; }
+        .nav-links a:hover { color: var(--sage-green); }
 
         .connect-btn {
             background-color: var(--sage-green);
@@ -171,7 +176,7 @@
             <p>While this reflection highlights my individual growth, the strength of our final product was deeply rooted in our team's diverse perspectives. Each teammate brought a unique background and emphasis to the project, allowing us to create a more comprehensive and thoughtful learning experience. Marita's coaching background and focus on socio-emotional learning ensured that we addressed learners' emotional barriers and motivation at the outset. Kat's strong commitment to UDL principles pushed us to prioritize accessibility and design multiple pathways for engagement. My contributions focused on fostering a sense of learning community and contextualizing the concepts and tools for our learners based on their expectations to help them transfer and retain the information. With the unwavering support of our project lead, Andres Jaimes, throughout every stage of the process, we created the work beyond what any one of us could have achieved individually.</p>
 
             <figure style="margin: 1.5rem 0;">
-                <img src="screenshots/canvas Leap/our photo.png" alt="Our team" style="width:100%; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+                <img src="LEAP/our photo.png" alt="Our team" style="width:100%; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
             </figure>
 
             <p>Our collaboration extended beyond dividing tasks; we actively engaged in refining each other's work. In preparation for the gallery walk, we met regularly to iterate on our pitch. We often pointed out strengths in each other's work that had gone unrecognized, while also offering suggestions for improvement. This process required both humility and trust, as we adjusted slides, refined messaging, and aligned our narrative as a team. Through this collaborative effort, we developed a more cohesive and compelling presentation of our work.</p>

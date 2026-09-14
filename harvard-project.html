@@ -19,6 +19,11 @@
             --off-white: #CFCFEA;
         }
 
+        a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+            outline: 2px solid var(--sage-green);
+            outline-offset: 2px;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background-color: var(--white);
@@ -42,9 +47,9 @@
         .nav-links { display: flex; gap: 3rem; list-style: none; }
         .nav-links a {
             color: var(--dark-charcoal); text-decoration: none;
-            font-weight: 600; font-size: 0.95rem; transition: opacity 0.3s ease;
+            font-weight: 600; font-size: 0.95rem; transition: color 0.3s ease;
         }
-        .nav-links a:hover { opacity: 0.6; }
+        .nav-links a:hover { color: var(--sage-green); }
         .connect-btn {
             background-color: var(--sage-green); color: var(--white);
             padding: 0.75rem 2rem; border-radius: 50px; text-decoration: none;
@@ -318,7 +323,7 @@
                     <li>Prioritized content based on student impact</li>
                 </ul>
                 <div class="img-single">
-                    <img class="zoomable" src="screenshots/need assessment SOCO.png" alt="SOCO Needs Assessment">
+                    <img class="zoomable" src="SOCO/need assessment SOCO.png" alt="SOCO Needs Assessment">
                 </div>
             </div>
         </div>
@@ -338,8 +343,8 @@
                     <li>Recorded step-by-step training videos</li>
                 </ul>
                 <div class="img-row">
-                    <img class="zoomable" src="screenshots/SOCO advisor video.png" alt="SOCO Advisor Video">
-                    <img class="zoomable" src="screenshots/SOCO budget page.png" alt="SOCO Budget Page">
+                    <img class="zoomable" src="SOCO/SOCO advisor video.png" alt="SOCO Advisor Video">
+                    <img class="zoomable" src="SOCO/SOCO budget page.png" alt="SOCO Budget Page">
                 </div>
             </div>
         </div>
@@ -360,13 +365,13 @@
                 <div class="img-before-after">
                     <div class="ba-col before-frame">
                         <p class="ba-label before">✕ Before</p>
-                        <img class="zoomable" src="screenshots/before 1.png" alt="Before — Version 1">
-                        <img class="zoomable" src="screenshots/before 2.png" alt="Before — Version 2">
+                        <img class="zoomable" src="SOCO/before 1.png" alt="Before — Version 1">
+                        <img class="zoomable" src="SOCO/before 2.png" alt="Before — Version 2">
                     </div>
                     <div class="ba-divider">→</div>
                     <div class="ba-col after-frame">
                         <p class="ba-label after">✓ After</p>
-                        <img class="zoomable" src="screenshots/after.png" alt="After">
+                        <img class="zoomable" src="SOCO/after.png" alt="After">
                     </div>
                 </div>
             </div>
@@ -408,11 +413,23 @@
     const lightboxClose = document.querySelector('.lightbox-close');
 
     document.querySelectorAll('.zoomable').forEach(img => {
-        img.addEventListener('click', () => {
+        img.setAttribute('tabindex', '0');
+        img.setAttribute('role', 'button');
+        img.setAttribute('aria-label', 'View larger image: ' + img.alt);
+
+        const openLightbox = () => {
             lightboxImg.src = img.src;
             lightboxImg.alt = img.alt;
             lightboxImg.classList.remove('zoomed');
             lightbox.classList.add('active');
+        };
+
+        img.addEventListener('click', openLightbox);
+        img.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openLightbox();
+            }
         });
     });
 

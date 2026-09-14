@@ -19,6 +19,11 @@
             --off-white: #CFCFEA;
         }
 
+        a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+            outline: 2px solid var(--sage-green);
+            outline-offset: 2px;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background-color: var(--white);
@@ -54,10 +59,10 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: opacity 0.3s ease;
+            transition: color 0.3s ease;
         }
 
-        .nav-links a:hover { opacity: 0.6; }
+        .nav-links a:hover { color: var(--sage-green); }
 
         .connect-btn {
             background-color: var(--sage-green);
@@ -126,10 +131,7 @@
 
         /* Two-column layout */
         .project-body {
-            display: grid;
-            grid-template-columns: 1fr 260px;
-            gap: 3.5rem;
-            align-items: start;
+            display: block;
         }
 
         .project-content h2 {
@@ -244,7 +246,7 @@
             margin-bottom: 0.4rem;
         }
 
-        .habit-card h4 {
+        .habit-card h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.05rem;
             color: var(--dark-charcoal);
@@ -289,20 +291,33 @@
             margin-bottom: 0.9rem;
         }
 
-        /* Sidebar */
-        .project-sidebar {
-            position: sticky;
-            top: 2rem;
+        /* Specifications bar — horizontal, sits under the project intro */
+        .specs-bar {
+            margin-top: 2.5rem;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         .sidebar-card {
             background-color: #F5F4EF;
             border-radius: 15px;
             padding: 1.75rem;
-            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.75rem 2.5rem;
         }
 
-        .sidebar-card h4 {
+        .sidebar-card h2 {
             font-size: 0.78rem;
             font-weight: 700;
             text-transform: uppercase;
@@ -311,8 +326,10 @@
             margin-bottom: 1rem;
         }
 
-        .sidebar-card .spec-group { margin-bottom: 1.25rem; }
-        .sidebar-card .spec-group:last-child { margin-bottom: 0; }
+        .sidebar-card .spec-group {
+            flex: 1 1 160px;
+            min-width: 160px;
+        }
 
         .sidebar-card .spec-label {
             font-size: 0.8rem;
@@ -351,14 +368,13 @@
             .nav-links { flex-direction: column; gap: 1rem; text-align: center; }
             .project-header h1 { font-size: 2.2rem; }
             .project-page { padding: 2rem 1.5rem; }
-            .project-body { grid-template-columns: 1fr; }
-            .project-sidebar { position: static; }
             .habits-grid { grid-template-columns: 1fr 1fr; }
             .components-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 480px) {
             .habits-grid { grid-template-columns: 1fr; }
+            .sidebar-card { flex-direction: column; gap: 1.25rem; }
         }
     </style>
 </head>
@@ -379,9 +395,47 @@
         <a href="index.html#portfolio" class="back-link">← Back to Projects</a>
 
         <div class="project-header">
-            <div class="project-number">E-Learning · Professional Learning / LXP</div>
+            <div class="project-number">E-Learning · Data Governance / Staff Training · Harvard University</div>
             <h1>Data Fluency</h1>
-            <p class="project-intro">A professional learning experience delivered through the organization's LXP, building the habits of mind and workplace practices that help people ask better questions, use evidence responsibly, communicate clearly, evaluate claims critically, and make sound decisions when the available information is incomplete or uncertain.</p>
+            <p class="project-intro">An online course designed and developed for staff at Harvard University to work with data responsibly, effectively, and collaboratively across Schools, departments, and administrative functions.</p>
+
+            <!-- Specifications bar -->
+            <div class="specs-bar">
+                <div class="sidebar-card">
+                    <h2 class="sr-only">Specifications</h2>
+
+                    <div class="spec-group">
+                        <div class="spec-label">My Role</div>
+                        <div class="spec-item">Learning Designer</div>
+                    </div>
+
+                    <div class="spec-group">
+                        <div class="spec-label">Audience</div>
+                        <div class="spec-item">Higher education staff (Harvard University, pilot)</div>
+                    </div>
+
+                    <div class="spec-group">
+                        <div class="spec-label">Report To</div>
+                        <div class="spec-item">Bill Wisser, Executive Director, Teaching and Learning Lab, HGSE</div>
+                    </div>
+
+                    <div class="spec-group">
+                        <div class="spec-label">SMEs</div>
+                        <div class="spec-item">Drew Allen, Associate Provost for Institutional Research &amp; Analytics</div>
+                        <div class="spec-item">Vince Geromini, Data Governance Consultant, Systems Evolution, Inc. (SEI)</div>
+                    </div>
+
+                    <div class="spec-group">
+                        <div class="spec-label">Responsibilities</div>
+                        <div class="tag-list">
+                            <span class="tag">Research Synthesis</span>
+                            <span class="tag">Learning Experience Design</span>
+                            <span class="tag">Content Architecture</span>
+                            <span class="tag">Course Development on LXP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="project-body">
@@ -390,134 +444,38 @@
             <div class="project-content">
 
                 <h2>Project Overview</h2>
-                <p>Most employees are not analysts, yet nearly all of them are expected to reason with data — reading a dashboard before a meeting, weighing a claim in a vendor pitch, or deciding what to do next when a report only tells part of the story. Data Fluency was designed to close that gap: not a statistics course, but a workplace-reasoning course that treats data as something to think with rather than something to fear.</p>
-                <p>The module lives on the organization's Learning Experience Platform (LXP) as a self-paced offering, so learners across functions and seniority levels can move through it on their own schedule and return to specific habits when a real decision calls for them.</p>
-                <p>Rather than teaching tools or formulas, the course centers on five durable habits of mind — asking, evidencing, communicating, evaluating, and deciding — each grounded in workplace scenarios so the skills transfer directly to the ambiguous, incomplete-information situations learners actually face.</p>
+                <p>I designed and developed an online course for staff at Harvard University to work with data responsibly, effectively, and collaboratively across Schools, departments, and administrative functions.</p>
+                <p>I collaborated with a cross-functional team that led primary data collection (surveys, interviews, focus groups). I analyzed and synthesized these datasets to inform key interaction, layout, and curriculum decisions.</p>
 
-                <div class="highlight-box">
-                    <p class="box-label">Design Premise</p>
-                    <p>Data fluency is a thinking practice, not a technical skill. The course assumes no background in statistics or analytics and instead builds judgment: knowing what question to ask, how much confidence a piece of evidence deserves, and how to act when certainty isn't available.</p>
-                </div>
+                <h2>The Problem</h2>
+                <p>Harvard staff increasingly work in complex data environments where information is spread across multiple systems, teams use different definitions and processes, and data practices vary widely across the University. This creates challenges in knowing which data to trust, how to work with it responsibly, how to interpret and communicate findings, and how to evaluate analyses — including those produced with AI. At the same time, expectations around data governance and AI-enabled work are evolving faster than many staff members' existing data skills.</p>
 
-                <h2>Learner Persona</h2>
-                <p>Cross-functional professionals — in operations, marketing, HR, customer success, and management — who regularly consume data (reports, dashboards, metrics decks) but do not produce or analyze it themselves. Comfort with numbers varies widely; what they share is the need to make a call, communicate a recommendation, or push back on a claim using evidence they didn't generate.</p>
-
-                <p class="section-label">Adult Learning Theory principles applied:</p>
+                <p class="section-label">Through surveys, focus groups, and interviews, the team identified:</p>
                 <ul class="bullet-list">
-                    <li>Problem-centered, anchored in real workplace decisions rather than abstract statistics</li>
-                    <li>Relevance to immediate role responsibilities</li>
-                    <li>Self-directed pacing appropriate for a working-professional audience</li>
-                    <li>Experience as a resource — learners' own past decisions become case material</li>
-                    <li>Low-stakes practice before any real-world application</li>
+                    <li>Scattered resources for staff from different Schools</li>
+                    <li>Tools are not the problem; lack of a shared standard and system of data management is</li>
+                    <li>One-and-done training isn't enough; people need a reference guide</li>
+                    <li>The need for scenario-based discussions within a learning community, with people building a new culture together</li>
+                    <li>Learning must fit into existing workflows and schedules, with synchronous and asynchronous elements</li>
+                    <li>An urgent demand to know how to do data-related work with AI</li>
                 </ul>
 
-                <h2>The Five Habits of Mind</h2>
-                <p>Learning goals are organized around five habits, each written as a workplace capability rather than a course topic:</p>
+                <p>Therefore, we built a four-month hybrid, instructor-led online course centered on team-based learning and learning-community building, open to all Harvard staff. With the intent to bring people together and foster a culture of talking about data, we set out to solve the underlying communication inefficiency.</p>
 
-                <div class="habits-grid">
-                    <div class="habit-card">
-                        <div class="habit-icon">❓</div>
-                        <div class="habit-num">Habit 01</div>
-                        <h4>Ask Better Questions</h4>
-                        <p>Frame the real question before reaching for data, and notice when a question is unanswerable with what's available.</p>
-                    </div>
-                    <div class="habit-card">
-                        <div class="habit-icon">📊</div>
-                        <div class="habit-num">Habit 02</div>
-                        <h4>Use Evidence Responsibly</h4>
-                        <p>Weigh a source's reliability and limits, and avoid overstating what a number can actually support.</p>
-                    </div>
-                    <div class="habit-card">
-                        <div class="habit-icon">💬</div>
-                        <div class="habit-num">Habit 03</div>
-                        <h4>Communicate Clearly</h4>
-                        <p>Translate findings for a non-technical audience without distorting the underlying uncertainty.</p>
-                    </div>
-                    <div class="habit-card">
-                        <div class="habit-icon">🔍</div>
-                        <div class="habit-num">Habit 04</div>
-                        <h4>Evaluate Claims Critically</h4>
-                        <p>Spot common reasoning traps — cherry-picked baselines, correlation read as causation, small samples treated as proof.</p>
-                    </div>
-                    <div class="habit-card">
-                        <div class="habit-icon">⚖️</div>
-                        <div class="habit-num">Habit 05</div>
-                        <h4>Decide Under Uncertainty</h4>
-                        <p>Act on incomplete information by naming what's unknown and choosing proportionate next steps.</p>
-                    </div>
-                </div>
+                <h2>Design Highlights</h2>
+                <div class="project-image">Design Document<br>(coming soon)</div>
+                <div class="project-image">Review Tracker<br>(coming soon)</div>
+                <div class="project-image">Interaction and Version Evolution<br>(coming soon)</div>
 
-                <h2>Learning Goals</h2>
-                <p>Objectives are written using the revised Bloom's Taxonomy (Bloom, 2001), moving learners from recognition to application in their own work context.</p>
+                <h2>Development Highlights</h2>
                 <ul class="bullet-list">
-                    <li>Learners will be able to <strong>formulate</strong> a precise question before seeking or reviewing data.</li>
-                    <li>Learners will be able to <strong>assess</strong> the reliability and scope of a piece of evidence before acting on it.</li>
-                    <li>Learners will be able to <strong>communicate</strong> a data-informed recommendation clearly to a non-technical stakeholder.</li>
-                    <li>Learners will be able to <strong>identify</strong> flawed or misleading claims in reports, dashboards, and pitches.</li>
-                    <li>Learners will be able to <strong>justify</strong> a decision made with incomplete information, including what remains unknown.</li>
+                    <li>Backward design in each module; learning objectives drive all learning activities and assessments.</li>
                 </ul>
-
-                <h2>Design Decisions</h2>
-
-                <h3>1. Scenario-first, not statistics-first</h3>
-                <p>Early stakeholder interviews surfaced a consistent pattern: past "data literacy" trainings had opened with statistical concepts and lost non-analyst learners within the first ten minutes. Data Fluency inverts that sequence — every module opens with a realistic workplace scenario (a misleading metric in a leadership deck, a vendor claim that doesn't hold up, a decision that has to be made before the "right" data arrives) and introduces the underlying habit only as a way to resolve it.</p>
-                <p>This kept the course from feeling like remedial math and instead positioned it as a judgment upgrade — something learners wanted because it made their existing job easier, not because they were being corrected.</p>
-
-                <h3>2. Metacognitive checkpoints instead of quizzes</h3>
-                <p>Rather than testing recall with multiple-choice questions, each module closes with a short reflective checkpoint: learners apply the habit to a decision from their own recent work and articulate their reasoning. This mirrors how the habits are actually used on the job — as an internal check before acting — and produces evidence of transfer that a knowledge quiz cannot.</p>
-
-                <h3>3. Calibrated uncertainty language</h3>
-                <p>Because the course explicitly teaches decision-making under incomplete information, its own content models that stance: scenarios are written with deliberately ambiguous or conflicting evidence, and worked examples show a range of reasonable responses rather than a single "correct" answer. This reduces the risk of learners walking away believing data fluency means certainty, when the actual goal is disciplined reasoning in its absence.</p>
-
-                <h2>Course Structure</h2>
-                <p>The module is organized as five short, self-paced units on the LXP, one per habit of mind, each running 15–20 minutes and closing with a scenario-based checkpoint.</p>
-
-                <div class="components-grid">
-                    <div class="component-col">
-                        <h3 class="component-heading">Unit Flow</h3>
-                        <p>Each unit follows the same rhythm so learners can move quickly once they know the pattern: a short scenario, a brief framework explainer, guided practice, and a reflective checkpoint tied to the learner's own work.</p>
-                        <div class="project-image">Unit Flow Diagram<br>(Scenario → Framework → Practice → Checkpoint)</div>
-                    </div>
-                    <div class="component-col">
-                        <h3 class="component-heading">Sample Scenario Interaction</h3>
-                        <p>Interactive branching scenarios put learners inside a workplace moment — reviewing a metric before a meeting, or pressure-testing a claim in a vendor pitch — and ask them to choose and justify a next step.</p>
-                        <div class="project-image">Branching Scenario Screenshot<br>(placeholder — pending course build)</div>
-                    </div>
-                </div>
+                <p>Because of the diversity of our learners across the institution, we thought about providing a glossary sheet for learners with various backgrounds and comfort levels to engage with data-related terminology. The innate features of the LXP didn't allow for that, so I advanced my HTML skills to help the SME visualize the learning experience and delivered an interactive glossary to solve this jargon issue for these learners.</p>
+                <div class="project-image">Using H5P to Create an Interactive Experience<br>(coming soon)</div>
+                <div class="project-image">Project Photos<br>(coming soon)</div>
 
             </div>
-
-            <!-- Sidebar -->
-            <aside class="project-sidebar">
-                <div class="sidebar-card">
-                    <h4>Specifications</h4>
-
-                    <div class="spec-group">
-                        <div class="spec-label">My Role</div>
-                        <div class="spec-item">Learning Experience Designer</div>
-                        <div class="spec-item">Instructional Designer</div>
-                    </div>
-
-                    <div class="spec-group">
-                        <div class="spec-label">Context</div>
-                        <div class="spec-item">Corporate / Cross-Functional Professional Development</div>
-                    </div>
-
-                    <div class="spec-group">
-                        <div class="spec-label">Delivery</div>
-                        <div class="spec-item">Self-paced, hosted on LXP</div>
-                    </div>
-
-                    <div class="spec-group">
-                        <div class="spec-label">Tools</div>
-                        <div class="tag-list">
-                            <span class="tag">LXP Authoring</span>
-                            <span class="tag">Articulate Storyline</span>
-                            <span class="tag">Canva</span>
-                        </div>
-                    </div>
-                </div>
-            </aside>
 
         </div>
     </main>

@@ -19,6 +19,11 @@
             --off-white: #CFCFEA;
         }
 
+        a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+            outline: 2px solid var(--sage-green);
+            outline-offset: 2px;
+        }
+
         html { scroll-behavior: smooth; }
 
         body {
@@ -67,10 +72,10 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: opacity 0.3s ease;
+            transition: color 0.3s ease;
         }
 
-        .nav-links a:hover { opacity: 0.6; }
+        .nav-links a:hover { color: var(--sage-green); }
 
         .connect-btn {
             background-color: var(--sage-green);
