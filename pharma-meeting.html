@@ -482,6 +482,12 @@
             line-height: 1.5;
         }
 
+        /* videos shown at two-thirds size */
+        .video-pair > figure, div.video-pair > video,
+        .video-grid > figure:not(.video-group) { width: 66.667%; }
+
+        .shot-grid-2 { grid-template-columns: 1fr 1fr; }
+
         .shot-row-label { margin-top: 1.5rem; }
 
         .video-grid {
@@ -493,10 +499,10 @@
 
         .video-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
-        .video-grid video { width: 100%; border-radius: 8px; background: #000; display: block; }
+        .video-grid video, .video-pair video { width: 100%; border-radius: 8px; background: #000; display: block; }
 
         @media (max-width: 860px) {
-            .shot-grid, .video-pair { grid-template-columns: 1fr; }
+            .shot-grid, .shot-grid-2, .video-pair { grid-template-columns: 1fr; }
         }
         @media (max-width: 860px) {
             nav { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
@@ -619,10 +625,10 @@
                 <h3>2. Built for adult learners</h3>
                 <p><strong>What learners see:</strong> Learners type their name on the first screen and are greeted with "Big Congrats on your promotion!" Their name returns in the certification scenario and on their certificate.</p>
                 <p><strong>Why it matters:</strong> Adults engage when learning connects to their role and identity (Knowles). From the first screen, this is training for <em>their</em> new job.</p>
-                <figure class="media-fig">
-                    <img src="MEETING WISE/storyboard 1.png" alt="Storyboard pages for the title screen and objectives slide, showing the name text entry, the personalized greeting and the programming notes">
-                    <figcaption>Storyboard: name entry on the title screen and the personalized greeting on the objectives slide.</figcaption>
-                </figure>
+                <div class="video-pair">
+                    <figure class="media-fig"><video autoplay loop muted playsinline controls aria-label="Screen recording of the name entry screen and personalized greeting"><source src="MEETING WISE/adult%20learning.mp4" type="video/mp4"></video><figcaption>Name entry and personalized greeting.</figcaption></figure>
+                    <figure class="media-fig"><video autoplay loop muted playsinline controls aria-label="Screen recording of the personalized PDF certificate being generated"><source src="MEETING WISE/certificate%20generation.mp4" type="video/mp4"></video><figcaption>Personalized certificate generation.</figcaption></figure>
+                </div>
                 <details class="built-it">
                     <summary>How I built it</summary>
                     <ul>
@@ -665,6 +671,13 @@
                         <li>Set the certification quiz to 100% passing, with Retry and Review enabled.</li>
                     </ul>
                 </details>
+
+                <h2>Development</h2>
+                <p>Before building in Storyline, I storyboarded each slide: the on-screen text, the programming and animation notes, and the graphics.</p>
+                <div class="shot-grid shot-grid-2">
+                    <figure><img src="MEETING WISE/storyboard 1.png" alt="Storyboard pages for the title screen and objectives slide, with columns for on-screen text, programming and animation notes, and on-screen graphics"><figcaption>Storyboard: title screen with name entry, and the objectives slide.</figcaption></figure>
+                    <figure><img src="MEETING WISE/storyboard 2.png" alt="Storyboard pages for the Module 1 opener, Scenario 1 and its correct-answer feedback slide, with columns for on-screen text, programming and animation notes, and on-screen graphics"><figcaption>Storyboard: Module 1 opener, Scenario 1 and its feedback.</figcaption></figure>
+                </div>
 
                 <h2>Visual Identity &amp; Graphics</h2>
                 <p>The visual language for Meeting Wise was designed to feel professional but approachable — suited to managers in a science-driven environment who are new to people-leadership. Clean layouts, purposeful color, and consistent iconography signal credibility without overwhelming the learner.</p>
