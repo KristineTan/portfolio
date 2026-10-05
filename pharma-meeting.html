@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meeting-Design Competencies - KT</title>
+    <title>MeetingWise - KT</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
@@ -132,7 +132,7 @@
         /* Two-column layout */
         .project-body {
             display: grid;
-            grid-template-columns: 1fr 260px;
+            grid-template-columns: 1fr;
             gap: 3.5rem;
             align-items: start;
         }
@@ -314,8 +314,9 @@
 
         /* Sidebar */
         .project-sidebar {
-            position: sticky;
-            top: 2rem;
+            float: right;
+            width: 260px;
+            margin: 0 0 1.5rem 2.5rem;
         }
 
         .sidebar-card {
@@ -394,13 +395,116 @@
             font-size: 1.05rem;
         }
 
+        .project-origin {
+            font-size: 1.05rem;
+            color: var(--olive-brown);
+            margin-top: 1rem;
+        }
+
+        .placeholder {
+            background: #FFF8D6;
+            border: 2px dashed #B8A44A;
+            border-radius: 10px;
+            color: var(--dark-charcoal);
+            font-size: 0.95rem;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .built-it {
+            background: #F5F4EF;
+            border-left: 4px solid var(--sage-green);
+            border-radius: 0 10px 10px 0;
+            padding: 0.9rem 1.25rem;
+            margin: 1.25rem 0 2rem;
+        }
+
+        .built-it summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--sage-green);
+        }
+
+        .built-it summary:focus-visible {
+            outline: 2px solid var(--sage-green);
+            outline-offset: 4px;
+        }
+
+        .built-it ul {
+            margin: 0.75rem 0 0 1.25rem;
+            color: var(--olive-brown);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .eval-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .eval-table th, .eval-table td {
+            text-align: left;
+            vertical-align: top;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #E8E6E0;
+            color: var(--olive-brown);
+        }
+
+        .eval-table thead th {
+            background: var(--sage-green);
+            color: var(--white);
+        }
+
+        .eval-table tbody th { color: var(--dark-charcoal); white-space: nowrap; }
+
+        .shot-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.25rem 0 0.5rem;
+        }
+
+        .shot-grid figure, .media-fig { margin: 0; }
+
+        .shot-grid img, .media-fig img {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+        }
+
+        .shot-grid figcaption, .media-fig figcaption {
+            font-size: 0.9rem;
+            color: var(--olive-brown);
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .shot-row-label { margin-top: 1.5rem; }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .video-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+        .video-grid video { width: 100%; border-radius: 8px; background: #000; display: block; }
+
+        @media (max-width: 860px) {
+            .shot-grid, .video-pair { grid-template-columns: 1fr; }
+        }
         @media (max-width: 860px) {
             nav { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
             .nav-links { flex-direction: column; gap: 1rem; text-align: center; }
             .project-header h1 { font-size: 2.2rem; }
             .project-page { padding: 2rem 1.5rem; }
             .project-body { grid-template-columns: 1fr; }
-            .project-sidebar { position: static; }
+            .project-sidebar { float: none; width: auto; margin: 0 0 2rem; }
         }
     </style>
 </head>
@@ -422,10 +526,11 @@
 
         <div class="project-header">
             <div class="project-number">E-Learning · Pharmaceutical Leadership</div>
-            <h1>Meeting-Design Competencies for New Managers</h1>
-            <p class="project-intro">An e-learning program for a Greater Boston pharmaceutical leader, equipping newly promoted managers with frameworks for high-impact meetings and cross-departmental effectiveness.</p>
+            <h1>MeetingWise</h1>
+            <p class="project-intro"><strong>Teaching new managers when not to call a meeting.</strong> A scenario-based e-learning course that moves newly promoted managers from simple rules ("No meeting without an agenda") to real judgement ("It depends").</p>
+            <p class="project-origin">This project started as a needs analysis in Harvard's learning design course. I then designed, built and tested the full course independently.</p>
             <a href="work-samples/meeting-wise/story.html" target="_blank" rel="noopener noreferrer" class="launch-btn">
-                <span class="launch-icon">▶</span> Launch Work Sample
+                <span class="launch-icon">▶</span> Play the course
             </a>
         </div>
 
@@ -434,16 +539,40 @@
             <!-- Main content -->
             <div class="project-content">
 
-                <h2>Project Overview</h2>
-                <p>I designed and developed this e-learning program for a Greater Boston pharmaceutical leader to equip newly promoted managers with essential meeting-design competencies. The course enables managers to strategically determine when a meeting is required and provides a framework for conducting high-impact interactions.</p>
-                <p>By filling a critical gap in universal managerial training, this solution directly enhances cross-departmental efficiency and leadership effectiveness.</p>
+            <aside class="project-sidebar">
+                <div class="sidebar-card">
+                    <h2>Specifications</h2>
 
-                <h2>Learner Persona</h2>
+                    <div class="spec-group">
+                        <div class="spec-label">My Role</div>
+                        <div class="spec-item">Instructional Designer &amp; Developer</div>
+                    </div>
+
+                    <div class="spec-group">
+                        <div class="spec-label">Context</div>
+                        <div class="spec-item">Corporate / Pharmaceutical</div>
+                    </div>
+
+                    <div class="spec-group">
+                        <div class="spec-label">Tools</div>
+                        <div class="tag-list">
+                            <span class="tag">Articulate Storyline 360</span>
+                            <span class="tag">Canva</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+                <h2>The Problem</h2>
+                <p>Interviews with three employees at a Boston-area pharmaceutical company surfaced the same complaint: too many meetings, too little done in them, and not enough time left for real work. A follow-up interview pointed to two root causes: no meeting standards were enforced, and managers didn't see the problem.</p>
+                <p>So I designed for the other side of the table: <strong>newly promoted managers</strong>, the people best placed to change how meetings run.</p>
+
+                <h3>Learner Persona</h3>
                 <p>Promoted new managers in a pharmaceutical company, mainly with backgrounds in medical or science fields and moderate social skills. Technology-fluent and fast learners.</p>
 
                 <div class="persona-stack-wrap">
                     <div class="persona-stack-hint">↓ Click to flip through personas</div>
-                    <div class="persona-stack" id="personaStack">
+                    <div class="persona-stack" id="personaStack" tabindex="0" role="button" aria-label="Flip through learner personas">
                         <div class="persona-card"><img src="MEETING WISE/persona 1.png" alt="Learner Persona 1"></div>
                         <div class="persona-card"><img src="MEETING WISE/persona 2.png" alt="Learner Persona 2"></div>
                         <div class="persona-card"><img src="MEETING WISE/persona 3.png" alt="Learner Persona 3"></div>
@@ -451,24 +580,91 @@
                     </div>
                 </div>
 
-                <p class="section-label">Adult Learning Theory principles applied:</p>
+                <h2>Design at a Glance</h2>
+                <p>The course follows a meeting's life cycle: <strong>decide</strong> whether to meet, <strong>plan</strong> it, <strong>run</strong> it. A certification case at the end asks learners to apply all three.</p>
+                <p class="section-label">Learning objectives. By the end of the course, managers will be able to:</p>
                 <ul class="bullet-list">
-                    <li>Self-directed</li>
-                    <li>Goal-oriented</li>
-                    <li>Problem-centered</li>
-                    <li>Relevance</li>
-                    <li>Experience as a resource for learning</li>
+                    <li>Identify the prerequisites for a meeting: the right issue, a clear agenda, and the right people.</li>
+                    <li>Design a high-impact meeting plan using attendee feedback and an effective agenda.</li>
+                    <li>Facilitate focused meetings, adapting the agenda when the meeting's purpose requires it.</li>
                 </ul>
-
-                <h2>Learning Goals</h2>
-                <ul class="bullet-list">
-                    <li>Distinguish what type of issues or tasks need to host meetings for</li>
-                    <li>Design a High-Impact Meeting Agenda</li>
-                    <li>Facilitate Effective and Focused Meetings</li>
-                </ul>
+                <p>With no SME available, I built the content from published research, including McKinsey's meeting-roles model and studies on meeting fatigue, using AI to speed up the search.</p>
 
                 <h2>Design Decisions</h2>
-                <p>[Add design decisions here.]</p>
+
+                <h3>1. Scenarios that teach judgement, not just rules</h3>
+                <p><strong>What learners see:</strong> Module 1 opens with "Should we meet for this?", and the answer is <em>No</em> three times. Module 3 turns that around. Dr. Alex is 25 minutes into a 40-minute meeting, still on item 1. Should she power through? The answer: <em>it depends.</em> Two valid approaches follow, each with its own interaction and rationale: drop the tangent to the Issue List, or deliberately pivot the agenda.</p>
+                <p><strong>Why it matters:</strong> Most corporate e-learning stops at rules. This scenario asks learners to weigh a trade-off against the meeting's purpose, the <em>evaluate</em> level of Bloom's Taxonomy, and keeps them from applying "no agenda, no meeting" rigidly. The scenarios are based on a real situation an employee described in my interviews.</p>
+                <p class="section-label shot-row-label">Rules: the answer is No</p>
+                <div class="shot-grid">
+                    <figure><img src="MEETING WISE/M2 question.png" alt="Slide titled 'Should we meet for this?' showing a manager with a 40-page slide deck and Yes and No buttons"><figcaption>The question: should I call a meeting to review my deck?</figcaption></figure>
+                    <figure><img src="MEETING WISE/M2 answer 1.png" alt="Feedback slide titled 'Great job!' explaining that one-way information sharing is better done asynchronously"><figcaption>Right answer: "Great job!"</figcaption></figure>
+                    <figure><img src="MEETING WISE/M2 answer 2.png" alt="Feedback slide titled 'Not quite' with the same explanation plus Try Again and Next buttons"><figcaption>Wrong answer: "Not quite…" with Try Again.</figcaption></figure>
+                </div>
+                <p class="section-label shot-row-label">Judgement: it depends</p>
+                <div class="shot-grid">
+                    <figure><img src="MEETING WISE/M3 question.png" alt="Slide showing Dr. Alex, 25 minutes into a 40-minute meeting and still on the first item, asking whether to strictly follow the agenda"><figcaption>Dr. Alex is behind schedule. Power through?</figcaption></figure>
+                    <figure><img src="MEETING WISE/M3 answer 2.png" alt="Slide 'Choice 1: Alex uses the Drop technique' where Alex moves the data discrepancy to the Issues List"><figcaption>Choice 1: drop the tangent to the Issues List.</figcaption></figure>
+                    <figure><img src="MEETING WISE/M3 answer 1.png" alt="Slide 'Choice 2: Alex changed the agenda' where Alex stays on the topic and moves Items 2 and 3 to an asynchronous Slack thread"><figcaption>Choice 2: pivot the agenda.</figcaption></figure>
+                </div>
+                <details class="built-it">
+                    <summary>How I built it</summary>
+                    <ul>
+                        <li>In the yes/no scenarios, each answer button jumps to its own feedback slide.</li>
+                        <li>On feedback slides, the back arrow jumps directly to the question slide instead of using "previous slide," so a learner returning from feedback lands on the question, not back on the feedback.</li>
+                        <li>In the Dr. Alex scenario, both answers lead to the same "It depends" slide, which walks learners through both approaches in turn.</li>
+                    </ul>
+                </details>
+
+                <h3>2. Built for adult learners</h3>
+                <p><strong>What learners see:</strong> Learners type their name on the first screen and are greeted with "Big Congrats on your promotion!" Their name returns in the certification scenario and on their certificate.</p>
+                <p><strong>Why it matters:</strong> Adults engage when learning connects to their role and identity (Knowles). From the first screen, this is training for <em>their</em> new job.</p>
+                <figure class="media-fig">
+                    <img src="MEETING WISE/storyboard 1.png" alt="Storyboard pages for the title screen and objectives slide, showing the name text entry, the personalized greeting and the programming notes">
+                    <figcaption>Storyboard: name entry on the title screen and the personalized greeting on the objectives slide.</figcaption>
+                </figure>
+                <details class="built-it">
+                    <summary>How I built it</summary>
+                    <ul>
+                        <li>Added a text-entry field and stored the entry in a variable.</li>
+                        <li>Referenced the variable wherever the learner's name appears.</li>
+                        <li>Passed the same variable to a JavaScript trigger that uses the jsPDF library to generate a personalized PDF certificate.</li>
+                    </ul>
+                </details>
+
+                <h3>3. Short, structured, easy to follow</h3>
+                <p><strong>What learners see:</strong> Three short modules, each ending with a one-screen summary. A course menu shows progress, with later modules locked until earlier ones are done.</p>
+                <p><strong>Why it matters:</strong> Short modules reduce cognitive load (Sweller). Summaries consolidate key points before each quiz. Locking keeps the sequence intact, because each module builds on the last.</p>
+                <figure class="media-fig">
+                    <img src="MEETING WISE/%5BImage%20course%20menu%20with%20locked%20modules%5D.png" alt="Course menu slide greeting the learner by name, with module 1 unlocked and modules 2 and 3 shown with lock icons">
+                    <figcaption>Course menu: Module 1 is open; Modules 2 and 3 stay locked until the previous one is complete.</figcaption>
+                </figure>
+
+                <h3>4. Practice that matches the skill</h3>
+                <p><strong>What learners see:</strong> Each interaction fits the thinking it practises: sorting issues into "meet / don't meet" (classify), matching roles to team members (apply), ranking feedback methods on a podium (evaluate), and dragging an off-track item into the agenda's Issue List (rehearse the real move). Ungraded quizzes close each module; the final certification requires 100%, with retry and review.</p>
+                <p><strong>Why it matters:</strong> Practice that mirrors the real task transfers better than recall questions. Mastery-based certification means a passed learner has applied every module to a new case.</p>
+                <div class="video-grid">
+                    <figure class="media-fig video-group">
+                        <div class="video-pair">
+                            <video autoplay loop muted playsinline controls aria-label="Screen recording of a drag-and-drop interaction"><source src="MEETING WISE/d%26d%202.mp4" type="video/mp4"></video>
+                            <video autoplay loop muted playsinline controls aria-label="Screen recording of a drag-and-drop interaction with immediate feedback"><source src="MEETING WISE/d%26d%20with%20immediate%20feedback.mp4" type="video/mp4"></video>
+                        </div>
+                        <figcaption>Drag-and-drop interactions, with immediate feedback on each drop.</figcaption>
+                    </figure>
+                    <figure class="media-fig">
+                        <video autoplay loop muted playsinline controls aria-label="Screen recording of the agenda template hotspot interaction"><source src="MEETING WISE/hotspot.mp4" type="video/mp4"></video>
+                        <figcaption>Agenda template hotspots.</figcaption>
+                    </figure>
+                </div>
+                <details class="built-it">
+                    <summary>How I built it</summary>
+                    <ul>
+                        <li>Built custom correct and incorrect drop states for each drag-and-drop target.</li>
+                        <li>On the agenda template, Next unlocks only after every hotspot has been opened.</li>
+                        <li>Scripted a blinking animation with JavaScript to draw attention to a key element.</li>
+                        <li>Set the certification quiz to 100% passing, with Retry and Review enabled.</li>
+                    </ul>
+                </details>
 
                 <h2>Visual Identity &amp; Graphics</h2>
                 <p>The visual language for Meeting Wise was designed to feel professional but approachable — suited to managers in a science-driven environment who are new to people-leadership. Clean layouts, purposeful color, and consistent iconography signal credibility without overwhelming the learner.</p>
@@ -484,41 +680,26 @@
                     <p class="vi-credit">Visual assets designed in Canva</p>
                 </div>
 
-                <h2>Course Components</h2>
-                <p>[Add course components and screenshots here.]</p>
+                <h2>Evaluation</h2>
+                <p>Currently piloting with companies in the Boston area. I plan to evaluate with the Kirkpatrick model:</p>
+                <table class="eval-table">
+                    <thead><tr><th scope="col">Level</th><th scope="col">What I'd measure</th></tr></thead>
+                    <tbody>
+                        <tr><th scope="row">1 · Reaction</th><td>Survey on relevance and satisfaction; xAPI data on completion, time spent, and navigation.</td></tr>
+                        <tr><th scope="row">2 · Learning</th><td>Practice quiz and certification scores.</td></tr>
+                        <tr><th scope="row">3 · Behavior</th><td>30–60 days later: number of meetings held, share of meetings with an agenda sent in advance, and use of feedback debriefs.</td></tr>
+                        <tr><th scope="row">4 · Results</th><td>Hours recovered from meetings, project delivery speed, and employee satisfaction with meetings.</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>What I'd Do Next</h2>
+                <p>Add the agenda template as a downloadable job aid. Test the course with newly promoted managers and revise the scenarios based on their feedback.</p>
 
                 <a href="work-samples/meeting-wise/story.html" target="_blank" rel="noopener noreferrer" class="launch-btn">
-                    <span class="launch-icon">▶</span> Launch Work Sample
+                    <span class="launch-icon">▶</span> Play the course
                 </a>
 
             </div>
-
-            <!-- Sidebar -->
-            <aside class="project-sidebar">
-                <div class="sidebar-card">
-                    <h2>Specifications</h2>
-
-                    <div class="spec-group">
-                        <div class="spec-label">My Role</div>
-                        <div class="spec-item">Learning Experience Designer</div>
-                        <div class="spec-item">Instructional Designer</div>
-                        <div class="spec-item">Graphic Designer</div>
-                    </div>
-
-                    <div class="spec-group">
-                        <div class="spec-label">Context</div>
-                        <div class="spec-item">Corporate / Pharmaceutical</div>
-                    </div>
-
-                    <div class="spec-group">
-                        <div class="spec-label">Tools</div>
-                        <div class="tag-list">
-                            <span class="tag">Articulate Storyline</span>
-                            <span class="tag">Canva</span>
-                        </div>
-                    </div>
-                </div>
-            </aside>
 
         </div>
     </main>
@@ -527,7 +708,7 @@
         const stack = document.getElementById('personaStack');
         const cards = () => [...stack.querySelectorAll('.persona-card:not(.fly-off)')];
 
-        stack.addEventListener('click', () => {
+        function flipPersona() {
             const visible = cards();
             if (visible.length === 0) return;
 
@@ -565,6 +746,10 @@
                     });
                 }
             }, 460);
+        }
+        stack.addEventListener('click', flipPersona);
+        stack.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flipPersona(); }
         });
     </script>
 </body>
