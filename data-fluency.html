@@ -142,7 +142,7 @@
             margin-top: 3rem;
         }
 
-        .project-content h2:first-child { margin-top: 0; }
+        .project-content h2:first-child, .specs-bar + h2 { margin-top: 0; }
 
         .project-content h3 {
             font-family: 'Playfair Display', serif;
@@ -207,6 +207,35 @@
             margin-bottom: 0;
         }
 
+        .video-card {
+            background-color: #F5F4EF;
+            border-radius: 15px;
+            padding: 1.75rem 2rem 2rem;
+            margin: 2rem 0;
+        }
+
+        .video-card .box-label {
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            margin-bottom: 1rem;
+        }
+
+        .video-card video {
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+            background: #000;
+        }
+
+        .project-content .video-card figcaption {
+            font-size: 1.05rem;
+            color: var(--olive-brown);
+            line-height: 1.8;
+            margin-top: 1.1rem;
+        }
         .section-label {
             font-size: 0.85rem;
             font-weight: 700;
@@ -306,10 +335,129 @@
             margin-bottom: 0.9rem;
         }
 
+        .process-card {
+            background-color: #F5F4EF;
+            border-radius: 15px;
+            padding: 1.75rem 2rem 2rem;
+            margin: 2rem 0;
+        }
+
+        .process-card .box-label {
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            margin-bottom: 1rem;
+        }
+
+        .process-flow {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1rem;
+            align-items: center;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .process-flow figure { margin: 0; }
+        .process-outputs { display: grid; gap: 1.25rem; }
+
+        .process-step {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--sage-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .process-flow img {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+        }
+
+        .process-flow figcaption {
+            font-size: 0.9rem;
+            color: var(--olive-brown);
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .process-split {
+            font-size: 2rem;
+            color: var(--sage-green);
+            font-weight: 600;
+        }
+        .placeholder {
+            background: #FFF8D6;
+            border: 2px dashed #B8A44A;
+            border-radius: 10px;
+            color: var(--dark-charcoal);
+            font-size: 0.95rem;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+        }
+        .path-figure { margin: 0; }
+
+        .path-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+
+        .path-stack {
+            display: grid;
+            gap: 0.25rem;
+            background: #fff;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .path-stack img { width: 100%; display: block; }
+
+        .path-roadmap {
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+        }
+
+        .path-figure figcaption {
+            font-size: 0.9rem;
+            color: var(--olive-brown);
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+        .course-card { margin: 1.5rem 0; }
+
+        .course-card img {
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+        }
+
+        .project-content .course-card figcaption {
+            font-size: 0.9rem;
+            color: var(--olive-brown);
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
         /* Specifications bar — horizontal, sits under the project intro */
         .specs-bar {
-            margin-top: 2.5rem;
+            float: right;
+            width: 280px;
+            margin: 0 0 1.5rem 2.5rem;
         }
+
+        /* full-width blocks fit beside the floated card instead of sliding under it */
+        .habits-grid, .components-grid, .project-image, .highlight-box, .video-card, .process-card, .path-figure, .media-fig, .course-card { display: flow-root; }
 
         .sr-only {
             position: absolute;
@@ -328,8 +476,8 @@
             border-radius: 15px;
             padding: 1.75rem;
             display: flex;
-            flex-wrap: wrap;
-            gap: 1.75rem 2.5rem;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
         .sidebar-card h2 {
@@ -342,8 +490,6 @@
         }
 
         .sidebar-card .spec-group {
-            flex: 1 1 160px;
-            min-width: 160px;
         }
 
         .sidebar-card .spec-label {
@@ -385,11 +531,13 @@
             .project-page { padding: 2rem 1.5rem; }
             .habits-grid { grid-template-columns: 1fr 1fr; }
             .components-grid { grid-template-columns: 1fr; }
+            .process-flow, .path-row { grid-template-columns: 1fr; }
+            .process-split { transform: rotate(90deg); text-align: center; }
+            .specs-bar { float: none; width: auto; margin: 0 0 2rem; }
         }
 
         @media (max-width: 480px) {
             .habits-grid { grid-template-columns: 1fr; }
-            .sidebar-card { flex-direction: column; gap: 1.25rem; }
         }
     </style>
 </head>
@@ -413,44 +561,6 @@
             <div class="project-number">E-Learning · Data Governance / Staff Training · Harvard University</div>
             <h1>Data Fluency</h1>
             <p class="project-intro">An online course designed and developed for staff at Harvard University to work with data responsibly, effectively, and collaboratively across Schools, departments, and administrative functions.</p>
-
-            <!-- Specifications bar -->
-            <div class="specs-bar">
-                <div class="sidebar-card">
-                    <h2 class="sr-only">Specifications</h2>
-
-                    <div class="spec-group">
-                        <div class="spec-label">My Role</div>
-                        <div class="spec-item">Learning Designer</div>
-                    </div>
-
-                    <div class="spec-group">
-                        <div class="spec-label">Audience</div>
-                        <div class="spec-item">Higher education staff (Harvard University, pilot)</div>
-                    </div>
-
-                    <div class="spec-group">
-                        <div class="spec-label">Report To</div>
-                        <div class="spec-item">Bill Wisser, Executive Director, Teaching and Learning Lab, HGSE</div>
-                    </div>
-
-                    <div class="spec-group">
-                        <div class="spec-label">SMEs</div>
-                        <div class="spec-item">Drew Allen, Associate Provost for Institutional Research &amp; Analytics</div>
-                        <div class="spec-item">Vince Geromini, Data Governance Consultant, Systems Evolution, Inc. (SEI)</div>
-                    </div>
-
-                    <div class="spec-group">
-                        <div class="spec-label">Responsibilities</div>
-                        <div class="tag-list">
-                            <span class="tag">Research Synthesis</span>
-                            <span class="tag">Learning Experience Design</span>
-                            <span class="tag">Content Architecture</span>
-                            <span class="tag">Course Development on LXP</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="project-body">
@@ -458,8 +568,50 @@
             <!-- Main content -->
             <div class="project-content">
 
+                <!-- Specifications card -->
+                <aside class="specs-bar">
+                    <div class="sidebar-card">
+                        <h2 class="sr-only">Specifications</h2>
+
+                        <div class="spec-group">
+                            <div class="spec-label">My Role</div>
+                            <div class="spec-item">Learning Designer</div>
+                        </div>
+
+                        <div class="spec-group">
+                            <div class="spec-label">Audience</div>
+                            <div class="spec-item">Higher education staff (Harvard University, pilot)</div>
+                        </div>
+
+                        <div class="spec-group">
+                            <div class="spec-label">Report To</div>
+                            <div class="spec-item">Bill Wisser, Executive Director, Teaching and Learning Lab, HGSE</div>
+                        </div>
+
+                        <div class="spec-group">
+                            <div class="spec-label">SMEs</div>
+                            <div class="spec-item">Drew Allen, Associate Provost for Institutional Research &amp; Analytics</div>
+                            <div class="spec-item">Vince Geromini, Data Governance Consultant, Systems Evolution, Inc. (SEI)</div>
+                        </div>
+
+                        <div class="spec-group">
+                            <div class="spec-label">Responsibilities</div>
+                            <div class="tag-list">
+                                <span class="tag">Research Synthesis</span>
+                                <span class="tag">Learning Experience Design</span>
+                                <span class="tag">Content Architecture</span>
+                                <span class="tag">Course Development on LXP</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
                 <h2>Project Overview</h2>
                 <p>I designed and developed an online course for staff at Harvard University to work with data responsibly, effectively, and collaboratively across Schools, departments, and administrative functions.</p>
+                <figure class="course-card">
+                    <img src="assets/data-fluency/course%20card%20LXP.png" alt="Course card for 'Data Fluency for Higher Education Professionals' from Harvard Graduate School of Education, shown on the LXP with a Resume button">
+                    <figcaption>The course as learners see it on the LXP.</figcaption>
+                </figure>
                 <p>I collaborated with a cross-functional team that led primary data collection (surveys, interviews, focus groups). I analyzed and synthesized these datasets to inform key interaction, layout, and curriculum decisions.</p>
 
                 <h2>The Problem</h2>
@@ -478,56 +630,68 @@
                 <p>Therefore, we built a four-month hybrid, instructor-led online course centered on team-based learning and learning-community building, open to all Harvard staff. With the intent to bring people together and foster a culture of talking about data, we set out to solve the underlying communication inefficiency.</p>
 
                 <h2>Design Highlights</h2>
-                <p>Kristine will update this part soon.</p>
+                <figure class="video-card">
+                    <div class="box-label">Interactive Glossary</div>
+                    <video autoplay loop muted playsinline controls aria-label="Screen recording of the interactive glossary: choosing terms by group label and by first letter"><source src="assets/data-fluency/glossary.mp4" type="video/mp4"></video>
+                    <figcaption>The glossary gives learners two layers of interaction for finding a term. They can select words by <strong>group label</strong>, browsing terms by topic, or use the <strong>first-letter search</strong> to jump straight to a word they already have in mind.</figcaption>
+                </figure>
 
-                <h2>Development Highlights</h2>
-                <ul class="bullet-list">
-                    <li>Backward design in each module; learning objectives drive all learning activities and assessments.</li>
-                </ul>
-                <p>Because of the diversity of our learners across the institution, we thought about providing a glossary sheet for learners with various backgrounds and comfort levels to engage with data-related terminology. The innate features of the LXP didn't allow for that, so I advanced my HTML skills to help the SME visualize the learning experience and delivered an interactive glossary to solve this jargon issue for these learners.</p>
+                <div class="process-card">
+                    <div class="box-label">Design Process: Splitting One Assignment in Two</div>
+                    <p>The assignments arrived as raw documents written for the learning design team, full of evaluation language and mixed in with the grading rubric. My task was to break each one down so learners know exactly what they are being asked to do, with as little unnecessary friction as possible. Module 2 shows the approach: I separated the document into instructions learners follow on the LXP and a template where they write their answers, translating evaluation language into instructional language along the way.</p>
 
-                <div class="under-construction">
-                    <svg viewBox="0 0 160 120" aria-hidden="true" focusable="false" fill="none" stroke="#2A2C24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <!-- ground -->
-                        <path d="M6 108 Q80 104 154 108" />
-                        <!-- brick pile -->
-                        <rect x="12" y="95" width="16" height="10" rx="1.5" fill="#D9A98C" />
-                        <rect x="29" y="95" width="16" height="10" rx="1.5" fill="#D9A98C" />
-                        <rect x="20" y="84" width="16" height="10" rx="1.5" fill="#D9A98C" />
-                        <!-- shovel -->
-                        <path d="M84 46 L95 98" />
-                        <path d="M89 97 L101 95 L101 104 Q97 109 92 105 Z" fill="#C9CFC6" />
-                        <!-- legs & boots -->
-                        <path d="M54 86 L52 104" />
-                        <path d="M66 86 L68 104" />
-                        <ellipse cx="50" cy="105" rx="5" ry="2.8" fill="#2A2C24" />
-                        <ellipse cx="70" cy="105" rx="5" ry="2.8" fill="#2A2C24" />
-                        <!-- body + safety vest stripe -->
-                        <rect x="47" y="56" width="26" height="31" rx="9" fill="#3E513E" />
-                        <path d="M49 71 L71 71" stroke="#F2C14E" stroke-width="3.5" />
-                        <!-- waving arm -->
-                        <path d="M49 62 Q39 57 37 47" />
-                        <circle cx="37" cy="45" r="3.2" fill="#F6D2B8" />
-                        <!-- arm holding shovel -->
-                        <path d="M71 62 Q80 67 88 70" />
-                        <circle cx="89" cy="70" r="3.2" fill="#F6D2B8" />
-                        <!-- head -->
-                        <circle cx="60" cy="43" r="13" fill="#F6D2B8" />
-                        <circle cx="55" cy="45" r="1.6" fill="#2A2C24" stroke="none" />
-                        <circle cx="65" cy="45" r="1.6" fill="#2A2C24" stroke="none" />
-                        <circle cx="51.5" cy="49.5" r="2.4" fill="#F0A3A0" stroke="none" opacity="0.7" />
-                        <circle cx="68.5" cy="49.5" r="2.4" fill="#F0A3A0" stroke="none" opacity="0.7" />
-                        <path d="M57 50.5 Q60 53.5 63 50.5" />
-                        <!-- hard hat -->
-                        <path d="M46 38 Q47 24 60 24 Q73 24 74 38 Z" fill="#F2C14E" />
-                        <path d="M43 38.5 L77 38.5" stroke-width="2.5" />
-                        <path d="M60 24 L60 30" />
-                        <!-- traffic cone -->
-                        <path d="M125 103 L132 70 L139 103 Z" fill="#E8834A" />
-                        <path d="M128.3 88 L135.7 88" stroke="#FFFFFF" stroke-width="3.5" />
-                        <rect x="119" y="102" width="26" height="5" rx="2" fill="#E8834A" />
-                    </svg>
-                    <p class="section-label">Under Construction</p>
+                    <div class="process-flow">
+                        <figure class="process-source">
+                            <div class="process-step">What I was given</div>
+                            <img src="assets/data-fluency/content%20idea%20M2_assignment.png" alt="Content idea document for the Module 2 assignment: Step 1 'Describe the challenge', Step 2 'Answer two questions yourself', and a table comparing what a thin answer and a real answer look like">
+                            <figcaption>The content idea: steps, time estimates, and a table of what a thin versus a real answer looks like.</figcaption>
+                        </figure>
+
+                        <div class="process-split" aria-hidden="true">→</div>
+
+                        <div class="process-outputs">
+                            <figure>
+                                <div class="process-step">1 · Instructions on the LXP</div>
+                                <img src="assets/data-fluency/LXP%20M2_assignment.png" alt="Practice page on the LXP with Step 0 'Download the template for the assignment', Step 1 'Describe the Challenge (15min)' and Step 2 'Answer two questions yourself (20 min)' as short bulleted instructions">
+                                <figcaption>What learners read: a numbered path with time estimates and plain-language tasks.</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="process-step">2 · Template learners write in</div>
+                                <img src="assets/data-fluency/template%20M2_assignment.png" alt="Word template titled 'Collecting and Managing Data' with Step 1 'Describe the Challenges' and maroon prompts 'The challenge', 'The decision' and 'The stakeholders' followed by blank space to type answers">
+                                <figcaption>Where learners respond: maroon prompts with space beneath each one.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <p class="section-label">Impact</p>
+                    <p>Splitting the document kept the evaluation intent intact while giving learners something they could act on. On the LXP they see a clear, time-boxed path of plain-language tasks. In the template they get one place to write, with prompts that tell them what a strong answer needs, so they spend their effort on the thinking the assignment is designed to assess rather than decoding what is being asked.</p>
+                    <p>This follows <strong>cognitive load theory</strong>: separating the instructions from the response space reduces extraneous load, such as switching between rubric-style language and task steps, so learners' limited working memory goes to the germane work of defining a decision and reasoning about the data they would need.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="box-label">Design Highlight: The Learner Path</div>
+                    <p>I designed the learner path as a repeating rhythm of four phases that students move through in every module of the course. It gives learners a consistent way to orient themselves as they navigate the resources, assignments, guides, and readings. Showing the four phases visually makes it easy to see where they are and what comes next.</p>
+
+                    <div class="path-row">
+                        <figure class="path-figure">
+                            <div class="path-stack">
+                                <img src="assets/data-fluency/learner%20path%200.png" alt="Welcome to Module 1 page showing the six module topics as a row: 1 Understanding the data landscape, highlighted, then Collecting and managing data, Making sense of your data, Telling a story with your data, Becoming a critical data consumer, and Creating a data informed culture">
+                                <img src="assets/data-fluency/learner%20path%201.png" alt="Learner path with four phases, Welcome, Prepare, Engage and Practice, with Prepare highlighted">
+                                <img src="assets/data-fluency/learner%20path%202.png" alt="The same four phases with Engage highlighted">
+                                <img src="assets/data-fluency/learner%20path%203.png" alt="The same four phases with Practice highlighted">
+                            </div>
+                            <figcaption>Each module opens with a welcome page, then moves through the same four phases, Welcome, Prepare, Engage and Practice. The highlighted step shows learners where they are.</figcaption>
+                        </figure>
+
+                        <figure class="path-figure">
+                            <img class="path-roadmap" src="assets/data-fluency/roadmap.png" alt="Module roadmap showing Prepare at 2 hours 18 minutes total with reading, video and a pre-session quiz and task, Engage at 2 hours total with a 120-minute live session, and Practice at 1 hour 45 minutes total with a 90-minute assignment and a 15-minute connection task">
+                            <figcaption>The roadmap: what each phase contains and how long it takes.</figcaption>
+                        </figure>
+                    </div>
+
+                    <p>The roadmap in the first phase previews the time each phase asks for, so learners can plan their week before they start.</p>
+
+                    <p class="section-label">Impact</p>
+                    <p>The roadmap helps learners plan their time, which supports <strong>adult learning theory</strong> and the self-directed learner. Our needs analysis pointed the same way: learners wanted an online experience that is flexible but structured. The repeated path provides the structure, and the roadmap leaves them in charge of when and how they work through it.</p>
                 </div>
 
             </div>
