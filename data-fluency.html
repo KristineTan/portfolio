@@ -31,13 +31,22 @@
             line-height: 1.6;
         }
 
+        html { scroll-behavior: smooth; }
+
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2rem 4rem;
+            padding: 1rem 4rem;
             max-width: 1600px;
             margin: 0 auto;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 1px 0 #E8E6E0;
         }
 
         .logo {
@@ -136,7 +145,9 @@
 
         .project-content h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 2.4rem;
+            font-weight: 700;
+            scroll-margin-top: 6rem;
             color: var(--dark-charcoal);
             margin-bottom: 1.25rem;
             margin-top: 3rem;
@@ -222,6 +233,8 @@
             letter-spacing: 0.09em;
             margin-bottom: 1rem;
         }
+
+        .project-content .video-card .card-text { margin-bottom: 1.25rem; }
 
         .video-card video {
             width: 100%;
@@ -374,6 +387,7 @@
         .process-flow img {
             width: 100%;
             display: block;
+            border: 1px solid #DAD6CC;
             border-radius: 8px;
             background: #fff;
             box-shadow: 0 2px 12px rgba(0,0,0,0.12);
@@ -414,6 +428,7 @@
             display: grid;
             gap: 0.25rem;
             background: #fff;
+            border: 1px solid #DAD6CC;
             border-radius: 10px;
             padding: 0.75rem 1rem;
             box-shadow: 0 2px 12px rgba(0,0,0,0.08);
@@ -424,6 +439,7 @@
         .path-roadmap {
             width: 100%;
             display: block;
+            border: 1px solid #DAD6CC;
             border-radius: 10px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.12);
         }
@@ -434,11 +450,84 @@
             margin-top: 0.5rem;
             line-height: 1.5;
         }
+        /* Card titles and impact callouts */
+        .video-card .box-label, .process-card .box-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: 0;
+            color: var(--dark-charcoal);
+            margin: 0 0 1rem;
+        }
+
+        .impact-callout {
+            background: #fff;
+            border-left: 5px solid var(--sage-green);
+            border-radius: 0 12px 12px 0;
+            padding: 1.25rem 1.5rem 0.25rem;
+            margin: 2rem 0 0.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+        .project-content .impact-callout .section-label {
+            margin: 0 0 0.6rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.14em;
+            color: var(--sage-green);
+        }
+
+        .impact-callout p:not(.section-label) { font-size: 1.1rem; color: var(--dark-charcoal); }
+
+        /* Captions read as captions, not body copy */
+        .project-content figcaption {
+            font-size: 0.88rem;
+            font-style: italic;
+            color: #5F6155;
+            line-height: 1.5;
+        }
+
+        /* Jump menu */
+        .jump-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0 0 2.5rem;
+            padding: 0.9rem 0;
+            border-top: 1px solid #E8E6E0;
+            border-bottom: 1px solid #E8E6E0;
+        }
+
+        .jump-nav .jump-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--sage-green);
+            margin-right: 0.5rem;
+        }
+
+        .jump-nav a {
+            background: #F5F4EF;
+            border-radius: 50px;
+            padding: 0.35rem 1rem;
+            color: var(--dark-charcoal);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .jump-nav a:hover { background: var(--sage-green); color: var(--white); }
+
+        .video-card, .process-card { scroll-margin-top: 6rem; }
         .course-card { margin: 1.5rem 0; }
 
         .course-card img {
             width: 100%;
             display: block;
+            border: 1px solid #DAD6CC;
             border-radius: 10px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.12);
         }
@@ -495,15 +584,15 @@
         .sidebar-card .spec-label {
             font-size: 0.8rem;
             font-weight: 700;
-            color: var(--taupe);
+            color: var(--sage-green);
             text-transform: uppercase;
             letter-spacing: 0.07em;
             margin-bottom: 0.5rem;
         }
 
         .sidebar-card .spec-item {
-            font-size: 0.92rem;
-            color: var(--olive-brown);
+            font-size: 0.95rem;
+            color: var(--dark-charcoal);
             line-height: 1.9;
         }
 
@@ -525,7 +614,7 @@
         }
 
         @media (max-width: 860px) {
-            nav { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
+            nav { flex-direction: column; gap: 1.5rem; padding: 1.5rem; position: static; }
             .nav-links { flex-direction: column; gap: 1rem; text-align: center; }
             .project-header h1 { font-size: 2.2rem; }
             .project-page { padding: 2rem 1.5rem; }
@@ -563,15 +652,21 @@
             <p class="project-intro">An online course designed and developed for staff at Harvard University to work with data responsibly, effectively, and collaboratively across Schools, departments, and administrative functions.</p>
         </div>
 
-        <div class="project-body">
+        <div class="jump-nav" role="navigation" aria-label="On this page">
+            <span class="jump-label">Jump to</span>
+            <a href="#overview">Overview</a>
+            <a href="#problem">The Problem</a>
+            <a href="#design-highlights">Design Highlights</a>
+        </div>
 
+        <div class="project-body">
             <!-- Main content -->
             <div class="project-content">
 
                 <!-- Specifications card -->
                 <aside class="specs-bar">
                     <div class="sidebar-card">
-                        <h2 class="sr-only">Specifications</h2>
+                        <h2>Specifications</h2>
 
                         <div class="spec-group">
                             <div class="spec-label">My Role</div>
@@ -606,7 +701,7 @@
                     </div>
                 </aside>
 
-                <h2>Project Overview</h2>
+                <h2 id="overview">Project Overview</h2>
                 <p>I designed and developed an online course for staff at Harvard University to work with data responsibly, effectively, and collaboratively across Schools, departments, and administrative functions.</p>
                 <figure class="course-card">
                     <img src="assets/data-fluency/course%20card%20LXP.png" alt="Course card for 'Data Fluency for Higher Education Professionals' from Harvard Graduate School of Education, shown on the LXP with a Resume button">
@@ -614,7 +709,7 @@
                 </figure>
                 <p>I collaborated with a cross-functional team that led primary data collection (surveys, interviews, focus groups). I analyzed and synthesized these datasets to inform key interaction, layout, and curriculum decisions.</p>
 
-                <h2>The Problem</h2>
+                <h2 id="problem">The Problem</h2>
                 <p>Harvard staff increasingly work in complex data environments where information is spread across multiple systems, teams use different definitions and processes, and data practices vary widely across the University. This creates challenges in knowing which data to trust, how to work with it responsibly, how to interpret and communicate findings, and how to evaluate analyses — including those produced with AI. At the same time, expectations around data governance and AI-enabled work are evolving faster than many staff members' existing data skills.</p>
 
                 <p class="section-label">Through surveys, focus groups, and interviews, the team identified:</p>
@@ -629,15 +724,16 @@
 
                 <p>Therefore, we built a four-month hybrid, instructor-led online course centered on team-based learning and learning-community building, open to all Harvard staff. With the intent to bring people together and foster a culture of talking about data, we set out to solve the underlying communication inefficiency.</p>
 
-                <h2>Design Highlights</h2>
-                <figure class="video-card">
-                    <div class="box-label">Interactive Glossary</div>
+                <h2 id="design-highlights">Design Highlights</h2>
+                <figure class="video-card" id="glossary">
+                    <h3 class="box-label">Interactive Glossary</h3>
+                    <p class="card-text">The glossary gives learners two layers of interaction for finding a term. They can select words by <strong>group label</strong>, browsing terms by topic, or use the <strong>first-letter search</strong> to jump straight to a word they already have in mind.</p>
                     <video autoplay loop muted playsinline controls aria-label="Screen recording of the interactive glossary: choosing terms by group label and by first letter"><source src="assets/data-fluency/glossary.mp4" type="video/mp4"></video>
-                    <figcaption>The glossary gives learners two layers of interaction for finding a term. They can select words by <strong>group label</strong>, browsing terms by topic, or use the <strong>first-letter search</strong> to jump straight to a word they already have in mind.</figcaption>
+                    <figcaption>Screen recording of the interactive glossary.</figcaption>
                 </figure>
 
-                <div class="process-card">
-                    <div class="box-label">Design Process: Splitting One Assignment in Two</div>
+                <div class="process-card" id="assignment-design">
+                    <h3 class="box-label">Design Process: Splitting One Assignment in Two</h3>
                     <p>The assignments arrived as raw documents written for the learning design team, full of evaluation language and mixed in with the grading rubric. My task was to break each one down so learners know exactly what they are being asked to do, with as little unnecessary friction as possible. Module 2 shows the approach: I separated the document into instructions learners follow on the LXP and a template where they write their answers, translating evaluation language into instructional language along the way.</p>
 
                     <div class="process-flow">
@@ -662,13 +758,15 @@
                             </figure>
                         </div>
                     </div>
-                    <p class="section-label">Impact</p>
-                    <p>Splitting the document kept the evaluation intent intact while giving learners something they could act on. On the LXP they see a clear, time-boxed path of plain-language tasks. In the template they get one place to write, with prompts that tell them what a strong answer needs, so they spend their effort on the thinking the assignment is designed to assess rather than decoding what is being asked.</p>
-                    <p>This follows <strong>cognitive load theory</strong>: separating the instructions from the response space reduces extraneous load, such as switching between rubric-style language and task steps, so learners' limited working memory goes to the germane work of defining a decision and reasoning about the data they would need.</p>
+                    <div class="impact-callout">
+                        <p class="section-label">Impact</p>
+                        <p>Splitting the document kept the evaluation intent intact while giving learners something they could act on. On the LXP they see a clear, time-boxed path of plain-language tasks. In the template they get one place to write, with prompts that tell them what a strong answer needs, so they spend their effort on the thinking the assignment is designed to assess rather than decoding what is being asked.</p>
+                        <p>This follows <strong>cognitive load theory</strong>: separating the instructions from the response space reduces extraneous load, such as switching between rubric-style language and task steps, so learners' limited working memory goes to the germane work of defining a decision and reasoning about the data they would need.</p>
+                    </div>
                 </div>
 
-                <div class="process-card">
-                    <div class="box-label">Design Highlight: The Learner Path</div>
+                <div class="process-card" id="learner-path">
+                    <h3 class="box-label">Design Highlight: The Learner Path</h3>
                     <p>I designed the learner path as a repeating rhythm of four phases that students move through in every module of the course. It gives learners a consistent way to orient themselves as they navigate the resources, assignments, guides, and readings. Showing the four phases visually makes it easy to see where they are and what comes next.</p>
 
                     <div class="path-row">
@@ -690,8 +788,10 @@
 
                     <p>The roadmap in the first phase previews the time each phase asks for, so learners can plan their week before they start.</p>
 
-                    <p class="section-label">Impact</p>
-                    <p>The roadmap helps learners plan their time, which supports <strong>adult learning theory</strong> and the self-directed learner. Our needs analysis pointed the same way: learners wanted an online experience that is flexible but structured. The repeated path provides the structure, and the roadmap leaves them in charge of when and how they work through it.</p>
+                    <div class="impact-callout">
+                        <p class="section-label">Impact</p>
+                        <p>The roadmap helps learners plan their time, which supports <strong>adult learning theory</strong> and the self-directed learner. Our needs analysis pointed the same way: learners wanted an online experience that is flexible but structured. The repeated path provides the structure, and the roadmap leaves them in charge of when and how they work through it.</p>
+                    </div>
                 </div>
 
             </div>
